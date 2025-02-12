@@ -1,0 +1,38 @@
+{% load static %}
+<style>
+      .section-nav a {
+            width: 100%;
+            text-decoration: none;
+            color: rgb(33, 33, 33);
+            font-size: 18px;
+            background-color: rgb(255, 255, 255);
+            margin-top: 1rem;
+            margin-left: 2rem ;
+
+      }
+
+      .section-nav a:hover {
+            color: rgb(89, 89, 89);
+            font-weight: bold;
+      }
+      .section-nav a img {
+            width: 30px;
+            margin-right: 0.7rem;
+      }
+</style>
+<span class=" mt-4 d-flex flex-wrap align-content-center justify-content-center top-0 card border-0   p-1 bg-white rounded-circle" 
+      style="height: 50px; width: 50px;">
+      {% if company.img.url %}
+            <img src="{{company.icon.url}}" width="40" height="40"  class="  object-fit-cover   rounded-circle" style="border: 1px;" alt="">
+      {% endif %}
+</span>
+<section class="section-nav d-flex flex-wrap">
+      <a href="">
+            <img src="{% static "icons/client.png" %}"  >
+            <span>Clientes</span>
+      </a>
+      <a href="">
+            <img src="{% static "icons/credit.png" %}" >
+            <span>Creditos</span>
+      </a>
+</section>

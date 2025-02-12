@@ -1,0 +1,39 @@
+{% extends "base/base.html"  %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<style>
+      .section-dashboard .div 
+      {
+            background-color: #ffffff;
+            padding: 16px;
+            margin: 10px;
+            border-radius: 30px;
+            width: 30%;
+            height: max-content;
+            border: 2px solid rgb(226, 226, 226);
+      }
+      .section-dashboard .div p
+      {
+            font-size: 14px;
+      }
+</style>
+<section class='section-dashboard  d-flex justify-content-evenly'>
+      <div class="div" style="transition:  0.5s ease-out ; transition-delay: 0.2s; " >
+
+            <h5 class="text-black">Ingresos del mes</h5>
+            <p style="text-align: justify;"> <strong class="text-black"> Sugiero</strong> ofrecer nuevos productos como microcréditos, seguros, fondos de inversión o cuentas de ahorro con rendimientos atractivos.</p>
+      </div>
+      <div class="div" style="transition:  0.5s ease-out ; transition-delay: 0.3s;">
+
+            <h5>Balance en caja</h5>
+            <p style="text-align: justify;"> <strong>  Se requiere</strong> una reestructuración de deudas con opciones de reestructuración a los clientes con dificultades para pagar. </p>
+      </div>
+      <div class="div" style="transition:  0.5s ease-out ; transition-delay: 0.4s;">
+
+            <h5 class="text-black">Analisis general</h5>
+            <p style="text-align: justify;">  <strong class=" text-black ">  Tenemos que lograr </strong> una segmentación de clientes morosos!, asi dividir  los clientes en grupos según su nivel de morosidad y asigna recursos específicos por grupo</p>
+      </div>
+</section>
+
+{% endblock  %}
