@@ -30,18 +30,26 @@
       .bg-secundary-w {
             background-color: var(--bg-secundary) !important;
       }
+
+      .body {
+            background-color: #ffffff;
+            display: flex; border-radius: 1.8rem !important; 
+            min-width: 300px;  width: 100%;  max-height: 99vh;
+      }
       
-      .body{
+      .section-content{
             height: 99.2vh;
       }
 
+      
+
       </style>
-  <body class='bg-white'>
-      <main class='d-flex p-1'>
-           <section class=' bg-primary-w' style="width: 20rem;">
+  <body class='body'>
+      <main class='d-flex '>
+           <section class=' ' style="width: 14rem; ">
                   {% include "nav/nav.html" %}
            </section>
-             <section class='bg-secundary-w body w-100 ms-1 rounded-5 p-3 '>
+             <section class='bg-secundary-w section-content w-100 ms-1 rounded-5 p-3 '>
                      {% block content %}{% endblock %}
             </section>
       </main>
