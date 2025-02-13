@@ -1,0 +1,42 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class Company(models.Model):
+      # Relacion con el usuario
+            user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='company')
+      # Datos de la empresa
+            name = models.CharField(max_length=100)
+            address = models.TextField()
+            phone = models.CharField(max_length=15)
+            rnc = models.CharField(max_length=15)
+      # Imagenes de la empresa
+            logo = models.ImageField(upload_to='company/logos/')
+            img_portada = models.ImageField(upload_to='company/portada/')
+      # Redes sociales
+            email = models.EmailField()
+            instagram = models.URLField()
+            facebook = models.URLField()
+      # Datos de la empresa
+            date = models.DateField(auto_now=True)
+            updated_at = models.DateTimeField(auto_now=True)
+            is_active = models.BooleanField(default=True)
+
+            def __str__(self):
+                  return f'{self.name}- {self.user.first_name} {self.user.last_name} - {self.date}'
+
+
+class Configuration(models.Model):  
+      # Relacion con la empresa
+            company = models.OneToOneField(Company, on_delete=models.CASCADE, related_name='configuration')
+      # Barra de navegacion
+            navbar_dynami = models.BooleanField(default=False)
+      # Tema de la aplicacion
+            theme = models.CharField(max_length=10, default='light')
+
+            def __str__(self):
+                  return f'{self.company.name}' 
+            
+      
+      
+

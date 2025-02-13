@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,7 +18,8 @@ ALLOWED_HOSTS = []
 # Application definition
 INSTALLED_APPS = [
     
-    'App.apps.AppConfig', # App is the name of the Easy money app
+    'Company.apps.CompanyConfig', # Applicacion de la empresa
+    'App.apps.AppConfig', # App principal
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,11 +41,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Easy.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'Easy', 'templates')],  # 📌 Agregar esta línea
+        'APP_DIRS': True,  # Esto solo funciona dentro de apps, pero no en el proyecto principal
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -57,7 +60,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Easy.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -102,9 +104,16 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+# https://docs.djangoproject.com/en/5.1/howto/static-files/ 
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'  # Esto ya debería estar definido
+# Agrega esta línea si no está en tu settings.py
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Si usas archivos estáticos dentro del proyecto
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Easy', 'static'),  # Ajusta la ruta según tu estructura
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
