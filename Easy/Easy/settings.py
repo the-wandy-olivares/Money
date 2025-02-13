@@ -17,7 +17,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
-    
+    'Client.apps.ClientConfig', # App de los clientes
     'Company.apps.CompanyConfig', # Applicacion de la empresa
     'App.apps.AppConfig', # App principal
     'django.contrib.admin',

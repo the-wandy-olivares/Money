@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 from .views import Dashboard
 
 urlpatterns = [
-    path('', Dashboard.as_view(), name='dashboard'),
-    path('company/', include('Company.urls')), 
-    path('admin/', admin.site.urls),
+        path('', Dashboard.as_view(), name='dashboard'),
+        path('company/', include('Company.urls')),  #Empresas
+        path('client/', include('Client.urls')),  #Clientes
+        path('admin/', admin.site.urls),
 
 ]
 

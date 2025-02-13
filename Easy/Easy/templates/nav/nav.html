@@ -102,11 +102,11 @@
                   </button>
             </a>
 
-            <a >
+            <a href="{% url 'client:client' %}">
                   <button class="btn-cliente"> 
                         <img src="{% static "icons/user.svg" %}" width='24' alt="">
                         <span>
-                              Clientes  {% if customer_count %} <strong style="font-size: 14px;"> ( {{customer_count}} )</strong> {% endif %} 
+                              Clientes  
                         </span>
                   </button>
             </a>
