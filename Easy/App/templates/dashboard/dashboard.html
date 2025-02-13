@@ -132,7 +132,7 @@
                   </div><!-- /.row -->
             </section>
         
-            <div class=" row pt-2">
+            <div class=" row pt-2 ">
                 <div class="col-md-3">
                     <div class="card text-white  mb-3 rounded-4" style="">
                         <div class="card-body">
@@ -176,12 +176,11 @@
                 </div>
             </div>
         
-            <div class="row mt-4 bg-white p-2" style="height: 30rem;">
+            <div class="row mt-2 bg-white p-2 rounded-5" style="height: 30rem;">
                 <div class="col-8">
                     <div class="card rounded-4 border-0">
                         <div class="card-body mt-2">
-                            <h6 class="card-title" style=" font-family: Quicksand; font-weight: 800;
-                            font-weight: bolder;">Grafico de inversion</h6>
+                            <h6 class="card-title" >Grafico de inversion</h6>
                             <canvas id="loansChart"></canvas>
                         </div>
                     </div>
@@ -207,9 +206,7 @@
                     style="background-color: #f5f5f5;">
                         <div class="card-body">
                             <h5 class="card-title text-black" 
-                            style="
-                            font-family: Quicksand; font-weight: 800;
-                            font-weight: bolder; ">
+                            style="">
                                Datos de inversion </h5>
                             <ul class="">
                                 <li class=" text-black" style="font-size: 14px;">
@@ -235,28 +232,36 @@
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var ctx = document.getElementById('loansChart').getContext('2d');
-    var loansChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre'],
+var ctx = document.getElementById('loansChart').getContext('2d');
+var loansChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             datasets: [{
-                label: 'Inversones',
-                data: [100000, 150000, 200000, 250000, 300000, 350000, 400000, 900000, 400000],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
+                  label: 'Inversones',
+                  data: [100000, 150000, 200000, 250000, 300000, 350000, 550000, 800000, 600000],
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+                  borderWidth: 1
             }]
-        },
-        options: {
+      },
+      options: {
             responsive: true,
             scales: {
-                y: {
-                    beginAtZero: true
-                }
+                  x: {
+                        grid: {
+                              display: false
+                        }
+                  },
+                  y: {
+                        beginAtZero: true,
+                        grid: {
+                              display: false
+                        }
+                  }
             }
-        }
-    });
+      }
+});
 </script>
 
 {% endblock  %}

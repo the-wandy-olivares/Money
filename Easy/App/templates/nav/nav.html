@@ -68,17 +68,20 @@
 <section class="  sec-btn ms-2 me-2   card   mb-1 mt-1 border-0 overflow-scroll " 
       style="border-radius: 0rem;  height: max-content;">
       <div class='btn-nav  pb-2' data-aos="fade-in" style="transition: 1s;" >
-            <div class="    w-100 " style=" height: 13rem; border-radius: 0rem;">
+            <div class="    w-100 " style=" height: 14rem; border-radius: 0rem;">
                   <div class="position-relative "> 
                       <div class="d-flex justify-content-center  align-content-center flex-wrap" style="background-color: #eaeaea ; height: 6.8rem; 
                       border-radius: 1.8rem;" >
                               <span class="  d-flex flex-wrap align-content-center justify-content-center top-0 card border-0 p-1 bg-white rounded-5" 
-                              style="height: 60px; width: 60px; margin-top: 6rem;">
+                              style="height: 60px; width: 60px; margin-top: 7rem;">
                               <img src="{% static "img/me.JPEG" %}"  width="53" height="53"  class="  object-fit-cover rounded-5" style="border: 1px;" alt="">
                             </span>
-                                 <h6 style="font-size: 14px; font-weight: bold;" class="text-black text-center w-100 p-0 m-0">
-                                    {{company.name}} Edy Money SRL
+                                 <h6 style="font-size: 16px; font-weight: bold;" class="text-black text-center w-100 p-0 m-0">
+                                    {{company.name}} Market Money SRL
                               </h6>
+                              <span style="font-size: 10px;" class="text-black-50">
+                                    {{request.user.first_name}} {{request.user.last_name}}
+                              </span>
                       </div>  
               
                   </div>
