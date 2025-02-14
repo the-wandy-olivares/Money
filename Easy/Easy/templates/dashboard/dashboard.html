@@ -94,6 +94,14 @@
       color: black;
 }
 
+.section-content {
+    display: flex;  flex-wrap: wrap;
+    /* justify-content: start; */
+    align-content:end;
+
+    
+}
+
 </style>
 
 
@@ -101,10 +109,10 @@
     
 
     
-<main class="vh-100 overflow-scroll pb-5">
+
     
-        <div  class="container  " data-aos="fade-in" style="transition: 1s;">
-            <section>
+        <div  class="  mb-0 bottom-0 d-flex justify-content-center flex-wrap w-100    " data-aos="fade-in" style="transition: 1s;">
+            <section class="p-2">
                 <div class="row text-start mt-3 mb-5">
                     <div class="col-lg-4" data-aos="fade-down" style="transition:  0.5s ease-out ; transition-delay: 0.2s; " >
                         <img src="{% static "icons/up-grafi.png" %}" width='50' height="40" alt="">
@@ -117,7 +125,7 @@
                     <div class="col-lg-4" data-aos="fade-down" style="transition:  0.5s ease-out ; transition-delay: 0.3s; " >
                         <img src="{% static "icons/caja.png" %}" width='50' height="40"alt="">
               
-                      <h5>Balance en caja</h5>
+                      <h5 class="text-black">Balance en caja</h5>
                       <p style="text-align: justify;"> <strong>  Se requiere</strong> una reestructuración de deudas con opciones de reestructuración a los clientes con dificultades para pagar. </p>
     
                     </div><!-- /.col-lg-4 -->
@@ -132,9 +140,9 @@
                   </div><!-- /.row -->
             </section>
         
-            <div class=" row  pt-2 ">
+            <div class="d-flex justify-content-start w-100 pe-2">
                 <div class="col-md-3">
-                    <div class="card text-white  mb-3 p-3 rounded-4 " style="">
+                    <div class="card  text-white  mb-3 p-3 rounded-4 " style="">
                         <div class="card-body">
                             <h6 class="card-title text-black" style="
                                 font-weight: bold;">Total invertido</h6>
@@ -144,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 ms-1 me-1 ">
                     <div class="card text-white bg-success mb-3  p-3 rounded-4">
                         <div class="card-body">
                             <h6 class="card-title" style="font-weight: bold;">
@@ -155,7 +163,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 me-1
+                ">
                     <div class="card text-white bg-white mb-3 p-3 rounded-4">
                         <div class="card-body">
                             <h6 class="card-title" style="font-weight: bold;"> 
@@ -166,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 me-1">
                     <div class="card text-white ganancias mb-3 p-3 rounded-4 ">
                         <div class="card-body">
                             <h6 class="card-title" style="font-weight: bold;" >  Ganancias</h6>
@@ -176,7 +185,7 @@
                 </div>
             </div>
         
-            <div class="row mt-2 bg-white p-2 rounded-4" style="height: 30rem;">
+            <div class="row mt-2 bg-white mb-0 rounded-4 w-100" style="height: max-content;">
                 <div class="col-8">
                     <div class="card rounded-4 border-0">
                         <div class="card-body mt-2">
@@ -222,16 +231,14 @@
         </div>
 
 
-      </div><!-- /.container -->
-
-</main>
+      </div>
     
     
 <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-var ctx = document.getElementById('loansChart').getContext('2d');
-var loansChart = new Chart(ctx, {
+    var ctx = document.getElementById('loansChart').getContext('2d');
+    var loansChart = new Chart(ctx, {
       type: 'line',
       data: {
             labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],

@@ -60,6 +60,6 @@ class CHOICES:
                   ]
       
       # Diccionario de edades y sexos
-            AGE_CHOICES = [(i, str(i)) for i in range(18, 101)]
-            SEXO_CHOICES = [ ('M', 'Masculino'),  ('F', 'Femenino') ]
+            AGE = [(i, str(i)) for i in range(18, 101)]
+            SEXO = [ ('M', 'Masculino'),  ('F', 'Femenino') ]
 

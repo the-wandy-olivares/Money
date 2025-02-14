@@ -14,8 +14,8 @@ class Client(models.Model, CHOICES):
             name = models.CharField(max_length=100, verbose_name='Nombre', blank=True, null=True)
             last_name = models.CharField(max_length=100, verbose_name='Apellido', blank=True, null=True)
             dni = models.CharField(max_length=10, verbose_name='DNI', blank=True, null=True)
-            age = models.IntegerField(choices=CHOICES.AGE_CHOICES, verbose_name='Edad', blank=True, null=True)
-            sexo = models.CharField( choices= CHOICES.SEXO_CHOICES, max_length=1, verbose_name='Sexo', blank=True, null=True)
+            age = models.IntegerField(choices=CHOICES.AGE, verbose_name='Edad', blank=True, null=True)
+            sexo = models.CharField( choices= CHOICES.SEXO, max_length=1, verbose_name='Sexo', blank=True, null=True)
             phone = models.CharField(max_length=20, verbose_name='Teléfono', blank=True, null=True)
             email = models.EmailField(verbose_name='Correo electrónico', blank=True, null=True)
 
@@ -27,6 +27,14 @@ class Client(models.Model, CHOICES):
       # Datos de registro
             date = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de registro', blank=True, null=True)
             is_active = models.BooleanField(default=True, verbose_name='Activo', blank=True, null=True)
+
+
+            def __str__(self):
+                    return f'{self.name} {self.last_name}'
+            
+      
+
+
 
       
 

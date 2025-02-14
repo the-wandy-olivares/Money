@@ -17,6 +17,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
+    'Credit.apps.CreditConfig', # App de los creditos
     'Client.apps.ClientConfig', # App de los clientes
     'Company.apps.CompanyConfig', # Applicacion de la empresa
     'App.apps.AppConfig', # App principal
