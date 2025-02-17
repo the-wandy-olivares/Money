@@ -7,10 +7,12 @@ from .views import Dashboard
 
 urlpatterns = [
         path('', Dashboard.as_view(), name='dashboard'),
-        path('company/', include('Company.urls')),  #Empresas
-        path('client/', include('Client.urls')),  #Clientes
-        path('admin/', admin.site.urls),
+                path('company/', include('Company.urls')),  #Empresas
+                        path('client/', include('Client.urls')),  #Clientes
+                                path('credit/', include('Credit.urls')), # Creditos 
 
+        
+        path('admin/', admin.site.urls), # Aministracion
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

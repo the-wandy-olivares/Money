@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load static %}
+      <section>
+            <div>
+                  <button>
+                        <a href="{% url 'client:client' %}">Creditos</a>
+                  </button>
+                  <button>
+                        <a href="{% url 'client:client-list' %}">Listado</a>
+                  </button>
+            </div>
+      </section>
+{% endblock %}
