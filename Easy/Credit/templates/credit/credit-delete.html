@@ -1,0 +1,83 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+      <style>
+            .section-create {
+                  display: flex; flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  height: 100vh;
+
+
+            }
+            .section-create p {
+                  font-size: 12px;
+                  text-align: justify;
+            }
+            .section-create label {
+                  display: none !important;
+            }
+            .section-create input, .form-select, form-control {
+                  width: 24rem;
+                  margin: 0.1rem; padding: 0.6rem;
+                  border-radius: 1rem;
+            }
+            .section-create  .section-create {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100vh;
+            }
+            .div-create .d-flex {
+                  width: 52rem;
+                  padding: 1.5rem; 
+                  background-color: rgb(255, 255, 255);
+                  
+            }
+            .div-create h6 {
+                  margin-top: 0.5rem; 
+            }
+      </style>
+      <section class='section-create'>
+            <div class="d-flex flex-wrap p-4 align-content-start justify-content-center "
+            style="width: 20rem;">
+                  <span class="  rounded-circle" 
+                  style="height: 120px; width: 120px; border: 8px solid white; ">
+                        <img src="{% static "img/me.JPEG" %}"   class="  object-fit-cover w-100 h-100 rounded-circle" style="border: 1px;" alt="">
+                </span>
+                <h6 class='w-100 text-start mt-4'>
+                          - Cliente
+                </h6>
+                  <p class="text-black-50">
+                        Al eliminar este cliente se perderan todos los datos relacionados a el 
+                  </p>
+            </div>
+            
+            <div class='div-create '> 
+                  <form action="" method="post">
+                        {% csrf_token %}
+                        <!-- <h6>
+                              Datos personales
+                        </h6> -->
+                      <div class='d-flex flex-wrap rounded-top-4'>
+                              <h6>
+                                    Estas de acuerdo que deseas eliminar el credito de {{credit.client}} con ${{credit.capital}} ?
+                              </h6>
+                        </div>
+                        <div class="d-flex justify-content-end mt-1 rounded-bottom-4">
+                              <a href="{% url 'credit:credit-list' %}" class="btn btn-secondary mt-2 rounded-4 me-2" style="width: 8rem;">
+                                    No, cancelar
+                              </a>
+                              <button class="btn btn-primary mt-2 rounded-4">
+                                    Si, estoy de acuerdo
+                              </button>
+                        </div>
+                  </form>
+            </div>
+      </section>
+      <script>
+
+
+      </script>
+{% endblock %}

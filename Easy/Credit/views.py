@@ -57,6 +57,7 @@ class CreditList(TemplateView):
 class CreditDelete(DeleteView):
       model = models.Credit
       template_name = 'credit/credit-delete.html'
+      context_object_name = 'credit'
       
       def get_success_url(self):
             return reverse_lazy('credit:credit-list')

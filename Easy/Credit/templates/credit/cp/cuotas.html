@@ -1,0 +1,28 @@
+
+
+<table class="table table-bordered">
+      <thead>
+            <tr>
+                  <th>Credito</th>
+                  <th>Monto</th>
+                  <th>Abono</th>
+                  <th>Mora</th>
+                  <th>Fecha de Inicio</th>
+                  <th>Fecha de Fin</th>
+                  <th>Pagado</th>
+            </tr>
+      </thead>
+      <tbody>
+            {% for cuota in cuotas %}
+            <tr>
+                  <td>{{ cuota.credit }}</td>
+                  <td>{{ cuota.monto }}</td>
+                  <td>{{ cuota.abono }}</td>
+                  <td>{{ cuota.mora }}</td>
+                  <td>{{ cuota.start_date }}</td>
+                  <td>{{ cuota.end_date }}</td>
+                  <td>{{ cuota.pagado }}</td>
+            </tr>
+            {% endfor %}
+      </tbody>
+</table>
