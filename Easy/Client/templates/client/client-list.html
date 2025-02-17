@@ -7,52 +7,61 @@
             }
       </style>
       <section class="section-list">
+            <a href="{% url "client:client-create" %}">
 
-                 <button class="position-absolute top end-0 me-2 border-0 p-0 rounded-circle " style="width: 30px; height: 30px; background-color: var(--bg-2);"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-black-50" viewBox="0 0 16 16">
+                  <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
                         </svg>
-                 </button>
+                  </button>
+            </a>
 
            <div class="bg-white p-2 rounded-4  rounded-bottom-2 ">
             <table class="table mt-1 table-striped table-hover">
                   <thead>
                         <tr>
+                              <th> ({{clients|length}}) </th>
                               <th>Nombre y Apellidos</th>
                               <th>DNI</th>
                               <th>Edad</th>
                               <th>Sexo</th>
                               <th>Teléfono</th>
-                              <th>Correo electrónico</th>
-                              <th>Dirección</th>
+                              <th>Correo </th>
                               <th>Ciudad</th>
                               <th>Estado</th>
                               <th>Fecha de registro</th>
-                              <th>Activo</th>
+                              <th>Acciones</th>
                         </tr>
                   </thead>
                   <tbody>
                         {% if clients %}
                                 {% for client in clients %}
                                 <tr>
+                                          <td> {{client.foorlop}} </td>
                                           <td>{{ client.name }}  {{ client.last_name }}</td>
                                           <td>{{ client.dni }}</td>
-                                          <td>{{ client.age }}</td>
+                                          <td>+{{ client.age }}</td>
                                           <td>{{ client.sexo }}</td>
                                           <td>{{ client.phone }}</td>
                                           <td>{{ client.email }}</td>
-                                          <td>{{ client.address }}</td>
-                                          <td>{{ client.city }}</td>
+                                          <td>{{ client.municipios }}</td>
                                           <td>{{ client.province }}</td>
-                                          <td>{{ client.date }}</td>
-                                          <td>{{ client.is_active }}</td>
+                                          <td>{{ client.date|date:"d-F-Y" }}</td>
+                                          <td class="d-flex " >
+                                                <a href="{% url 'client:client-delete' client.id %}" class="">
+                                                      <button class="btn rounded-circle btn-danger btn-sm" style="width: 30px; height: 30px;"> - </button>
+                                                </a>
+                                                <a href="{% url 'client:client-update' client.id %}">
+                                                      <button class="btn btn-primary btn-sm rounded-5 ">Editar</button>
+                                                </a>
+                                          </td>
                                 </tr>
                                 {% endfor %}
                         {% else %}
                               <tr>
-                                          <td colspan="11" 
-                                          class="text-black-50"
-                                          style="text-align: center; font-weight: bold;">No hay clientes actualmente</td>
+                                    <td colspan="11" 
+                                    class="text-black-50"
+                                    style="text-align: center; font-weight: bold;">No hay clientes actualmente</td>
                               </tr>
                   {% endif %}
                   </tbody>
