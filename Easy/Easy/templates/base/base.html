@@ -128,6 +128,36 @@
                         e.target.value = value;
             });
 
+
+// Calculadora de intereses
+function Calculadora_Intereses(capital, plazo, t){
+            // let tasa = t *5
+            let cuota = capital * tasa / (1- (1+ tasa)  ** -plazo)
+            let amortizacion = [];
+            let saldo = capital;
+            let totalIntereses = 0; 
+
+            for (let mes = 1; mes <= plazo; mes++) {
+                  const interes = saldo * tasa; 
+                  const amortizacionCapital = cuota - interes;
+                  saldo -= amortizacionCapital;
+                  totalIntereses += interes; 
+                  amortizacion.push({
+                        Mes: mes,
+                        Cuota: cuota.toFixed(2),
+                        Interes: interes.toFixed(2),
+                        AmortizacionCapital: amortizacionCapital.toFixed(2),
+                        Saldo: saldo.toFixed(2)
+                  }); }
+            
+            let totales = capital + totalIntereses
+                  console.log(amortizacion)
+} 
+
+
+
+
+
       });
       </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

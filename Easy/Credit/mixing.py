@@ -1,7 +1,6 @@
 class Opciones:
       FRECUENCIA = [ 
-            ('M', 'Mensuales '), ('S', 'Semanales' ), ('Q', 'Quincenales'), 
-            ('Tri', 'Trimestrales')
+            ('mensual', 'Mensuales '), ('semanal', 'Semanales' ), ('quincenal', 'Quincenales')
       ]
 
-      METODO = [ ('Frances', 'Aleman'), ( 'Americano', 'Fijo') ]
+      METODO = [ ('frances', 'Frances'), ( 'americano', 'Americano') ]

@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load static %}
+      <style>
+            .section-list {
+                  font-size: 14px;
+            }
+      </style>
+      <section class="section-list">
+            <a href="{% url "credit:credit-create" %}">
+                  <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                        </svg>
+                  </button>
+            </a>
+            <div class="bg-white p-2 rounded-4 rounded-bottom-2 ">
+                  <table class="table mt-1 table-striped table-hover">
+                        <thead>
+                              <tr>
+                                    <th>Cliente</th>
+                                    <th>Capital</th>
+                                    <th>Cuotas</th>
+                                    <th>Intereses</th>
+                                    <th>Frecuencia</th>
+                                    <th>Fecha de Inicio</th>
+                                    <th>Método de Pago</th>
+                                    <th>
+                                          Acciones
+                                    </th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              {% if credits %}
+                                    {% for credit in credits %}
+                                    <tr>
+                                          <td>{{ credit.client }}</td>
+                                          <td>${{ credit.capital }}</td>
+                                          <td>{{ credit.cuotas }}</td>
+                                          <td>{{ credit.intereses }}%</td>
+                                          <td class="text-capitalize">{{ credit.frecuencia }}</td>
+                                          <td>{{ credit.start_date|date:"d - F - Y" }}</td>
+                                          <td class="text-capitalize">{{ credit.metodo }}</td>
+                                          <td class="d-flex " >
+                                                <a href="{% url 'credit:credit-delete' credit.id %}" class="">
+                                                      <button class="btn rounded-circle btn-danger btn-sm" style="width: 30px; height: 30px;"> - </button>
+                                                </a>
+                                                <a href="{% url 'credit:credit-update' credit.id %}">
+                                                      <button class="btn btn-primary btn-sm rounded-5 ">Editar</button>
+                                                </a>
+                                          </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                          <td colspan="11" class="text-black-50"
+                                          style="text-align: center; font-weight: bold;">
+                                                No hay creditos
+                                          </td>
+                                    </tr>
+                              {% endif %}
+                        </tbody>
+                  </table>
+            </div>
+      </section>
+{% endblock %}

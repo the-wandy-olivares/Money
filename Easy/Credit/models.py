@@ -8,19 +8,19 @@ class Credit(models.Model):
                                     verbose_name='Credito de un cliente')
       
       # Detalles
-            capital = models.IntegerField(default=0)
-            cuotas = models.IntegerField(default=1)
+            capital = models.CharField(default='', max_length=50)
+            cuotas = models.IntegerField(default=4)
             intereses = models.IntegerField(default=15) 
-            frecuecia = models.CharField(choices=Opciones.FRECUENCIA, max_length=50, default='M') 
+            frecuencia = models.CharField(choices=Opciones.FRECUENCIA, max_length=50)
 
       # Fechas
             start_date = models.DateField(auto_now=True)
 
       # Metodo de pago
-            metodo = models.CharField(max_length=50, default='Frances', choices=Opciones.METODO)
+            metodo = models.CharField(max_length=50, choices=Opciones.METODO)
 
             def __str__(self):
-                  return f'{self.client} - {self.capital} - {self.cuotas} - {self.intereses} - {self.frecuecia} - {self.metodo} - {self.start_date}'
+                  return f'{self.client} - {self.capital} - {self.cuotas} - {self.intereses} - {self.frecuencia} - {self.metodo} - {self.start_date}'
             
 
 
