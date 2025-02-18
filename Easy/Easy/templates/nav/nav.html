@@ -93,32 +93,33 @@
                   </strong>
             </div>
          
-            <a href="{% url "dashboard" %}"  class=" mt-5 text-decoration-none btn-dashboard">
-                  <button class="btn-cliente">
-                        <img src="{% static "icons/grafico.png" %}" width='24' alt="">
+            <button class="btn-clientes mt-5">
+                  <img src="{% static "icons/grafico.png" %}" width='24' alt="">
+                  <a href="{% url "dashboard" %}"  class="  text-decoration-none btn-dashboard">
                         <span class=" text-start ">
                               Dashboard  
                         </span>
-                  </button>
-            </a>
+                  </a>
+            </button>
 
-            <a href="{% url 'client:client' %}">
-                  <button class="btn-cliente"> 
-                        <img src="{% static "icons/user.svg" %}" width='24' alt="">
+            <button class="btn-cliente position-relative"> 
+                  <img src="{% static "icons/user.svg" %}" width='24' alt="">
+                  <a href="{% url 'client:client' %}">
                         <span>
                               Clientes  
                         </span>
-                  </button>
-            </a>
+                  </a>
+                  {% include "client/cp/more-options.html" %}
+            </button>
 
-            <a href="{% url 'credit:credit' %}">
-                  <button class="btn-creditos">
-                        <img src="{% static "icons/list.svg" %}" width='24' alt="">
+            <button class="btn-creditos">
+                  <img src="{% static "icons/list.svg" %}" width='24' alt="">
+                  <a href="{% url 'credit:credit' %}">
                         <span>
                               Listado de creditos
                         </span>
+                  </a>
                   </button>
-            </a>
         
             <a >
                   <button class="btn-ubicaciones">
@@ -178,70 +179,3 @@
 
       </div>
 </section>
-
-<!-- <button  class="position-absolute bottom-0 start-0 m-1  border-0 bg-white">
-      <img src="{% static "icons/config.svg" %}" width='24' alt="">
-</button> -->
-
-<script>
-      let resultadoParrafoES = document.getElementById('resultado-es')
-      let resultadoParrafo2ES = document.getElementById('resultado-es2')
-      let resultadoParrafo3ES = document.getElementById('resultado-es3')
-      let plazoES = document.getElementById('plazo-es')
-      let numeroES = document.getElementById('numero-es')
-
-
-      let SuperCal2 = (capital, plazo, tasa)=> {
-      
-      const Cuotas = capital * tasa / (1 - Math.pow(1 + tasa, -plazo));
-      let amortizacion = [];
-      let saldo = capital;
-      let totalIntereses = 0; 
-      for (let mes = 1; mes <= plazo; mes++) {
-            const interes = saldo * tasa; 
-            const amortizacionCapital = Cuotas - interes;   
-            saldo -= amortizacionCapital;
-            totalIntereses += interes; 
-            amortizacion.push({
-                  Mes: mes,
-                  Cuota: Cuotas.toFixed(2),
-                  Interes: interes.toFixed(2),
-                  AmortizacionCapital: amortizacionCapital.toFixed(2),
-                  Saldo: saldo.toFixed(2)
-            }); }
-            let totales = capital + totalIntereses
-
-      const numero = parseFloat(numeroES.value);
-  
-      resultadoParrafoES.textContent = '$' + Cuotas.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00';
-      resultadoParrafo2ES.textContent = '$' + totalIntereses.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
-      resultadoParrafo3ES.textContent = '$' + totales.toLocaleString(undefined, {maximumFractionDigits: 0}) + '.00'
-      if(numeroES.value != ''){
-            let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
-            if (!isNaN(numero) && numero.trim() !== '') {
-                numeroES.value = parseFloat(numero).toLocaleString();
-            } else {
-                numeroES.value = numeroES.value.replace(/[^\d.]/g, ''); 
-                // Elimina cualquier carácter no numérico excepto el punto decimal
-            }
-      }
-
-} 
-
-numeroES.addEventListener("input", () => {
-
-      
-      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
-      let capital = parseInt(numero)
-      let plazo =   plazoES.value
-      let tasa = 0.15
-      SuperCal2(capital, plazo, tasa)
-});
-plazoES.addEventListener("input", () => {
-      let numero = numeroES.value.replace(/,/g, ''); // Elimina las comas existentes
-      let capital = parseInt(numero)
-      let plazo =   plazoES.value
-      let tasa = 0.15
-      SuperCal2(capital, plazo, tasa)
-});
-</script>
