@@ -10,8 +10,8 @@
                   <th>Monto</th>
                   <th>Abono</th>
                   <th>Mora</th>
-                  <th>Fecha de Inicio</th>
-                  <th>Fecha de Fin</th>
+                  <th>Vence</th>
+                  <th>Ultimo dia</th>
                   <th>Pagado</th>
             </tr>
       </thead>
@@ -34,8 +34,8 @@
                         <td> 
                               ${{ cuota.mora|intcomma }}.00
                         </td>
-                        <td>{{ cuota.start_date|date:"d-F-y" }}</td>
-                        <td>{{ cuota.end_date|date:"d-F-y" }}</td>
+                        <td>{{ cuota.start_date|date:"d/m/Y" }}</td>
+                        <td>{{ cuota.end_date|date:"d/m/Y" }}</td>
                         <td>
                               {% if cuota.pagado == True %}
                                     {{ cuota.pagado }}

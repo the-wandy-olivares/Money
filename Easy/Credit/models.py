@@ -32,8 +32,8 @@ class Cuotas(models.Model):
             mora = models.IntegerField(default=0)
             
       # Fechas
-            start_date = models.DateField(auto_now=True)
-            end_date = models.DateField(auto_now=True)
+            start_date = models.DateField()
+            end_date = models.DateField()
 
       # Estado
             pagado = models.BooleanField(default=False)
