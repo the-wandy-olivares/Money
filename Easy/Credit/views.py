@@ -4,6 +4,8 @@ from django.views.generic import TemplateView, UpdateView, CreateView, DeleteVie
 from . import models
 from .forms import CreditForm
 from django.urls import reverse_lazy
+from .mixing import  Calculadora_Intereses
+from django.utils import timezone
 
 
 
@@ -18,8 +20,12 @@ class CreditCreate(CreateView):
     template_name = 'credit/credit-create.html'
 
     def form_valid(self, form):
-        return super().form_valid(form)
-    
+      form.instance.start_date =  timezone.now()
+      credit = form.save(commit=False)
+      Calculadora_Intereses(form.instance.capital, form.instance.cuotas, 
+                        form.instance.intereses, credit)
+      return super().form_valid(form)
+
     def get_success_url(self):
         return reverse_lazy('credit:credit-list')
     
@@ -43,6 +49,11 @@ class CreditDetail(DetailView):
       template_name = 'credit/credit-detail.html'
       context_object_name = 'credit'
 
+      def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['cuotas'] = models.Cuotas.objects.filter(credit=self.object)
+            return context
+      
 
 
 class CreditList(TemplateView):

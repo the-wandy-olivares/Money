@@ -1,6 +1,6 @@
+{% load humanize %}
 
-
-<table class="table table-bordered">
+<table class="table">
       <thead>
             <tr>
                   <th>Credito</th>
@@ -13,16 +13,32 @@
             </tr>
       </thead>
       <tbody>
-            {% for cuota in cuotas %}
-            <tr>
-                  <td>{{ cuota.credit }}</td>
-                  <td>{{ cuota.monto }}</td>
-                  <td>{{ cuota.abono }}</td>
-                  <td>{{ cuota.mora }}</td>
-                  <td>{{ cuota.start_date }}</td>
-                  <td>{{ cuota.end_date }}</td>
-                  <td>{{ cuota.pagado }}</td>
-            </tr>
-            {% endfor %}
+            {% if cuotas %}
+                  {% for cuota in cuotas %}
+                  <tr>
+                        <td>{{ cuota.credit|truncatechars:"20" }}</td>
+                        <td>${{ cuota.monto|intcomma }}.00</td>
+                        <td>
+                                    ${{ cuota.abono|intcomma }}.00
+                        </td>
+                        <td> 
+                              ${{ cuota.mora|intcomma }}.00
+                        </td>
+                        <td>{{ cuota.start_date|date:"d-F-y" }}</td>
+                        <td>{{ cuota.end_date|date:"d-F-y" }}</td>
+                        <td>
+                              {% if cuota.pagado == True %}
+                                    {{ cuota.pagado }}
+                              {% endif %}
+                        </td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <tr>
+                        <td colspan="11" 
+                        class="text-black-50"
+                        style="text-align: center; font-weight: bold;">No hay creditos actualmente</td>
+                  </tr>
+            {% endif %}
       </tbody>
 </table>
