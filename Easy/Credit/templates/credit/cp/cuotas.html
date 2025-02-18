@@ -29,13 +29,13 @@
                         <td>{{ cuota.credit|truncatechars:"20" }}</td>
                         <td>${{ cuota.monto|intcomma }}.00</td>
                         <td>
-                                    ${{ cuota.abono|intcomma }}.00
+                              ${{ cuota.abono|intcomma }}.00
                         </td>
                         <td> 
                               ${{ cuota.mora|intcomma }}.00
                         </td>
-                        <td>{{ cuota.start_date|date:"d/m/Y" }}</td>
-                        <td>{{ cuota.end_date|date:"d/m/Y" }}</td>
+                        <td>{{ cuota.start_date|date:"d/ m/ Y" }}</td>
+                        <td>{{ cuota.end_date|date:"d/ m/ Y" }}</td>
                         <td>
                               {% if cuota.pagado == True %}
                                     {{ cuota.pagado }}

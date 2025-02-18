@@ -12,33 +12,22 @@
       </style>
       <section class="section-detail">
             <div class="bg-white p-5 rounded-4 div-detail rounded-bottom-1"
-            style="width: 100%; height: max-content;">
+                  style="width: 100%; height: max-content;">
                   <div class='d-flex'>
                         <span class="  d-flex flex-wrap align-content-center me-3 justify-content-center top-0 card border-0 p-1 bg-white rounded-5" 
-                        style="height: 60px; width: 60px; ">
-                        <img src="{% static "img/me.JPEG" %}"    class="  object-fit-cover rounded-circle w-100 h-100" style="border: 1px;" alt="">
+                              style="height: 60px; width: 60px; ">
+                              <img src="{% static "img/me.JPEG" %}"    class="  object-fit-cover rounded-circle w-100 h-100" style="border: 1px;" alt="">
                       </span>
                       <h6 class='mt-4'>
                             {{credit.client.name}} {{credit.client.last_name}}
                       </h6> 
                   </div>
-                  {% comment %} {{credit.client.dni}} {% endcomment %}
                   <hr>
-                  <p>
-                        <strong>Capital:</strong> ${{credit.capital}}
-                  </p>
-                  <p>
-                        <strong>Cuotas:</strong> {{credit.cuotas}}
-                  </p>
-                  <p>
-                        <strong>Intereses:</strong> {{credit.intereses}}%
-                  </p>
-                  <p>
-                        <strong>Frecuencia:</strong> {{credit.frecuencia}}
-                  </p>
-                  <p>
-                        <strong>Fecha de Inicio:</strong> {{credit.start_date|date:"d - F - Y"}}
-                  </p>
+                  <p>     <strong>Capital:</strong> ${{credit.capital}}  </p>
+                  <p>     <strong>Cuotas:</strong> {{credit.cuotas}}    </p>
+                  <p>     <strong>Intereses:</strong> {{credit.intereses}}% </p>
+                  <p>     <strong>Frecuencia:</strong> {{credit.frecuencia}} </p>
+                  <p>     <strong>Fecha:</strong> {{credit.start_date|date:"d/ m/ Y"}} </p>
             </div>
             <div class='mt-2 rounded-bottom-4 bg-white p-1'>
                   {% include "credit/cp/cuotas.html" %}
