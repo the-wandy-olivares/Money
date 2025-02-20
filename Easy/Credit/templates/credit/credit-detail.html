@@ -10,7 +10,7 @@
                   padding: 0px; margin: 0px;
             }
       </style>
-      <section class="section-detail">
+      <section class="section-detail overflow-scroll ">
             <div class="bg-white p-5 rounded-4 div-detail rounded-bottom-1"
                   style="width: 100%; height: max-content;">
                   <div class='d-flex'>
@@ -29,8 +29,11 @@
                   <p>     <strong>Frecuencia:</strong> {{credit.frecuencia}} </p>
                   <p>     <strong>Fecha:</strong> {{credit.start_date|date:"d/ m/ Y"}} </p>
             </div>
-            <div class='mt-2 rounded-bottom-5 overflow-scroll ' style='height: 35rem;'>
+            <div class='mt-1 rounded-bottom-1 overflow-scroll ' style='height: 58vh;'>
                   {% include "credit/cp/cuotas.html" %}
+            </div>
+            <div class="mt-1">
+                  {% include "credit/cp/nav-bottom.html" %}
             </div>
       </section>
 {% endblock %}

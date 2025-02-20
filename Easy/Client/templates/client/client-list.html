@@ -48,10 +48,10 @@
                                           <td>{{ client.date|date:"d-F-Y" }}</td>
                                           <td class="d-flex " >
                                                 <a href="{% url 'client:client-delete' client.id %}" class="">
-                                                      <button class="btn rounded-circle btn-danger btn-sm" style="width: 30px; height: 30px;"> - </button>
+                                                      <button class="btn btn-dark  btn-sm rounded-3 ">Eliminar</button>
                                                 </a>
                                                 <a href="{% url 'client:client-update' client.id %}">
-                                                      <button class="btn btn-primary btn-sm rounded-5 ">Editar</button>
+                                                      <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-3 ">Editar</button>
                                                 </a>
                                           </td>
                                 </tr>

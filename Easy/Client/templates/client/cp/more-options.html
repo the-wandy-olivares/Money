@@ -13,31 +13,36 @@
       }
       .more-options-nav ul  li a:hover {
             color: rgb(48, 114, 255);
+            font-weight: bold;
+            transition: 0.3s;
       }
       .more-options-nav ul  li  a {
             text-decoration: none;
             font-size: 14px;
+            font-weight: normal ;
 
       }
       .more-options-nav ul  li  a svg {
             margin-top: 2px !important;
             margin-right: 0.5rem;
             margin-left: 0.5rem;
-            width: 25px;
+            width: 25px ; 
+
       }
 </style>
 
-<div class="more-options-nav shadow d-none  pt-3  pb-1  bg-white bg-opacity-10 blur-20 position-fixed  z-2" 
+<div class="more-options-nav shadow d-none position-relative  overflow-auto  bg-white bg-opacity-10 blur-20 position-fixed  z-2" 
       style="width: 17rem; height: max-content; 
-      border-radius: 1.5rem;
-      margin-left: 2rem; margin-top: 1vh;">
-      <span class="btn justify-content-center w-100 d-flex flex-wrap"> 
-            <img src="{% static "icons/user.svg" %}" width='24' alt="" class="me-0"> 
-                  <strong class="text-center w-100">
+      border-radius: 1.6rem;
+      margin-left: 2rem; margin-top: 0vh;">
+      <span class=" ms-3  mt-3  d-flex "> 
+            <img src="{% static "icons/user.svg" %}" style="width: 40px !important;" alt="" class="me-0"> 
+                  <span class="text-start text-black  ms-2 " style="margin-top: 0.7rem;">
                         Clientes  
-                  </strong >
+                  </span >
       </span>
-      <ul class="mt-4">
+      <hr>
+      <ul class="mt-0">
             <li>
                   <a href="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
