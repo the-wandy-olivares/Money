@@ -1,59 +1,102 @@
 {% load humanize %}
-<table class="table">
-      <thead>
-            <tr>
-                  <th>
+<style>
+      .thead {
+            font-weight: bold;
+            background-color: #f8f9fa;
+      }
+
+      .tr {
+            display: flex;
+            justify-content: start;
+            border-bottom: 1px solid #dee2e6;
+            /* padding: 8px 0; */
+      }
+
+      .th, .td {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+      }
+      .td
+      {
+            background-color: rgb(255, 255, 255) ;
+            margin: 0.1rem;
+      }
+
+      .td button {
+            cursor: pointer;
+      }
+
+      .td span {
+            display: inline-block;
+            min-width: 100px;
+      }
+
+      .text-primary {
+            color: #007bff !important;
+      }
+
+      .total-selected {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: right;
+      }
+</style>
+<div class="w-100">
+      <div class="thead">
+            <div class="tr">
+                  <div class="th">
                         ...
-                  </th>
-                  <th>Credito</th>
-                  <th>Monto</th>
-                  <th>Abono</th>
-                  <th>Mora</th>
-                  <th>Vence</th>
-                  <th>Ultimo dia</th>
-                  <th>Pagado</th>
-            </tr>
-      </thead>
-      <tbody>
+                  </div>
+                  <div class="th">Credito</div>
+                  <div class="th">Monto</div>
+                  <div class="th">Abono</div>
+                  <div class="th">Mora</div>
+                  <div class="th">Vence</div>
+                  <div class="th">Ultimo dia</div>
+                  <div class="th">Pagado</div>
+            </div>
+      </div>
+      <div class="tbody">
             {% if cuotas %}
                   {% for cuota in cuotas %}
-                  <tr>
-                        <td> 
+                  <div class="tr">
+                        <div class="td"> 
                               <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent border-0' data-id="{{ cuota.id }}" data-monto="{{ cuota.monto }}" onclick="toggleSelection(this)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                                        </svg>
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
                               </button>
-                        </td>
-                        <td>{{ cuota.credit|truncatechars:"20" }}</td>
-                        <td>${{ cuota.monto|intcomma }}.00</td>
-                        <td>
+                        </div>
+                        <div class="td"> 
+                              <span class="">{{ cuota.credit|truncatechars:"10" }}</span> 
+                        </div>
+                        <div class="td">${{ cuota.monto|intcomma }}.00</div>
+                        <div class="td">
                               ${{ cuota.abono|intcomma }}.00
-                        </td>
-                        <td> 
+                        </div>
+                        <div class="td"> 
                               ${{ cuota.mora|intcomma }}.00
-                        </td>
-                        <td>{{ cuota.start_date|date:"d/ m/ Y" }}</td>
-                        <td>{{ cuota.end_date|date:"d/ m/ Y" }}</td>
-                        <td>
+                        </div>
+                        <div class="td">{{ cuota.start_date|date:"d/ m/ Y" }}</div>
+                        <div class="td">{{ cuota.end_date|date:"d/ m/ Y" }}</div>
+                        <div class="td">
                               {% if cuota.pagado == True %}
                                     {{ cuota.pagado }}
                               {% else %}
                                     N/A
                               {% endif %}
-                        </td>
-                  </tr>
+                        </div>
+                  </div>
                   {% endfor %}
-                  {% else %}
-                  <tr>
-                        <td colspan="11" 
+            {% else %}
+                  <div class="tr">
+                        <div class="td" colspan="11" 
                         class="text-black-50"
-                        style="text-align: center; font-weight: bold;">No hay creditos actualmente</td>
-                  </tr>
+                        style="text-align: center; font-weight: bold;">No hay creditos actualmente</div>
+                  </div>
             {% endif %}
-      </tbody>
-</table>
-
+      </div>
+</div>
 
 <script>
       let selectedButtons = new Set();
@@ -66,7 +109,6 @@
             } else {
                   selectedButtons.add(button);
                   button.classList.add('text-primary');
-
             }
             updateTotalMonto();
       }
