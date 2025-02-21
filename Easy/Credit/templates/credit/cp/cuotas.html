@@ -73,6 +73,7 @@
                         <div class="td" style="max-width: 4rem !important; "> 
                               <!-- <span class=""> -->
                                     {{ forloop.counter }} 
+                                    <!-- ({{cuota.id}}) -->
                               <!-- </span>  -->
                         </div>
                         <div class="td"> 
@@ -113,33 +114,37 @@
 </div>
 
 <script>
-      let selectedButtons = new Set();
-
+      let selected_buttons = new Set();
+      let lista_cuotas = [];
+      let monto_total = 0;
       function toggleSelection(button) {
             const monto = parseFloat(button.getAttribute('data-monto'));
-            if (selectedButtons.has(button)) {
-                  selectedButtons.delete(button);
+            if (selected_buttons.has(button)) {
+                    lista_cuotas = lista_cuotas.filter(id => id !== button.getAttribute('data-id'));
+                  selected_buttons.delete(button);
                   button.classList.remove('text-primary');
                   document.querySelector('#ckeck' + button.getAttribute('data-id')).classList.add('d-none');
                   document.querySelector('#bi' + button.getAttribute('data-id')).classList.remove('d-none');
                   document.querySelector('#select' + button.getAttribute('data-id')).innerText = 'Seleccionar';
             } else {
-                  selectedButtons.add(button);
+                  selected_buttons.add(button);
                   button.classList.add('text-primary');
                   document.querySelector('#ckeck' + button.getAttribute('data-id')).classList.remove('d-none');
                   document.querySelector('#bi' + button.getAttribute('data-id')).classList.add('d-none');
-
                   document.querySelector('#select' + button.getAttribute('data-id')).innerText = 'Seleccionado';
-
+                  lista_cuotas.push(`${button.getAttribute('data-id')}`);
             }
-            updateTotalMonto();
+            UpdateMonto();
+            console.log(lista_cuotas);
+      }
+      
+      function UpdateMonto() {
+            monto_total = 0; // Reseteamos el monto de los btns seleccionado 
+            selected_buttons.forEach(button => {
+                  monto_total += parseFloat(button.getAttribute('data-monto')); // Sumamos el monto de los btns seleccionados
+            });
+            document.querySelector('.total-selected').innerText =  '$' +  monto_total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       }
 
-      function updateTotalMonto() {
-            let totalMonto = 0;
-            selectedButtons.forEach(button => {
-                  totalMonto += parseFloat(button.getAttribute('data-monto'));
-            });
-            document.querySelector('.total-selected').innerText =  'RD$' + totalMonto.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      }
+
 </script>
