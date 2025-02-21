@@ -144,6 +144,12 @@
                   monto_total += parseFloat(button.getAttribute('data-monto')); // Sumamos el monto de los btns seleccionados
             });
             document.querySelector('.total-selected').innerText =  '$' +  monto_total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            if (monto_total === 0) {
+                  document.querySelector('.div-pay').classList.add('d-none');
+            } else {
+                  document.querySelector('.div-pay').classList.remove('d-none');
+                  document.querySelector('#payment-input').value = monto_total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
       }
 
 
