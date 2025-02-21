@@ -69,8 +69,7 @@ class CreditDetail(DetailView):
             cleaned_pay = request.POST.get('payment').replace(',', '')
             payment = int(cleaned_pay)
 
-            
-            print(payment)
+      
             if lista_cuotas and payment:
                   lista_cuotas = json.loads(lista_cuotas)
                   for id_cuota in lista_cuotas:
@@ -78,15 +77,18 @@ class CreditDetail(DetailView):
                         if payment != 0: # Si el pago es diferente de 0, se procede a realizar el pago
                               if cuota.monto_mas_mora <= payment:
                                     payment -= cuota.monto_mas_mora
+                                    print(payment)
                                     cuota.monto_mas_mora = 0
                                     cuota.payment = True
+
                               else:
                                     # Si el pago es menor al monto de la cuota, se procede a realizar el abono, empezando por la mora
                                     cuota.abono += payment
+                                    cuota.monto_mas_mora -= cuota.abono # Se abona al monto
+                                    payment -= cuota.abono
                                     if cuota.mora != 0:
-
                                           cuota.mora -= cuota.abono
-                                          # cuota.mora -= payment
+                                    # cuota.mora -= payment
                                     else: # Si no hay mora, se abona al monto
                                           cuota.monto_mas_mora -= payment
                         cuota.save()
