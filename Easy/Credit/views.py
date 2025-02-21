@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, UpdateView, CreateView, DeleteVie
 from . import models
 from .forms import CreditForm
 from django.urls import reverse_lazy
-from .mixing import  Calculadora_Intereses
+from .mixing import  Calculadora_Intereses, Calculadora_Moras 
 from django.utils import timezone
 
 
@@ -49,8 +49,15 @@ class CreditDetail(DetailView):
       template_name = 'credit/credit-detail.html'
       context_object_name = 'credit'
 
+      def get(self, request, *args, **kwargs):
+            self.object = self.get_object()
+            # Calculadora_Moras(self.object)
+            return self.render_to_response(self.get_context_data(object=self.object))
+
       def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
+            self.object = self.get_object()
+            Calculadora_Moras(self.object)
             context['cuotas'] = models.Cuotas.objects.filter(credit=self.object)
             return context
       

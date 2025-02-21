@@ -36,6 +36,7 @@ class Configuration(models.Model):
 
       # Interes de la empresa
             interes = models.IntegerField(default=0)
+            porcentaje_mora = models.IntegerField(default=0)
 
       # Notificaciones
             notificaciones = models.BooleanField(default=True)

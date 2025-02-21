@@ -17,6 +17,10 @@ class Credit(models.Model):
             day_pay = models.IntegerField(default=30) #Dia de pago
             metodo = models.CharField(max_length=50, choices=Opciones.METODO) # Metodo de intereses
 
+      # Estado
+            payment = models.BooleanField(default=False) # Estado de pago
+            last_pay = models.DateField(auto_now=True) # Ultimo pago
+
             def __str__(self):
                   return f'{self.client} - {self.capital} - {self.cuotas} - {self.intereses} - {self.frecuencia} - {self.metodo} - {self.start_date}'
             
@@ -30,16 +34,18 @@ class Cuotas(models.Model):
             monto = models.IntegerField(default=0)
             abono = models.IntegerField(default=0)
             mora = models.IntegerField(default=0)
+
+            
             
       # Fechas
             start_date = models.DateField()
             end_date = models.DateField()
 
       # Estado
-            pagado = models.BooleanField(default=False)
+            payment = models.BooleanField(default=False)
 
             def __str__(self):
-                  return f'{self.credit} - {self.monto} - {self.abono} - {self.mora} - {self.start_date} - {self.end_date} - {self.pagado}'
+                  return f'{self.credit} - {self.monto} - {self.abono} - {self.mora} - {self.start_date} - {self.end_date} - {self.payment}'
 
 
       
