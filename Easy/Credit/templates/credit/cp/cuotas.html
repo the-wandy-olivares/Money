@@ -50,6 +50,12 @@
             text-align: right;
       }
 </style>
+
+
+      {% csrf_token %}
+
+
+
 <div class="w-100">
       <div class="thead">
             <div class="tr">
@@ -118,7 +124,7 @@
       let lista_cuotas = [];
       let monto_total = 0;
       function toggleSelection(button) {
-            const monto = parseFloat(button.getAttribute('data-monto'));
+            const monto = parseInt(button.getAttribute('data-monto'));
             if (selected_buttons.has(button)) {
                     lista_cuotas = lista_cuotas.filter(id => id !== button.getAttribute('data-id'));
                   selected_buttons.delete(button);
@@ -141,16 +147,45 @@
       function UpdateMonto() {
             monto_total = 0; // Reseteamos el monto de los btns seleccionado 
             selected_buttons.forEach(button => {
-                  monto_total += parseFloat(button.getAttribute('data-monto')); // Sumamos el monto de los btns seleccionados
+                  monto_total += parseInt(button.getAttribute('data-monto')); // Sumamos el monto de los btns seleccionados
             });
-            document.querySelector('.total-selected').innerText =  '$' +  monto_total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.querySelector('.total-selected').innerText =  '$' +  monto_total.toLocaleString('en-US',  );
             if (monto_total === 0) {
                   document.querySelector('.div-pay').classList.add('d-none');
             } else {
                   document.querySelector('.div-pay').classList.remove('d-none');
-                  document.querySelector('#payment-input').value = monto_total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                  document.querySelector('#payment-input').value = monto_total.toLocaleString('en-US',);
             }
       }
+
+      document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('#payment-button').addEventListener('click', function() {
+                  const form = document.createElement('form');
+                  form.method = 'POST';
+
+                  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                  const csrfInput = document.createElement('input');
+                  csrfInput.type = 'hidden';
+                  csrfInput.name = 'csrfmiddlewaretoken';
+                  csrfInput.value = csrfToken;
+
+                  const input = document.createElement('input');
+                  input.type = 'hidden';
+                  input.name = 'lista_cuotas';
+                  input.value = JSON.stringify(lista_cuotas);
+
+                  const paymentInput = document.createElement('input');
+                  paymentInput.type = 'hidden';
+                  paymentInput.name = 'payment';
+                  paymentInput.value = document.querySelector('#payment-input').value;
+
+                  form.appendChild(csrfInput);
+                  form.appendChild(input);
+                  form.appendChild(paymentInput);
+                  document.body.appendChild(form);
+                  form.submit();
+            });
+      });
 
 
 </script>

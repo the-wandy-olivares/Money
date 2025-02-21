@@ -6,7 +6,7 @@ from .forms import CreditForm
 from django.urls import reverse_lazy
 from .mixing import  Calculadora_Intereses, Calculadora_Moras 
 from django.utils import timezone
-
+import json
 
 
 class Credit(TemplateView):
@@ -61,6 +61,40 @@ class CreditDetail(DetailView):
             context['cuotas'] = models.Cuotas.objects.filter(credit=self.object)
             return context
       
+
+      def post(self, request, *args, **kwargs):
+            self.object = self.get_object()
+            lista_cuotas = request.POST.get('lista_cuotas')
+
+            cleaned_pay = request.POST.get('payment').replace(',', '')
+            payment = int(cleaned_pay)
+
+            
+            print(payment)
+            if lista_cuotas and payment:
+                  lista_cuotas = json.loads(lista_cuotas)
+                  for id_cuota in lista_cuotas:
+                        cuota = models.Cuotas.objects.get(id=int(id_cuota))
+                        if payment != 0: # Si el pago es diferente de 0, se procede a realizar el pago
+                              if cuota.monto_mas_mora <= payment:
+                                    payment -= cuota.monto_mas_mora
+                                    cuota.monto_mas_mora = 0
+                                    cuota.payment = True
+                              else:
+                                    # Si el pago es menor al monto de la cuota, se procede a realizar el abono, empezando por la mora
+                                    cuota.abono += payment
+                                    if cuota.mora != 0:
+
+                                          cuota.mora -= cuota.abono
+                                          # cuota.mora -= payment
+                                    else: # Si no hay mora, se abona al monto
+                                          cuota.monto_mas_mora -= payment
+                        cuota.save()
+                        print(cuota.payment)
+
+            
+            return self.get(request, *args, **kwargs)
+
 
 
 class CreditList(TemplateView):

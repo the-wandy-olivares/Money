@@ -58,7 +58,7 @@ def Calculadora_Moras(credit):
       mes = hoy.month
       dia_mes_actual = calendar.monthrange(año, mes)[1]  # Obtenemos el número de días del mes actual
       cuotas = models.Cuotas.objects.filter(credit=credit, payment=False) # Filtra las cuotas no pagadas
-      print(f'Dias del mes actual: { dia_mes_actual }- { cuotas }')
+
       for cuota in cuotas:
             if datetime.combine(cuota.end_date, datetime.min.time()) < datetime.now(): # Si la fecha de la cuota es menor a la fecha actual se calcula la mora
                   dias_atraso = (datetime.now() - datetime.combine(cuota.end_date, datetime.min.time())).days
@@ -66,5 +66,5 @@ def Calculadora_Moras(credit):
                   cuota.mora = cuota.monto * intereses * dias_atraso / dia_mes_actual
                   cuota.monto_mas_mora = cuota.monto +  cuota.mora - cuota.abono  # Se suma la mora al monto de la cuota
                   cuota.save()
-                  print(f'Calculo de mora de { cuota } creado correctamente')
+                  # print(f'Calculo de mora de { cuota } creado correctamente')
       return f'Calculo de moras de { credit } creado correctamente'
