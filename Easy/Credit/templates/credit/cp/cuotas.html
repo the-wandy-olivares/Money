@@ -58,12 +58,12 @@
                         Seleccion
                   </div>
                   <div class="th">Credito</div>
-                  <div class="th">Monto</div>
+                  <div class="th">Monto de cuota</div>
                   <div class="th">Abono</div>
                   <div class="th">Mora</div>
                   <div class="th">Vence</div>
-                  <div class="th">Ultimo dia</div>
-                  <div class="th">Pagado</div>
+                  <div class="th"> Dias de gracias</div>
+                  <div class="th">Total a pagar</div>
             </div>
       </div>
       <div class="tbody">
@@ -72,7 +72,7 @@
                   <div class="tr">
                         <div class="td"> 
                               <!-- {{ forloop.counter }} -->
-                              <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent border-0' data-id="{{ cuota.id }}" data-monto="{{ cuota.monto }}" onclick="toggleSelection(this)">
+                              <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent border-0' data-id="{{ cuota.id }}" data-monto="{{ cuota.monto_mas_mora }}" onclick="toggleSelection(this)">
                                     <svg id="ckeck{{cuota.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-none bi bi-check2-circle" viewBox="0 0 16 16">
                                           <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
                                           <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
@@ -96,11 +96,7 @@
                         <div class="td">{{ cuota.start_date|date:"d/ m/ Y" }}</div>
                         <div class="td">{{ cuota.end_date|date:"d/ m/ Y" }}</div>
                         <div class="td">
-                              {% if cuota.pagado == True %}
-                                    {{ cuota.pagado }}
-                              {% else %}
-                                    N/A
-                              {% endif %}
+                              ${{ cuota.monto_mas_mora|intcomma }}.00
                         </div>
                   </div>
                   {% endfor %}

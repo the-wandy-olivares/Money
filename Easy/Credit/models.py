@@ -31,11 +31,10 @@ class Cuotas(models.Model):
             credit = models.ForeignKey(Credit, related_name='Cuotas', on_delete=models.CASCADE, verbose_name='Cuotas de un credito')
             
       # Detalles
-            monto = models.IntegerField(default=0)
-            abono = models.IntegerField(default=0)
-            mora = models.IntegerField(default=0)
-
-            
+            monto = models.IntegerField(default=0)  # Valores fijos
+            abono = models.IntegerField(default=0) # Valores fijos
+            mora = models.IntegerField(default=0) # Valores fijos
+            monto_mas_mora = models.IntegerField(default=0) # Valores variables se le suma la mora al monto de la cuota
             
       # Fechas
             start_date = models.DateField()

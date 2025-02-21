@@ -22,8 +22,8 @@ class CreditCreate(CreateView):
     def form_valid(self, form):
       form.instance.start_date =  timezone.now()
       credit = form.save(commit=False)
-      Calculadora_Intereses(form.instance.capital, form.instance.cuotas, 
-                        form.instance.intereses, credit)
+      Calculadora_Intereses(form.instance.capital, form.instance.
+      cuotas, form.instance.intereses, credit)
       return super().form_valid(form)
 
     def get_success_url(self):

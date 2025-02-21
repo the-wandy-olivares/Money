@@ -38,7 +38,7 @@ def Calculadora_Intereses( capital_, cuotas_, tasa_, credit):
             if not credit.pk:
                   credit.save()
             count_cuotas = models.Cuotas(
-                  credit=credit, monto=round(cuota, 2),
+                  credit=credit, monto=round(cuota, 2), monto_mas_mora=round(cuota, 2),
                   start_date=datetime.now() + relativedelta(months=mes-1), 
                   end_date=(datetime.now() + relativedelta(months=mes-1)) + timedelta(days=5)
             )
@@ -64,6 +64,7 @@ def Calculadora_Moras(credit):
                   dias_atraso = (datetime.now() - datetime.combine(cuota.end_date, datetime.min.time())).days
                   intereses = credit.intereses / 100
                   cuota.mora = cuota.monto * intereses * dias_atraso / dia_mes_actual
+                  cuota.monto_mas_mora = cuota.monto +  cuota.mora - cuota.abono  # Se suma la mora al monto de la cuota
                   cuota.save()
                   print(f'Calculo de mora de { cuota } creado correctamente')
       return f'Calculo de moras de { credit } creado correctamente'
