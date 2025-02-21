@@ -29,11 +29,11 @@
                       </h6> 
                   </div>
                   <!-- <hr> -->
-                  <p class="mt-5">      <strong>Capital:</strong> ${{credit.capital}}  </p>
-                  <p>     <strong>Cuotas:</strong> {{credit.cuotas}}    </p>
-                  <p>     <strong>Intereses:</strong> {{credit.intereses}}% </p>
-                  <p>     <strong>Frecuencia:</strong> <span class="text-capitalize">{{credit.frecuencia}}</span> </p>
-                  <p>     <strong>Fecha:</strong> {{credit.start_date|date:"d/ m/ Y"}} </p>
+                  <p class="mt-5">      <strong>Capital prestado:</strong> ${{credit.capital}}  </p>
+                  <p>     <strong>Cuotas totales:</strong> {{credit.cuotas}}    </p>
+                  <p>     <strong>Intereses de credito:</strong> {{credit.intereses}}% </p>
+                  <p>     <strong>Frecuencia de pagos:</strong> <span class="text-capitalize">{{credit.frecuencia}}</span> </p>
+                  <p>     <strong>Fecha en que inicio:</strong> {{credit.start_date|date:"d/ m/ Y"}} </p>
             </div>
             <div class='mt-1 rounded-bottom-1 overflow-scroll ' style='height: 52vh;'>
                   {% include "credit/cp/cuotas.html" %}
