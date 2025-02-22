@@ -1,6 +1,7 @@
 from django.views.generic import  TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from Client import models
+from Credit import models
 
 
 class Dashboard(TemplateView):
@@ -9,4 +10,6 @@ class Dashboard(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cont_clients'] = models.Client.objects.all().count()
+        context['count_credits'] = models.Credit.objects.all().count()
+
         return context
