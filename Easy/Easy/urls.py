@@ -10,6 +10,8 @@ urlpatterns = [
                 path('company/', include('Company.urls')),  #Empresas
                         path('client/', include('Client.urls')),  #Clientes
                                 path('credit/', include('Credit.urls')), # Creditos 
+                                        path('calculator/', include('Calculator.urls')), # Calculadora
+
 
         
         path('admin/', admin.site.urls), # Aministracion

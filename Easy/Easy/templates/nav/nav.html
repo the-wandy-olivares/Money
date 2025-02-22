@@ -164,6 +164,7 @@
                         </span>
                   </button> 
             </a>
+
             <button>
                   <img src="{% static "icons/document.svg" %}" width='24' alt="">
                   <span>
@@ -177,13 +178,15 @@
                         Inversiones
                   </span>
             </button>
-
-            <button class="btn-prestamos">
-                  <img src="{% static "icons/calculator.png" %}" width='24' alt="">
-                  <span>
-                        Calculadora
-                  </span>
+            <button class="btn-calculator">
+                  <img class='img-calculator' src="{% static "icons/calculator.png" %}" width='24' alt="">
+                  <a href="{% url 'calculator:calculator' %}">
+                        <span>
+                              Calculadora
+                        </span>
+                  </a>
             </button>
+            {% include "calculator/cp/more-options.html" %} <!-- More options for calculadora -->
 
       </div>
 
@@ -195,6 +198,18 @@
 <script>
       document.querySelector('.img-cliente').addEventListener('click', function() {
             const moreOptions = document.querySelector('.more-options-nav');
+            if (moreOptions) {
+                  moreOptions.classList.toggle('d-none');
+            }
+      });
+      document.querySelector('.img-calculator').addEventListener('click', function() {
+            const moreOptions = document.querySelector('.div-calculator');
+            if (moreOptions) {
+                  moreOptions.classList.toggle('d-none');
+            }
+      });
+      document.querySelector('.close-calculator').addEventListener('click', function() {
+            const moreOptions = document.querySelector('.div-calculator');
             if (moreOptions) {
                   moreOptions.classList.toggle('d-none');
             }
