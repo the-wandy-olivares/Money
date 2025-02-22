@@ -3,27 +3,25 @@ from django.contrib.auth.models import User
 
 
 class Company(models.Model):
-      # Relacion con el usuario
-            user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='company')
       # Datos de la empresa
-            name = models.CharField(max_length=100)
-            address = models.TextField()
-            phone = models.CharField(max_length=15)
-            rnc = models.CharField(max_length=15)
+            name = models.CharField(max_length=100, default='Nombre de la empresa')
+            address = models.TextField(blank=True, null=True)
+            phone = models.CharField(max_length=15, default='(000) 000-0000')
+            rnc = models.CharField(max_length=15, default='000-0000000-0')
       # Imagenes de la empresa
-            logo = models.ImageField(upload_to='company/logos/')
-            img_portada = models.ImageField(upload_to='company/portada/')
+            logo = models.ImageField(upload_to='company/logos/', blank=True, null=True)
+            img_portada = models.ImageField(upload_to='company/portada/', blank=True, null=True)
       # Redes sociales
-            email = models.EmailField()
-            instagram = models.URLField()
-            facebook = models.URLField()
+            email = models.EmailField(blank=True, null=True)
+            instagram = models.URLField(blank=True, null=True)
+            facebook = models.URLField(blank=True, null=True)
       # Datos de la empresa
             date = models.DateField(auto_now=True)
             updated_at = models.DateTimeField(auto_now=True)
             is_active = models.BooleanField(default=True)
 
             def __str__(self):
-                  return f'{self.name}- {self.user.first_name} {self.user.last_name} - {self.date}'
+                  return f'{self.name} - {self.date} { "Activo" if self.is_active else "Inactivo" }'
 
 
 class Configuration(models.Model):  
@@ -47,10 +45,12 @@ class Configuration(models.Model):
             def __str__(self):
                   return f'{self.company.name}' 
             
-      
-class Roles(models.Model):
+# More es cargara con todos los datos del User empresa que pertence ajustes y de mas
+class More(models.Model):
+      # Relacion con la empresa
+            company = models.OneToOneField(Company, on_delete=models.CASCADE, related_name='company')
       # Relacion con los usuario
-            user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='role_company', null=True, blank=True)
+            user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='more', null=True, blank=True)
 
             ROLE_CHOICES = [
                   ('administrador', 'Administrador'),
