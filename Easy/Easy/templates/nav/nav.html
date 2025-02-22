@@ -67,12 +67,12 @@
 
 </style>
 
-<section class="  sec-btn ms-2 me-2   card   mb-1 mt-0 border-0 overflow-scroll " 
+<section class="  sec-btn    card   mb-1 mt-0 border-0 overflow-scroll " 
       style="border-radius: 0rem;  height: max-content;">
       <div class='btn-nav  pb-2' data-aos="fade-in" style="transition: 1s;" >
-            <div class="    w-100 " style=" height: 14.5rem; border-radius: 0rem;">
+            <div class="    w-100 " style=" height: 12.5rem; border-radius: 0rem;">
                   <div class="position-relative "> 
-                      <div class="d-flex justify-content-center overflow-hidden align-content-center flex-wrap" style="background-color: #83121200 ; height: 7.8rem; 
+                      <div class="d-flex justify-content-center overflow-hidden align-content-center flex-wrap" style="background-color: #83121200 ; height: 5.8rem; 
                       border-radius: 1.5rem;" >
                               {% include "cp/patrones.html" %}
                               <span class="  d-flex flex-wrap align-content-center position-absolute  justify-content-center top-0 card border-0 p-1 bg-transparent rounded-5" 
@@ -84,9 +84,6 @@
                                  {{company.name}} Market Money SRL
                            </h6>
                             </span>
-                              <span style="font-size: 10px;" class="text-black-50">
-                                    {{request.user.first_name}} {{request.user.last_name}}
-                              </span>
                       </div>  
                   </div>
             </div>
@@ -181,7 +178,19 @@
                   </span>
             </button>
 
+            <button class="btn-prestamos">
+                  <img src="{% static "icons/calculator.png" %}" width='24' alt="">
+                  <span>
+                        Calculadora
+                  </span>
+            </button>
+
       </div>
+
+      {% comment %} 
+            Fotter 
+      {% endcomment %}
+      {% include "cp/options-nav.html" %}
 </section>
 <script>
       document.querySelector('.img-cliente').addEventListener('click', function() {

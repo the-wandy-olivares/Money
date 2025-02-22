@@ -48,5 +48,27 @@ class Configuration(models.Model):
                   return f'{self.company.name}' 
             
       
+class Roles(models.Model):
+      # Relacion con los usuario
+            user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='role_company', null=True, blank=True)
+
+            ROLE_CHOICES = [
+                  ('administrador', 'Administrador'),
+                  ('gerente', 'Gerente'),
+                  ('empleado', 'Empleado'),
+                  ('contador', 'Contador'),
+            ]
+            role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+            description = models.TextField()
+            date = models.DateField(auto_now=True)
+            updated_at = models.DateTimeField(auto_now=True)
+            is_active = models.BooleanField(default=True)
+
+            def __str__(self):
+                  if self.user:
+                        f = f'{self.role} - {self.user} {self.user}'
+                  else:
+                        f = f'{self.role}'
+                  return f
       
 
