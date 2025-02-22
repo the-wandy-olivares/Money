@@ -69,32 +69,26 @@
 
 <section class="  sec-btn    card   mb-1 mt-0 border-0 overflow-scroll " 
       style="border-radius: 0rem;  height: max-content;">
-      <div class='btn-nav  pb-2' data-aos="fade-in" style="transition: 1s;" >
-            <div class="    w-100 " style=" height: 12.5rem; border-radius: 0rem;">
-                  <div class="position-relative "> 
-                      <div class="d-flex justify-content-center overflow-hidden align-content-center flex-wrap" style="background-color: #83121200 ; height: 5.8rem; 
-                      border-radius: 1.5rem;" >
-                              {% include "cp/patrones.html" %}
-                              <span class="  d-flex flex-wrap align-content-center position-absolute  justify-content-center top-0 card border-0 p-1 bg-transparent rounded-5" 
-                              style=" margin-top: 4rem;">
-                              <div class="w-100 d-flex justify-content-center">
-                                    <img src="{% static "img/me.JPEG" %}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 60px; height: 60px; border: 4px solid white; " alt="">
-                              </div>
-                              <h6 style="font-size: 16px; margin-top: 7rem; font-weight: bold;" class="text-black text-center w-100 p-0 m-0">
-                                    {{request.user.more.company.name}} 
-                              </h6>
-                            </span>
-                      </div>  
-                  </div>
+      <div class="    w-100  position-absolute top-0 " style=" height: 10rem; border-radius: 0rem;">
+            <div class="position-relative  z-2"> 
+                <div class="d-flex justify-content-center  overflow-hidden align-content-center flex-wrap" style="background-color: #83121200 ; height: 5.8rem; 
+                border-radius: 0.5rem;" >
+                        {% include "cp/patrones.html" %}
+                        <span class="  d-flex flex-wrap  align-content-center position-absolute  justify-content-center top-0 z-2 card border-0 p-1 bg-transparent rounded-1" 
+                        style=" margin-top: 4rem;">
+                        <div class="w-100 d-flex justify-content-center ">
+                              <img src="{% static "img/me.JPEG" %}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 60px; height: 60px; border: 4px solid white; " alt="">
+                        </div>
+                        <h6 style="font-size: 16px; margin-top: 7rem; font-weight: bold;" class="text-black text-center w-100 p-0 m-0 blur-5">
+                              {{request.user.more.company.name}} 
+                        </h6>
+                      </span>
+                </div>  
             </div>
-             
-            <div class="mt- d-none w-100">
-                  <strong >
-                   App
-                  </strong>
-            </div>
-         
-            <button class="btn-dashboard mt-5">
+      </div>
+      <div class='btn-nav  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in" style="transition: 0s; height: 100vh;" >
+          
+            <button class="btn-dashboard mt-0">
                   <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                   <a href="{% url "dashboard" %}"  >
                         <span >
