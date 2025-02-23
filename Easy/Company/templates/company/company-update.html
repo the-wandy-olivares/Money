@@ -185,6 +185,14 @@
 
                   });
 
+                    document.getElementById('id_rnc').addEventListener('input', function(event) {
+                              let value = event.target.value.replace(/\D/g, '');
+                              if (value.length > 9) {
+                                      value = value.slice(0, 9);
+                              }
+                              event.target.value = value.replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
+                    });
+
             }
       </script>
 {% endblock %}
