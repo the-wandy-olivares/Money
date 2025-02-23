@@ -25,8 +25,8 @@
       }
       .btn-nav button span:hover
       {
-            color: #000000 !important;
-            font-weight: bold !important;
+            /* color: #000000 !important; */
+            /* font-weight: bold !important;z */
       }
       .btn-nav button, a
       {
@@ -117,7 +117,7 @@
             </button>
 
             <button class="btn-creditos">
-                  <img src="{% static "icons/list.svg" %}" width='24' alt="">
+                  <img class="img-creditos" src="{% static "icons/list.svg" %}" width='24' alt="">
                   <a href="{% url 'credit:credit' %}">
                         <span>
                               Creditos
@@ -221,7 +221,7 @@
       });
 
       // More options for credit
-      document.querySelector('.btn-creditos').addEventListener('click', function() {
+      document.querySelector('.img-creditos').addEventListener('click', function() {
             const moreOptions = document.querySelector('.credits-options');
             if (moreOptions) {
                   moreOptions.classList.toggle('d-none');
