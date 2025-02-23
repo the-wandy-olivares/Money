@@ -3,7 +3,7 @@
       style='height: 4rem; width: 13.5rem; cursor: pointer;' >
       
       <div class=" d-flex justify-content-center align-content-center flex-wrap">
-            <img src="{% static "img/me.JPEG" %}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 40px; height: 40px; border: 4px solid white; " alt="">
+            <img src="{{request.user.more.img.url}}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 40px; height: 40px; border: 4px solid white; " alt="">
       </div>
       <div class='d-flex flex-wrap align-content-center justify-content-center ps-2  w-100'>
             <h6 style="font-size: 14px;  font-weight: bold;" class="text-black text-start-0 w-100 p-0 m-0">
