@@ -13,7 +13,7 @@
             }
             .section-create p {
                   font-size: 12px;
-                  text-align: justify;
+                  /* text-align: justify; */
             }
             .section-create label {
                   display: none !important;
@@ -46,12 +46,25 @@
                   style="height: 120px; width: 120px; border: 8px solid white; ">
                         <img src="{% static "img/me.JPEG" %}"   class="  object-fit-cover w-100 h-100 rounded-circle" style="border: 1px;" alt="">
                 </span>
-                <h6 class='w-100 text-start mt-4'>
-                          + Credit
+                  <h6 class='w-100 text-start mt-4'>
+                              ¿Cómo se realizan los calculos?
                 </h6>
-                  <p class="text-black-50">
-                        Puedes crear un nuevo credito, solo agregando el nombre del cliente, pero si deseas agregar mas datos, puedes hacerlo.
+                  <p class="text-black-50 overflow-scroll m-0 p-0" style="height: 5.5rem;">
+                        Los cálculos se realizan en base al interés mensual. Cuando seleccionas pagos semanales o quincenales, el interés mensual se ajusta de la siguiente manera:
+                        <br> <br>
+                      <strong>  Pagos semanales:</strong> Si eliges pagar semanalmente, el interés mensual se divide entre 4. Esto significa que cada semana pagarás una cuarta parte del interés mensual.
+                        <br> <br>
+                       <strong> Pagos quincenales: </strong>Si eliges pagar quincenalmente, el interés mensual se divide entre 2. Esto significa que cada quincena pagarás la mitad del interés mensual.
+                        Ejemplo:
+                        <br> <br>
+                        Si el interés mensual es de 4%, y seleccionas pagos semanales, cada semana pagarás un interés de 1% (4% / 4).
+                        Si el interés mensual es de 4%, y seleccionas pagos quincenales, cada quincena pagarás un interés de 2% (4% / 2).
                   </p>
+                  <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-black-50" viewBox="0 0 16 16">
+                              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                  </div>
             </div>
             
             <div class='div-create '> 
@@ -71,7 +84,7 @@
                                     <span class="cuotas">
                                     </span>
                               </div>
-                              <button class="btn btn-primary mt-2 rounded-5 ps-4 pe-4" style="width: 10rem;">
+                              <button class="btn bg-primary mt-2 text-white rounded-5 ps-3 pe-3" style="width: 9rem;">
                                     Abrir credito
                               </button>
                         </div>
@@ -81,8 +94,12 @@
 <script>
 
       document.addEventListener('DOMContentLoaded', function() {
+
+                  const intereses = document.getElementById('id_intereses'); 
+                  //Dandole el valor de intereses de la empresa
+                  intereses.value = "{{ request.user.more.company.interes }}";
+
                   const frecuecia = document.getElementById('id_frecuencia');
-                  const intereses = document.getElementById('id_intereses');
                   const metodo = document.getElementById('id_metodo');
                   const cuotas = document.getElementById('id_cuotas');
                   const capital = document.getElementById('id_capital');
