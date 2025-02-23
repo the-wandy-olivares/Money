@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="chart-container p-3 rounded-4  bg-white" style=" height: 50vh; width: 100%; max-width: 82vw;">
+      <canvas id="waveChart"></canvas>
+</div>
+
+<script>
+      const ctx = document.getElementById('waveChart').getContext('2d');
+      const waveChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    datasets: [{
+                              label: 'Creditos aprovados en cada mes',
+                              data: [14, 19, 14, 15, 20, 18, 20],
+                              borderColor: 'rgba(75, 192, 192, 1)',
+                              borderWidth: 2,
+                              backgroundColor: 'rgba(75, 192, 192, 0.1)', // Background color
+                              fill: true,
+                              tension: 0.4 // This creates the wave effect
+                    }]
+            },
+            options: {
+                    scales: {
+                              x: {
+                                      grid: {
+                                                display: false
+                                      }
+                              },
+                              y: {
+                                      beginAtZero: true,
+                                      grid: {
+                                                display: false
+                                      }
+                              }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+            }
+      });
+</script>

@@ -12,7 +12,7 @@
       {
             padding: 0.4rem;
             margin-top: 0.1rem;
-            border-radius: 0.8rem !important ;
+            border-radius: 0.4rem !important ;
             /* margin-left: 0.4rem; */
             border: none !important;
             background-color: #ffffff !important;
@@ -88,7 +88,7 @@
       </div>
       <div class='btn-nav  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in" style="transition: 0s; height: 100vh;" >
           
-            <button class="btn-dashboard mt-0">
+            <button class="btn-dashboard mt-4">
                   <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                   <a href="{% url "dashboard" %}"  >
                         <span >
@@ -97,7 +97,7 @@
                   </a>
             </button>
 
-            <button class="btn-cliente position-relative"> 
+            <button class="btn-clientes position-relative"> 
                   <img class="img-cliente" src="{% static "icons/user.svg" %}" width='24' alt="">
                   <a href="{% url 'client:client' %}">
                         <span>
@@ -111,7 +111,7 @@
                   <img src="{% static "icons/list.svg" %}" width='24' alt="">
                   <a href="{% url 'credit:credit' %}">
                         <span>
-                              Listado de creditos
+                              Creditos
                         </span>
                   </a>
                   </button>
@@ -120,7 +120,7 @@
                   <button class="btn-ubicaciones">
                         <img src="{% static "icons/map.svg" %}" width='24' alt="">
                         <span>
-                              Maps de clientes
+                              Mapas de clientes
                         </span>
                   </button>
             </a>
