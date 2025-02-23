@@ -123,8 +123,8 @@
                               Creditos
                         </span>
                   </a>
-                  </button>
-        
+                    {% include "credit/cp/more-options.html" %} <!-- More options for credit -->
+            </button>
             <a >
                   <button class="btn-ubicaciones">
                         <img src="{% static "icons/map.svg" %}" width='24' alt="">
@@ -193,28 +193,39 @@
 
       </div>
 
-      {% comment %} 
-            Fotter 
-      {% endcomment %}
       {% include "cp/options-nav.html" %}
 </section>
 <script>
+      // More options for client
       document.querySelector('.img-cliente').addEventListener('click', function() {
             const moreOptions = document.querySelector('.more-options-nav');
             if (moreOptions) {
                   moreOptions.classList.toggle('d-none');
             }
       });
+
+      // More options for calculadora
       document.querySelector('.img-calculator').addEventListener('click', function() {
             const moreOptions = document.querySelector('.div-calculator');
             if (moreOptions) {
                   moreOptions.classList.toggle('d-none');
             }
       });
+
+      // Close calculator
       document.querySelector('.close-calculator').addEventListener('click', function() {
             const moreOptions = document.querySelector('.div-calculator');
             if (moreOptions) {
                   moreOptions.classList.toggle('d-none');
             }
       });
+
+      // More options for credit
+      document.querySelector('.btn-creditos').addEventListener('click', function() {
+            const moreOptions = document.querySelector('.credits-options');
+            if (moreOptions) {
+                  moreOptions.classList.toggle('d-none');
+            }
+      });
+      
 </script>

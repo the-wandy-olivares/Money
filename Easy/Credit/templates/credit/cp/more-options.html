@@ -1,0 +1,64 @@
+{% load static %}
+<style>
+      .more-options-nav ul {
+            list-style: none;
+            padding: 0;
+      }
+      .more-options-nav ul  li a {
+
+            padding: 0.7rem; margin: 0.2rem;
+            border-radius: 1rem;
+            color: #565656  !important;
+            /* border-bottom: 1px solid #fff; */
+      }
+      .more-options-nav ul  li a:hover {
+            color: rgb(48, 114, 255) !important;
+            font-weight: bold;
+            transition: 0.3s;
+      }
+      .more-options-nav ul  li  a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: normal ;
+
+      }
+      .more-options-nav ul  li  a svg {
+            margin-top: 2px !important;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+            width: 25px ; 
+
+      }
+
+</style>
+
+<div class="more-options-nav credits-options shadow pt-4 pb-4 d-none position-relative  overflow-auto  bg-white bg-opacity-10 blur-20 position-fixed  z-2" 
+      style="width: 20rem; height: max-content; 
+      border-radius: 1.6rem;
+      margin-left: 2rem; margin-top: 0vh;">
+      <span class=" ms-3    d-flex "> 
+            <img src="{% static "icons/list.svg" %}" style="width: 40px !important;" alt="" class="me-0"> 
+                  <span class="text-start text-black  ms-2 " style="margin-top: 0.7rem;">
+                        Creditos
+                  </span >
+      </span>
+      <hr class="ms-4 me-4">
+      <ul class="mt-0">
+            <li>
+                  <a href="{% url "credit:credit-create" %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg> Agregar 
+                  </a>
+            </li>
+            <li>
+                  <a href="{% url "credit:credit-list" %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                            </svg>   Listado de clientes
+                  </a>
+            </li>
+
+      </ul>
+</div>
