@@ -6,14 +6,12 @@
             width: 100%;
             display: flex;
             flex-wrap: wrap;    
-
       }
       .btn-nav button 
       {
             padding: 0.4rem;
             margin-top: 0.1rem;
             border-radius: 0.4rem !important ;
-            /* margin-left: 0.4rem; */
             border: none !important;
             background-color: #ffffff !important;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -22,11 +20,6 @@
       .btn-nav button img, .btn-nav button span
       {
             transition: 0.3s;
-      }
-      .btn-nav button span:hover
-      {
-            /* color: #000000 !important; */
-            /* font-weight: bold !important;z */
       }
       .btn-nav button, a
       {
@@ -95,7 +88,8 @@
                 </div>  
             </div>
       </div>
-      <div class='btn-nav p-2  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in" style="transition: 0s; height: 100vh;" >
+      <div class='btn-nav p-2  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in"             
+            style="transition: 0s; height: 100vh;" >
           
             <button class="btn-dashboard mt-5">
                   <img src="{% static "icons/grafico.png" %}" width='24' alt="">
@@ -113,7 +107,7 @@
                               Clientes  
                         </span>
                   </a>
-                  {% include "client/cp/more-options.html" %} <!-- More options for client -->
+                  {% include "client/cp/more-options.html" %}  <!-- More options for client -->
             </button>
 
             <button class="btn-creditos">
@@ -123,64 +117,46 @@
                               Creditos
                         </span>
                   </a>
-                    {% include "credit/cp/more-options.html" %} <!-- More options for credit -->
+                  {% include "credit/cp/more-options.html" %}  <!-- More options for credit -->
             </button>
-            <a >
-                  <button class="btn-ubicaciones">
-                        <img src="{% static "icons/map.svg" %}" width='24' alt="">
+
+            <button class="btn-maps">
+                  <img src="{% static "icons/map.svg" %}" width='24' alt="">
+                  <a href="{% url 'maps:maps' %}">
                         <span>
                               Mapas de clientes
                         </span>
-                  </button>
-            </a>
-  
+                  </a>
+            </button>
 
-            <div class="mt-0 d-none w-100">
-                  <strong >
-                        Utilidades
-                  </strong>
-            </div>
-
-            <a >
-                  <button class="btn-calendario">
-                        <img src="{% static "icons/calendar.svg" %}" width='24' alt="">
+            <button class="btn-calendario">
+                  <img src="{% static "icons/calendar.svg" %}" width='24' alt="">
+                  <a href="{% url 'agenda:agenda' %}">
                         <span>
-                              Agenda
-                        </span>
-                  </button>
-            </a>
+                                    Agenda
+                              </span>
+                        </a>
+            </button>
 
-            <a  >
-                  <button class="btn-mensajeria">
-                        <img src="{% static "icons/msj.png" %}" width='24' alt="">
+            <button class="btn-mensajeria">
+                  <img src="{% static "icons/msj.png" %}" width='24' alt="">
+                  <a href="{% url 'mensajeria:mensajeria' %}">
                         <span>
                               Mensajeria
                         </span>
+                  </a>
                   </button>
-            </a>
-
-            <a href="{% url 'company:company-update' request.user.more.company.id %}">
-                  <button class="btn-empresa">
-                        <img src="{% static "icons/Bank.png" %}" width='24' alt="">
-                        <span>
-                              Empresa
-                        </span>
-                  </button> 
-            </a>
 
             <button>
                   <img src="{% static "icons/document.svg" %}" width='24' alt="">
-                  <span>
-                        Historial de credito
-                  </span>
+                  <a href="{% url 'caja:caja' %}">
+
+                        <span>
+                              Caja
+                        </span>
+                  </a>
             </button>
-    
-            <button class="btn-prestamos">
-                  <img src="{% static "icons/statu_up.png" %}" width='24' alt="">
-                  <span>
-                        Inversiones
-                  </span>
-            </button>
+
             <button class="btn-calculator">
                   <img class='img-calculator' src="{% static "icons/calculator.png" %}" width='24' alt="">
                   <a href="{% url 'calculator:calculator' %}">
@@ -190,6 +166,15 @@
                   </a>
             </button>
             {% include "calculator/cp/more-options.html" %} <!-- More options for calculadora -->
+
+            <a href="{% url 'company:company-update' request.user.more.company.id %}">
+                  <button class="btn-empresa">
+                        <img src="{% static "icons/Bank.png" %}" width='24' alt="">
+                        <span>
+                              Empresa
+                        </span>
+                  </button> 
+            </a>
 
       </div>
 

@@ -11,7 +11,10 @@ urlpatterns = [
                         path('client/', include('Client.urls')),  #Clientes
                                 path('credit/', include('Credit.urls')), # Creditos 
                                         path('calculator/', include('Calculator.urls')), # Calculadora
-
+                                path('maps/', include('Maps.urls')), # Mapas
+                        path('agenda/', include('Agenda.urls')), # Agenda
+                path('caja/', include('Caja.urls')), # Caja
+        path('mensajes/', include('Mensajeria.urls')), # Mensajes
 
         
         path('admin/', admin.site.urls), # Aministracion
