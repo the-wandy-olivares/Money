@@ -9,6 +9,7 @@ ALLOWED_HOSTS = []
 # Application definition
 INSTALLED_APPS = [
     # Mis apps
+        'Perfil.apps.PerfilConfig',
         'Caja.apps.CajaConfig',  # App de la caja
         'Agenda.apps.AgendaConfig', # App de la agenda
         'Mensajeria.apps.MensajeriaConfig', # App de la mensajeria

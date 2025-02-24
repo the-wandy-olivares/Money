@@ -15,6 +15,7 @@ urlpatterns = [
                         path('agenda/', include('Agenda.urls')), # Agenda
                 path('caja/', include('Caja.urls')), # Caja
         path('mensajes/', include('Mensajeria.urls')), # Mensajes
+                path('perfil/', include('Perfil.urls')), # Perfil
 
         
         path('admin/', admin.site.urls), # Aministracion

@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load static %}
+      <style>
+            .instagram-profile {
+                  /* max-width: 600px; */
+                  margin: 0 auto;
+                  padding: 20px;
+                  border: 1px solid #ddd;
+                  border-radius: 20px;
+                  background-color: #fff;
+            }
+
+            .profile-header {
+                  display: flex;
+                  align-items: start;
+                  margin-bottom: 20px;
+            }
+
+            .profile-picture {
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                  margin-right: 20px;
+            }
+
+            .profile-info {
+                  flex: 1;
+            }
+
+            .username {
+                  font-size: 24px;
+                  font-weight: bold;
+                  margin: 0;
+            }
+
+            .bio {
+                  font-size: 14px;
+                  color: #666;
+                  margin: 5px 0 0;
+            }
+
+            .profile-stats {
+                  display: flex;
+                  justify-content: space-around;
+                  margin-bottom: 20px;
+            }
+
+            .stat {
+                  text-align: center;
+            }
+
+            .number {
+                  font-size: 18px;
+                  font-weight: bold;
+            }
+
+            .label {
+                  font-size: 14px;
+                  color: #666;
+            }
+
+            .profile-posts {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 10px;
+            }
+
+            .post img {
+                  width: 100%;
+                  height: auto;
+                  border-radius: 5px;
+            }
+      </style>
+      <section>
+
+
+            <div class="instagram-profile position-relative">
+                  <button class="btn position-absolute top-0 end-0  mt-2 me-2" >
+                        Cerrar seesion
+                  </button>
+                  <div class="profile-header">
+                        <img src="{{request.user.more.img.url}}" alt="Profile Picture" class="profile-picture">
+                        <div class="profile-info">
+                              <h2 class="username"> {{request.user.first_name}} {{request.user.last_name}} </h2>
+                              <p class="bio text-capitalize">
+                                    {{request.user.more.role}}
+                              </p>
+                        </div>
+                  </div>
+            </div>
+
+      </section>
+
+{% endblock %}
