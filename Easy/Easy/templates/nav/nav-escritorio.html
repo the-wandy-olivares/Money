@@ -158,14 +158,14 @@
             </button>
 
             <button class="btn-calculator">
-                  <img class='img-calculator' src="{% static "icons/calculator.png" %}" width='24' alt="">
+                  <img class='img-calculator' onclick="OpenCalculator()" src="{% static "icons/calculator.png" %}" width='24' alt="">
                   <a href="{% url 'calculator:calculator' %}">
                         <span>
                               Calculadora
                         </span>
                   </a>
             </button>
-            {% include "calculator/cp/more-options.html" %} <!-- More options for calculadora -->
+ 
 
             <a href="{% url 'company:company-update' request.user.more.company.id %}">
                   <button class="btn-empresa">
@@ -189,21 +189,6 @@
             }
       });
 
-      // More options for calculadora
-      document.querySelector('.img-calculator').addEventListener('click', function() {
-            const moreOptions = document.querySelector('.div-calculator');
-            if (moreOptions) {
-                  moreOptions.classList.toggle('d-none');
-            }
-      });
-
-      // Close calculator
-      document.querySelector('.close-calculator').addEventListener('click', function() {
-            const moreOptions = document.querySelector('.div-calculator');
-            if (moreOptions) {
-                  moreOptions.classList.toggle('d-none');
-            }
-      });
 
       // More options for credit
       document.querySelector('.img-creditos').addEventListener('click', function() {
@@ -212,5 +197,18 @@
                   moreOptions.classList.toggle('d-none');
             }
       });
+
+
+
+      function OpenCalculator()
+      {
+            const moreOptions = document.querySelector('.div-calculator');
+                  if (moreOptions) {
+                        moreOptions.classList.toggle('d-none');
+                  }
+            document.querySelector('.capital-calculator').focus();
+      }
+
+
       
 </script>

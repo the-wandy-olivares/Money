@@ -42,7 +42,6 @@
       }
       html {
             touch-action: manipulation;
-            -ms-touch-action: manipulation;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -69,6 +68,10 @@
       .blur-50 {
             -webkit-backdrop-filter: blur(50px) !important;
             backdrop-filter: blur(50px) !important;
+      }
+      .blur-100 {
+            -webkit-backdrop-filter: blur(100px) !important;
+            backdrop-filter: blur(100px) !important;
       }
 
       .bg-primary-w {
@@ -123,6 +126,7 @@
             </section>
             <section class='bg-secundary-w section-content overflow-hidden w-100 p-2  '>
                   {% block content %}{% endblock %}
+                  {% include "calculator/cp/more-options.html" %} 
                   <section class="nav-movil w-100">
                         {% include "nav/nav-movil.html" %}
                  </section>

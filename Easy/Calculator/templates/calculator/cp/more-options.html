@@ -29,12 +29,19 @@
             width: 25px ; 
 
       }
+
+
+
 </style>
 
-<div class="more-options-nav div-calculator shadow d-none mb-2 ms-1 d- bottom-0 position-relative  overflow-auto  bg-white bg-opacity-10 blur-20 position-fixed  z-2" 
-            style="width: 18rem; height: 24.5rem;  border: 1px solid rgb(212, 212, 212);  border-radius: 1.6rem;   margin-top: 0vh;">
+<div class="more-options-nav div-calculator shadow d-none mb-2 ms-1  position-relative  overflow-auto  bg-white bg-opacity-10 blur-100 position-fixed " 
+            style="max-width: 25rem; height: 21.5rem;  border: 1px solid rgb(212, 212, 212);  border-radius: 1.6rem;   margin-top: 0vh; z-index: 1000; 
+            top: 50%;
+            width: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%); ">
             <!-- Close -->
-            <button type="button" class=" close-calculator rounded-circle end-0  mt-1 z-2 position-absolute" data-bs-dismiss="modal" style="border: 2px solid rgb(168, 168, 168); color: rgb(56, 56, 56); 
+            <button type="button" onclick="OpenCalculator()" class=" close-calculator rounded-circle end-0  mt-2 me-2 z-2 position-absolute" style="border: 2px solid rgba(168, 168, 168, 0); color: rgb(56, 56, 56); 
             background-color: transparent !important; width: max-content !important;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle-fill " viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
@@ -42,3 +49,34 @@
             </button>
       {% include "calculator/cp/calculadora-intereses.html" %}
 </div>
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            const calculator = document.querySelector('.div-calculator');
+
+            calculator.addEventListener('mousedown', function(e) {
+                  isDragging = true;
+                  startX = e.clientX;
+                  startY = e.clientY;
+                  initialX = calculator.offsetLeft;
+                  initialY = calculator.offsetTop;
+                  calculator.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                  if (isDragging) {
+                        const dx = e.clientX - startX;
+                        const dy = e.clientY - startY;
+                        calculator.style.left = initialX + dx + 'px';
+                        calculator.style.top = initialY + dy + 'px';
+                  }
+            });
+
+            document.addEventListener('mouseup', function() {
+                  isDragging = false;
+                  calculator.style.cursor = 'grab';
+            });
+      });
+</script>
