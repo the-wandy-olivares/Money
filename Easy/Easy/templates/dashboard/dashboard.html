@@ -119,7 +119,7 @@
 
 </style>
     
-<section class="overflow-scroll">
+<section class="overflow-scroll h-100 pt-0 align-content-end flex-wrap">
     <div class="  d-flex text-start justify-content-between w-100 overflow-scroll">
         <div class=" div-ia-sugerencia " data-aos="fade-down" style="transition:  0.5s ease-out ; transition-delay: 0.2s; " >
             <img src="{% static "icons/up-grafi.png" %}" width='50' height="40" alt="">
@@ -144,18 +144,18 @@
 
     <div class="d-flex content-datos justify-content-start w-100 overflow-scroll pe-2">
         <div class="col-md-3">
-            <div class="card  text-white  mb-3 p-3 rounded-4 " style="">
+            <div class="card  text-white  mb-3 p-3 rounded-5 ">
                 <div class="card-body">
                     <h6 class="card-title text-black" style="
                         font-weight: bold;">Total invertido</h6>
-                    <p class="card-text text-black-50 " style="">
+                    <p class="card-text text-black-50 ">
                          ${{total_inversion|intcomma}}.00  
                         </p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 ms-1 me-1 ">
-            <div class="card text-white bg-success mb-3  p-3 rounded-4">
+            <div class="card text-white bg-success mb-3  p-3 rounded-5">
                 <div class="card-body">
                     <h6 class="card-title" style="font-weight: bold;">
                         Clientes</h6>
@@ -165,9 +165,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 me-1
-        ">
-            <div class="card text-white bg-white mb-3 p-3 rounded-4">
+        <div class="col-md-3 me-1">
+            <div class="card text-white bg-white mb-3 p-3 rounded-5">
                 <div class="card-body">
                     <h6 class="card-title" style="font-weight: bold;"> 
                          Creditos aprobado</h6>
@@ -178,7 +177,7 @@
             </div>
         </div>
         <div class="col-md-3 me-1">
-            <div class="card text-white ganancias mb-3 p-3 rounded-4 ">
+            <div class="card text-white ganancias mb-3 p-3 rounded-5 ">
                 <div class="card-body">
                     <h6 class="card-title" style="font-weight: bold;" >  Ganancias</h6>
                     <p class="card-text text-black"> $450,043.03 </p>
@@ -187,52 +186,14 @@
         </div>
     </div>
 
-
-        <div  class="  mb-0 bottom-0 d-flex justify-content-center flex-wrap w-100    " data-aos="fade-in" style="transition: 1s;">
-       
-            <div class="row mt-2 bg-white mb-0 rounded-4 w-100" style="height: max-content;">
-                <div class="col-8">
-                    <div class="card rounded-4 border-0">
-                        <div class="card-body mt-2">
-                            <!-- <h6 class="card-title" >Grafico de inversion</h6> -->
-                            <canvas id="loansChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card rounded-4 border-0 mt-5" 
-                    style="background-color: var(--bg-enfasis);">
-                        <div class="card-body ">
-                            <h5 class="card-title text-black">
-                                Punto destacados a mejorar</h5>
-                            <ul class="p-0">
-                                <li class=" text-black-50" style="font-size: 14px;">Lograr que los clientes paguen</li>
-                                <li class=" text-black-50" style="font-size: 14px;"> Aumentar las formas de Ingresos </li>
-                                <li class=" text-black-50" style="font-size: 14px;"> Implementar estrategias</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card rounded-4 border-0 mt-3" 
-                    style="background-color: #ffffff;">
-                        <div class="card-body ">
-                            <h5 class="card-title text-black" 
-                            style="">
-                               Datos de inversion </h5>
-                            <ul class="p-0">
-                                <li class=" text-black-50 p-0" style="font-size: 14px;">
-                                   Este mes fue afectado por la baja demanda </li>
-                                <li class=" text-black-50 p-0" style="font-size: 14px;">
-                                    Usuario reportaron quejas sobre la tasa variable </li>
-                               
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-                </div>
-        </div>
+    <div  class="  mb-0 bottom-0  d-flex justify-content-center flex-wrap w-100"         
+        data-aos="fade-in"      
+        style="transition: 1s;">
+        <div class="loansChart  w-100 d-flex  justify-content-center align-items-center" 
+            style="height: 45vh;">
+                <canvas id="loansChart"  style="width: 100%; height: 100%;"></canvas>
+            </div> 
+    </div>
 </section>
     
     

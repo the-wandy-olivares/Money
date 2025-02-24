@@ -1,0 +1,59 @@
+{% load static %}
+<style>
+      .nav-movil {
+            /* background-color: rgba(199, 174, 174, 0.563); */
+            /* height: 3rem; */
+      }
+      .nav-movil .btn {
+            /* background-color: rgba(49, 99, 142, 0.709); */
+            display: flex; justify-content: center;
+            flex-wrap: wrap;
+            font-weight: normal !important;
+
+      }
+      .nav-movil .btn  img {
+            width: 39px;
+            padding: 0.3rem;
+      }
+      .nav-movil .btn span
+      {
+            width: 100%;
+            font-size: 12px;
+      }
+</style>
+<section class=" nav-movil position-fixeds bottom-0 start-0 z-2  d-flex blur-20 w-100 justify-content-center ">
+      <!-- <a href="{% url "dashboard" %}"  > -->
+      <button class="btn ">
+            <img src="{% static "icons/grafico.png" %}" width='24' alt="">
+                  <span >
+                        Dashboard
+                  </span>
+            </button>
+      <!-- </a> -->
+
+      <button class="btn position-relative"> 
+            <img class="img-cliente" src="{% static "icons/user.svg" %}" width='24' alt="">
+            <!-- <a href="{% url 'client:client' %}"> -->
+                  <span>
+                        Clientes
+                  </span>
+            <!-- </a> -->
+            {% include "client/cp/more-options.html" %}  <!-- More options for client -->
+      </button>
+
+      <button class="btn">
+            <img class='img-calculator' src="{% static "icons/calculator.png" %}" width='24' alt="">
+                  <span>
+                        Calculadora
+                  </span>
+      </button>
+
+      <button class="btn">
+            <img class='img-calculator' src="{% static "icons/app.png" %}" width='24' alt="">
+                  <span>
+                        Calculadora
+                  </span>
+      </button>
+
+</section>
+{% include "calculator/cp/more-options.html" %} <!-- More options for calculadora -->
