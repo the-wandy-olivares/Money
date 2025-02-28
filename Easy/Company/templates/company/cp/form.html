@@ -1,0 +1,21 @@
+
+<div class='div-create  w-100   ' > 
+      <form action="" method="post" enctype="multipart/form-data" 
+            class="d-flex flex-wrap justify-content-center w-100">
+            {% csrf_token %}
+            <div class='d-flex flex-wrap rounded-top-4  w-100 justify-content-center' 
+                  style="max-width: 66rem;">
+                  {{ form.name}}   {{ form.rnc}}  
+                  {{form.interes}}  
+                  {{ form.facebook}}   {{form.phone}}
+                  {{form.porcentaje_mora}}  
+                  {{ form.description}}  
+                 
+                  <div class="d-flex justify-content-end btn-actualizar m-1 rounded-bottom-4 w-100">
+                        <button class="btn bg-primary  text-white mt-2 rounded-5">
+                              Actualizar
+                        </button>
+                  </div>
+            </div>
+      </form>
+</div>

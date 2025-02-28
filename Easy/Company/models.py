@@ -36,6 +36,7 @@ class Configuration(models.Model):
             navbar_dynami = models.BooleanField(default=False)
       # Tema de la aplicacion
             theme = models.CharField(max_length=10, default='light')
+            color_enfasis = models.CharField(max_length=15, default='#101010') # Elegant Dark
 
       # Notificaciones
             notificaciones = models.BooleanField(default=True)

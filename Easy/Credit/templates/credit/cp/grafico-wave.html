@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="chart-container p-3 rounded-4  bg-white" style=" height: 50vh; width: 100%; max-width: 82vw;">
+<div class="chart-container p-3 rounded-4  " style=" height: 50vh; width: 100%; max-width: 82vw;">
       <canvas id="waveChart"></canvas>
 </div>
 
@@ -13,9 +13,9 @@
                     datasets: [{
                               label: 'Creditos aprovados en cada mes',
                               data: [14, 19, 14, 15, 20, 18, 2],
-                              borderColor: 'rgba(75, 192, 192, 1)',
+                              borderColor: '{{request.user.more.company.configuration.color_enfasis}}',
                               borderWidth: 2,
-                              backgroundColor: 'rgba(75, 192, 192, 0.1)', // Background color
+                              backgroundColor: '{{request.user.more.company.configuration.color_enfasis}}', // Background color
                               fill: true,
                               tension: 1 // This creates the wave effect
                     }]

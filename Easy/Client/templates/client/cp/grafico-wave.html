@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="chart-container p-3 rounded-4  bg-white" style=" height: 50vh; width: 100%; max-width: 82vw;">
+<div class="chart-container p-3 rounded-4  " style=" height: 50vh; width: 100%; max-width: 82vw;">
       <canvas id="waveChart"></canvas>
 </div>
 
@@ -12,10 +12,10 @@
                     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                     datasets: [{
                               label: 'Grafico de nuevos clientes en cada mes',
-                              data: [40, 2, 14, 15, 15, 18, 20],
-                              borderColor: 'rgba(192, 75, 75, 0.2)',
+                              data: [40, 20, 14, 15, 15, 18, 20],
+                              borderColor: '{{request.user.more.company.configuration.color_enfasis}}',
                               borderWidth: 2,
-                              backgroundColor: 'rgba(192, 75, 75, 0.1)', // Background color changed to red
+                              backgroundColor: '{{request.user.more.company.configuration.color_enfasis}}', // Background color changed to red
                               fill: true,
                               tension: 0.4 // This creates the wave effect
                     }]

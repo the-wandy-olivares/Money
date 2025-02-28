@@ -123,7 +123,9 @@
     <div class="  d-flex text-start justify-content-between w-100 overflow-scroll">
         <div class=" div-ia-sugerencia " data-aos="fade-down" style="transition:  0.5s ease-out ; transition-delay: 0.2s; " >
             <img src="{% static "icons/up-grafi.png" %}" width='50' height="40" alt="">
-            <h5 class="text-black">Ingresos del mes</h5>
+            <h5 class="text-black">
+                Ingresos del mes 
+            </h5>
             <p style="text-align: justify;"> <strong class="text-black"> Sugiero</strong> ofrecer nuevos productos como microcréditos, seguros, fondos de inversión o cuentas de ahorro con rendimientos atractivos</p>
         </div>
 
@@ -209,8 +211,8 @@
                   label: 'Inversones',
                   label: 'Creditos aprovados en cada mes',
                               data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                              borderColor: 'rgba(153, 102, 255, 1)',
-                              backgroundColor: 'rgba(153, 102, 255, 0.1)', // Background color
+                              borderColor: '{{request.user.more.company.configuration.color_enfasis}}',
+                              backgroundColor: '{{request.user.more.company.configuration.color_enfasis}}', // Background color
                               borderWidth: 2,
                               fill: true,
                               tension: 1 // This creates the wave effect
