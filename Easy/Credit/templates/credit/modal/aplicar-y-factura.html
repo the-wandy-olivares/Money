@@ -1,0 +1,100 @@
+{% load static %}
+<style>
+            .modal a{
+                  /* background-color: #f9f9f99f; */
+                  padding: 0.4rem;
+                  border-radius: 0.9rem;
+                  color: rgb(73, 73, 73);
+                  transition: 0.3s;
+            }
+            .modal a:hover{
+                  color: var(--bg-primary-color) !important;
+                  font-weight: bold;
+            } 
+            .modal li 
+            {
+                  list-style: none;
+                  margin: 0px; padding: 0px;
+            }
+            .modal a svg{
+                  margin-right: 0.5rem;
+                  margin-left: 0.5rem;
+                  margin-top: 4px !important;
+            
+            }
+
+</style>
+<!-- Modal -->
+<div class="modal fade blur-20  bg-white bg-opacity-10" id="aplicar-factura" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" >
+  <div class="modal-content  rounded-5 p-4 bg-white  shadow" style="width: 40rem;">
+        <!-- <div class="modal-header"> -->
+      <button type="button" class="bg-transparent border-0  rounded-circle end-0 me-4 mt-1 z-2 position-absolute" data-bs-dismiss="modal" style="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill " viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                </svg>
+      </button>
+    <!-- </div> -->
+    <div class="modal-body ">
+      <ul class="p-0 rounded-5 mt-2 confirm-pay">
+            <h6 class="text-start">
+                  Aplicando pago
+            </h6>
+            <p class="text-start text-black-50" style="line-height: 16px;">
+                    Al confirmar, se aplicará el pago y se generara una factura que sera enviada al cliente por correo, si el cliente no posee un correo registrado, se generará un archivo PDF que podrá descargar o enviar por otro medio.
+            </p>
+            <div class="div-detail-pay mt-5">
+                  <div class="  m-0 me-2"
+                  style="margin-top: 8px !important; font-size: 12px;">
+                  <span>Total a pagar</span>
+                   <span class="total-selected"> $0.00</span>
+                  </div>
+            </div>
+            <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        ¿Deseas agregar una cantidad distinta?
+                      </label>
+                  </div>
+            <input type="text" class="form-control rounded-4 bg-black bg-opacity-10 d-none" 
+            style="width: 10rem;"
+            id="payment-input" placeholder="0.00">
+            <div class="d-flex mt-1">
+                    <script>
+                              document.querySelector('#flexCheckDefault').addEventListener('change', function() {
+                                      let input = document.querySelector('#payment-input');
+                                      if (this.checked) {
+                                                input.classList.remove('d-none');
+                                      } else {
+                                                input.classList.add('d-none');
+                                      }
+                              });
+                    </script>
+
+                  <button class="btn bg-primary w-100 text-white  rounded-5 p-2 ps-4 pe-4  ms-2" 
+                  id="payment-button">
+                        Confirmar 
+                  </button>
+            </div>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+      document.querySelector('#payment-input').addEventListener('input', function(e) {
+            let value = e.target.value;
+            value = value.replace(/,/g, '');
+            if (!isNaN(value) && value !== '') {
+                  e.target.value = parseInt(value).toLocaleString() ;
+            }
+      });
+      document.querySelector('#payment-input').addEventListener('input', function(e) {
+            let button = document.querySelector('.btn');
+            if (e.target.value.trim() === '') {
+                  button.classList.add('d-none');
+            } else {
+                  button.classList.remove('d-none');
+            }
+      });
+</script>

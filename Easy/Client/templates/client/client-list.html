@@ -6,7 +6,18 @@
                   font-size: 14px;
             }
       </style>
-      <section class="section-list">
+
+      <section>
+            <div class="d-flex">
+                  <span class="mt-4 me-2">   ({{clients|length}})</span>
+                  <input type="text"
+                  class="form-control ps-3" 
+                  placeholder="Buscar cliente"
+                  style="width: 100%; margin-top: 1rem; margin-bottom: 0.2rem;
+                  border-radius: 2rem; padding: 0.6rem; font-size: 14px; max-width:20rem;">
+            </div>
+      </section>
+      <section class="section-list position-relative">
             <a href="{% url "client:client-create" %}">
                   <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
@@ -15,20 +26,18 @@
                   </button>
             </a>
 
-           <div class="bg-white p-2 rounded-4  rounded-bottom-2 ">
+           <div class="bg-transparent p-2 rounded-4  rounded-bottom-2 ">
             <table class="table  mt-1  ">
                   <thead>
                         <tr>
-                              <th> ({{clients|length}}) </th>
+                              <!-- <th> ({{clients|length}}) </th> -->
                               <th>Nombre y Apellidos</th>
                               <th>DNI</th>
                               <th>Edad</th>
                               <th>Sexo</th>
                               <th>Teléfono</th>
                               <th>Correo </th>
-                              <th>Ciudad</th>
-                              <th>Estado</th>
-                              <th>Fecha de registro</th>
+                              <th>Fecha </th>
                               <th>Acciones</th>
                         </tr>
                   </thead>
@@ -36,22 +45,29 @@
                         {% if clients %}
                                 {% for client in clients %}
                                 <tr>
-                                          <td> {{client.foorlop}} </td>
-                                          <td>{{ client.name }}  {{ client.last_name }}</td>
-                                          <td>{{ client.dni }}</td>
-                                          <td>+{{ client.age }}</td>
-                                          <td>{{ client.sexo }}</td>
-                                          <td>{{ client.phone }}</td>
-                                          <td>{{ client.email }}</td>
-                                          <td>{{ client.municipios }}</td>
-                                          <td>{{ client.province }}</td>
-                                          <td>{{ client.date|date:"d-F-Y" }}</td>
+                                            <!-- <td> {% if client.foorlop %} {{client.foorlop}} {% else %} ... {% endif %} </td> -->
+                                            <td>{% if client.name %} {{ client.name }} {% else %} ... {% endif %}  {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</td>
+                                            <td>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi m-0 p-0 bi-person-vcard" viewBox="0 0 16 16">
+                                                      <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+                                                      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
+                                                    </svg>
+                                                {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}</td>
+                                            <td>{% if client.age %} +{{ client.age }} {% else %} ... {% endif %}</td>
+                                            <td>{% if client.sexo %} {{ client.sexo }} {% else %} ... {% endif %}</td>
+                                            <td>{% if client.phone %} {{ client.phone }} {% else %} ... {% endif %}</td>
+                                          <td>{% if client.email %} {{ client.email|truncatechars:13 }} {% else %} ... {% endif %}</td>
+                                            <td>{% if client.date %} {{ client.date|date:"d/m/Y" }} {% else %} ... {% endif %}</td>
                                           <td class="d-flex " >
                                                 <a href="{% url 'client:client-delete' client.id %}" class="">
-                                                      <button class="btn btn-dark  btn-sm rounded-3 ">Eliminar</button>
+                                                      <button class="btn btn-dark bg-transparent border-0 text-black  btn-sm rounded-5 ps-3 pe-3 ">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                                                </svg> Eliminar
+                                                      </button>
                                                 </a>
                                                 <a href="{% url 'client:client-update' client.id %}">
-                                                      <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-3 ">Editar</button>
+                                                      <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-5 ">Editar</button>
                                                 </a>
                                           </td>
                                 </tr>

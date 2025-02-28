@@ -53,11 +53,11 @@
                                           <td class="text-capitalize">{{ credit.metodo }}</td>
                                           <td class="d-flex " >
                                                 <a href="{% url 'credit:credit-delete' credit.id %}" class="">
-                                                      <button class="btn rounded-circle btn-danger btn-sm" style="width: 30px; height: 30px;"> - </button>
+                                                      <button class="btn rounded-circle btn-dark btn-sm" style="width: 30px; height: 30px;"> - </button>
                                                 </a>
-                                                <a href="{% url 'credit:credit-update' credit.id %}">
+                                                <!-- <a href="{% url 'credit:credit-update' credit.id %}">
                                                       <button class="btn btn-primary btn-sm rounded-5 ">Editar</button>
-                                                </a>
+                                                </a> -->
                                           </td>
                                     </tr>
                                     {% endfor %}
