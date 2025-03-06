@@ -7,7 +7,7 @@
                   margin: 0 auto;
                   padding: 20px;
                   border: 1px solid #ddd;
-                  border-radius: 20px;
+                  border-radius: 30px;
                   background-color: #fff;
             }
 
@@ -37,51 +37,21 @@
             .bio {
                   font-size: 14px;
                   color: #666;
-                  margin: 5px 0 0;
+                  margin: 1px 0 0;
             }
 
-            .profile-stats {
-                  display: flex;
-                  justify-content: space-around;
-                  margin-bottom: 20px;
-            }
+     
 
-            .stat {
-                  text-align: center;
-            }
-
-            .number {
-                  font-size: 18px;
-                  font-weight: bold;
-            }
-
-            .label {
-                  font-size: 14px;
-                  color: #666;
-            }
-
-            .profile-posts {
-                  display: grid;
-                  grid-template-columns: repeat(3, 1fr);
-                  gap: 10px;
-            }
-
-            .post img {
-                  width: 100%;
-                  height: auto;
-                  border-radius: 5px;
-            }
+    
       </style>
-      <section>
+      <section class="justify-content-center align-content-start d-flex flex-wrap vh-100">
 
 
-            <div class="instagram-profile position-relative">
-                  <button class="btn position-absolute top-0 end-0  mt-2 me-2" >
-                        Cerrar seesion
-                  </button>
-                  <div class="profile-header">
-                        <img src="{{request.user.more.img.url}}" alt="Profile Picture" class="profile-picture">
-                        <div class="profile-info">
+            <div class="instagram-profile position-relative d-flex  w-100 flex-wrap mt-5" style="max-width: 500px;">
+                  <div class="profile-header d-flex justify-content-center flex-wrap  w-100" >
+                        <img src="{{request.user.more.img.url}}" alt="Profile Picture" 
+                              style="width: 140px; height: 140px; border-radius: 50%; ">
+                        <div class="text-center w-100 mt-2">
                               <h2 class="username"> {{request.user.first_name}} {{request.user.last_name}} </h2>
                               <p class="bio text-capitalize">
                                     {{request.user.more.role}}
