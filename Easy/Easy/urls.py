@@ -16,7 +16,7 @@ urlpatterns = [
                 path('caja/', include('Caja.urls')), # Caja
         path('mensajes/', include('Mensajeria.urls')), # Mensajes
                 path('perfil/', include('Perfil.urls')), # Perfil
-
+                        path('login', include('Login.urls')), # Login
         
         path('admin/', admin.site.urls), # Aministracion
 ]

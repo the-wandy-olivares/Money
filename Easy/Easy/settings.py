@@ -19,6 +19,7 @@ INSTALLED_APPS = [
         'Client.apps.ClientConfig', # App de los clientes
         'Company.apps.CompanyConfig', # Applicacion de la empresa
         'App.apps.AppConfig', # App principal
+        'Login.apps.LoginConfig', # App de login
 
     # Django apps
         'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
