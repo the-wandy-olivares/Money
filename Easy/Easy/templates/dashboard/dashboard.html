@@ -117,9 +117,17 @@
     width: 20rem; min-width: 20rem;
 }
 
+@media (max-width:600px) {
+    .section-dashboard {
+        margin-bottom: 7rem;
+    }
+}
+
+
 </style>
     
-<section class="overflow-scroll h-100 pt-0 align-content-end flex-wrap">
+<section class="section-dashboard overflow-scroll h-100 pt-0 align-content-end flex-wrap"
+    >
     <div class="  d-flex text-start justify-content-between w-100 overflow-scroll">
         <div class=" div-ia-sugerencia " data-aos="fade-down" style="transition:  0.5s ease-out ; transition-delay: 0.2s; " >
             <img src="{% static "icons/up-grafi.png" %}" width='50' height="40" alt="">
