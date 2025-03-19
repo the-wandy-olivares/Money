@@ -2,9 +2,72 @@
 {% block content %}
       {% load static %}
       <style>
+            .btn-nav .btn-creditos img
+            {
+                  /* background-color: #eeeeee !important; */
+                  box-shadow: #d1cfcf 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
             .section-list {
                   font-size: 14px;
             }
+      .table {
+              display: table;
+              width: 100%;
+      }
+
+      .thead {
+              display: table-header-group;
+
+              color: var(--text-light);
+              font-weight: bold;
+      }
+
+      .tbody {
+              display: table-row-group;
+      }
+
+      .tr {
+              display: table-row;
+      }
+
+      .th, .td {
+              display: table-cell;
+              padding: 0.5rem;
+              text-align: center;
+      }
+
+.th
+{
+              text-transform: uppercase;
+              font-size: 12px;
+            width: 8rem;
+            background-color: rgb(255, 255, 255) !important;
+            margin: 0.2rem;
+      }
+
+      .td {
+            background-color: rgb(255, 255, 255) !important;
+            color: #343434 !important;
+            margin: 0.2rem; border-radius: 0.5rem;
+            width: 8rem;
+            height: 3rem;
+            display: flex; flex-wrap: wrap; 
+            align-content: center; justify-content: center;
+      }
+      .td a {
+              text-decoration: none;
+      }
+
+      .td a:hover {
+              text-decoration: underline;
+      }
+
+      .btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+      }
       </style>
       <section class="section-list">
             <a href="{% url "credit:credit-create" %}">
@@ -14,63 +77,57 @@
                         </svg>
                   </button>
             </a>
-            <div class="bg-white p-2 rounded-4 rounded-bottom-2 ">
-                  <table class="table mt-1 table-striped table-hover">
-                        <thead>
-                              <tr>
-                                    <th>
-                                          Detalle
-                                    </th>
-                                    <th>Cliente</th>
-                                    <th>Capital</th>
-                                    <th>Cuotas</th>
-                                    <th>Intereses</th>
-                                    <th>Frecuencia</th>
-                                    <th>Fecha de Inicio</th>
-                                    <th>Método de Pago</th>
-                                    <th>
-                                          Acciones
-                                    </th>
-                              </tr>
-                        </thead>
-                        <tbody>
-                              {% if credits %}
-                                    {% for credit in credits %}
-                                    <tr>
-                                          <td>
-                                                <a href="{% url 'credit:credit-detail' credit.id %}" >
-                                                      <button class="btn btn-primary d-flex justify-content-center align-content-center flex-wrap btn-sm rounded-circle" style="width: 30px; height: 30px;">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-send-arrow-up-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54L13.026 8.03A4.5 4.5 0 0 0 8 12.5c0 .5 0 1.5-.773.36l-1.59-2.498L.644 7.184l-.002-.001-.41-.261a.5.5 0 0 1 .083-.886l.452-.18.001-.001L15.314.035a.5.5 0 0 1 .54.111M6.637 10.07l7.494-7.494.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154z"/><path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354a.5.5 0 0 0-.722.016l-1.149 1.25a.5.5 0 1 0 .737.676l.28-.305V14a.5.5 0 0 0 1 0v-1.793l.396.397a.5.5 0 0 0 .708-.708z"/></svg>
-                                                      </button>
-                                                </a>
-                                          </td>
-                                          <td>{{ credit.client }}</td>
-                                          <td>${{ credit.capital }}</td>
-                                          <td>{{ credit.cuotas }}</td>
-                                          <td>{{ credit.intereses }}%</td>
-                                          <td class="text-capitalize">{{ credit.frecuencia }}</td>
-                                          <td>{{ credit.start_date|date:"d - F - Y" }}</td>
-                                          <td class="text-capitalize">{{ credit.metodo }}</td>
-                                          <td class="d-flex " >
-                                                <a href="{% url 'credit:credit-delete' credit.id %}" class="">
-                                                      <button class="btn rounded-circle btn-dark btn-sm" style="width: 30px; height: 30px;"> - </button>
-                                                </a>
-                                                <!-- <a href="{% url 'credit:credit-update' credit.id %}">
-                                                      <button class="btn btn-primary btn-sm rounded-5 ">Editar</button>
-                                                </a> -->
-                                          </td>
-                                    </tr>
-                                    {% endfor %}
-                                    {% else %}
-                                    <tr>
-                                          <td colspan="11" class="text-black-50"
-                                          style="text-align: center; font-weight: bold;">
-                                                No hay creditos
-                                          </td>
-                                    </tr>
-                              {% endif %}
-                        </tbody>
-                  </table>
+            <div class=" p-2 rounded-5 ">
+                    <div class="table mt-1 table-striped table-hover">
+                              <div class="thead">
+                                      <div class="tr d-flex bg-white">
+                                                <span class="th flex-fill">Cliente</span>
+                                                <span class="th flex-fill">Capital</span>
+                                                <span class="th flex-fill">Cuotas</span>
+                                                <span class="th flex-fill">Intereses</span>
+                                                <span class="th flex-fill">Frecuencia</span>
+                                                <span class="th flex-fill">Fecha de Inicio</span>
+                                                <span class="th flex-fill">Método de Pago</span>
+                                                <span class="th flex-fill">Acciones</span>
+                                      </div>
+                              </div>
+                              <div class="tbody">
+                                      {% if credits %}
+                                                {% for credit in credits %}
+                                                <div class="tr d-flex">
+                                                        <span class="td flex-fill" style="width: 10rem;">
+                                                                  <a href="{% url "credit:credit-detail" credit.id %}" style="cursor: pointer;" class="text-black align-content-center">
+                                                                          <img src="{{request.user.more.img.url}}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 40px; height: 40px; border: 4px solid white; " alt="">
+                                                                       <span class="d-flex flex-wrap align-content-center ms-2">
+                                                                        {{ credit.client.name|default:"..."|slice:":5" }}     
+                                                                        {{ credit.client.last_name|default:"..."|slice:":5" }}
+                                                                       </span>
+                                                                  </a>
+                                                        </span>
+                                                        <span class="td flex-fill">${{ credit.capital }}</span>
+                                                        <span class="td flex-fill">{{ credit.cuotas }}</span>
+                                                        <span class="td flex-fill">{{ credit.intereses }}%</span>
+                                                        <span class="td flex-fill text-capitalize">{{ credit.frecuencia }}</span>
+                                                        <span class="td flex-fill">{{ credit.start_date|date:"d/m/Y" }}</span>
+                                                        <span class="td flex-fill text-capitalize">{{ credit.metodo }}</span>
+                                                        <span class="td flex-fill d-flex">
+                                                                  <a href="{% url 'credit:credit-delete' credit.id %}" class="">
+                                                                        <button class="btn rounded-5 btn-sm" style=""> -
+                                                                              Eliminar       
+                                                                        </button>
+                                                                  </a>
+                                                        </span>
+                                                </div>
+                                                {% endfor %}
+                                      {% else %}
+                                                <div class="tr d-flex">
+                                                        <span class="td flex-fill text-black-50" style="text-align: center; font-weight: bold;" colspan="8">
+                                                                  No hay creditos
+                                                        </span>
+                                                </div>
+                                      {% endif %}
+                              </div>
+                    </div>
             </div>
       </section>
 {% endblock %}

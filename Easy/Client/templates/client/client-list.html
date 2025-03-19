@@ -2,9 +2,74 @@
 {% block content %}
       {% load static %}
       <style>
+                   .btn-nav .btn-clientes img
+            {
+                  /* background-color: #eeeeee !important; */
+                  box-shadow: #d1cfcf 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+
             .section-list {
                   font-size: 14px;
             }
+      .table {
+              display: table;
+              width: 100%;
+      }
+
+      .thead {
+              display: table-header-group;
+
+              color: var(--text-light);
+              font-weight: bold;
+      }
+
+      .tbody {
+              display: table-row-group;
+      }
+
+      .tr {
+              display: table-row;
+      }
+
+      .th, .td {
+              display: table-cell;
+              padding: 0.5rem;
+              text-align: center;
+              border-bottom: 1px solid var(--border-color);
+      }
+
+      .th {
+              text-transform: uppercase;
+              font-size: 12px;
+             
+      }
+      .th
+      {
+            width: 8rem;
+            background-color: rgb(255, 255, 255) !important;
+            margin: 0.2rem;
+      }
+
+      .td {
+            background-color: rgb(237, 237, 237) !important;
+            margin: 0.2rem; border-radius: 0.5rem;
+            width: 8rem;
+            display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
+      }
+      .td a {
+              text-decoration: none;
+      }
+
+      .td a:hover {
+              text-decoration: underline;
+      }
+
+      .btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+      }
       </style>
 
       <section>
@@ -14,7 +79,7 @@
                   class="form-control ps-3" 
                   placeholder="Buscar cliente"
                   style="width: 100%; margin-top: 1rem; margin-bottom: 0.2rem;
-                  border-radius: 2rem; padding: 0.6rem; font-size: 14px; max-width:20rem;">
+                  border-radius: 0.8rem; padding: 0.6rem; font-size: 14px; max-width:20rem;">
             </div>
       </section>
       <section class="section-list position-relative">
@@ -27,60 +92,51 @@
             </a>
 
            <div class="bg-transparent p-2 rounded-4  rounded-bottom-2 ">
-            <table class="table  mt-1  ">
-                  <thead>
-                        <tr>
-                              <!-- <th> ({{clients|length}}) </th> -->
-                              <th>Nombre y Apellidos</th>
-                              <th>DNI</th>
-                              <th>Edad</th>
-                              <th>Sexo</th>
-                              <th>Teléfono</th>
-                              <th>Correo </th>
-                              <th>Fecha </th>
-                              <th>Acciones</th>
-                        </tr>
-                  </thead>
-                  <tbody>
+            <div class="table-responsive mt-1">
+                  <div class="tr d-flex">
+                        <span class="th flex-fill">Nombre y Apellidos</span>
+                        <span class="th flex-fill">DNI</span>
+                        <span class="th flex-fill">Edad</span>
+                        <span class="th flex-fill">Sexo</span>
+                        <span class="th flex-fill">Teléfono</span>
+                        <span class="th flex-fill">Correo</span>
+                        <span class="th flex-fill">Fecha</span>
+                        <span class="th flex-fill">Acciones</span>
+                  </div>
+                  <div class="table-body">
                         {% if clients %}
-                                {% for client in clients %}
-                                <tr>
-                                            <!-- <td> {% if client.foorlop %} {{client.foorlop}} {% else %} ... {% endif %} </td> -->
-                                            <td>{% if client.name %} {{ client.name }} {% else %} ... {% endif %}  {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</td>
-                                            <td>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi m-0 p-0 bi-person-vcard" viewBox="0 0 16 16">
-                                                      <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
-                                                      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
-                                                    </svg>
-                                                {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}</td>
-                                            <td>{% if client.age %} +{{ client.age }} {% else %} ... {% endif %}</td>
-                                            <td>{% if client.sexo %} {{ client.sexo }} {% else %} ... {% endif %}</td>
-                                            <td>{% if client.phone %} {{ client.phone }} {% else %} ... {% endif %}</td>
-                                          <td>{% if client.email %} {{ client.email|truncatechars:13 }} {% else %} ... {% endif %}</td>
-                                            <td>{% if client.date %} {{ client.date|date:"d/m/Y" }} {% else %} ... {% endif %}</td>
-                                          <td class="d-flex " >
-                                                <a href="{% url 'client:client-delete' client.id %}" class="">
-                                                      <button class="btn btn-dark bg-transparent border-0 text-black  btn-sm rounded-5 ps-3 pe-3 ">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                                  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                                                                </svg> Eliminar
-                                                      </button>
-                                                </a>
-                                                <a href="{% url 'client:client-update' client.id %}">
-                                                      <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-5 ">Editar</button>
-                                                </a>
-                                          </td>
-                                </tr>
-                                {% endfor %}
+                              {% for client in clients %}
+                              <div class="tr d-flex">
+                                    <span class="td flex-fill">{% if client.name %} {{ client.name }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill">
+                                          {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}
+                                    </span>
+                                    <span class="td flex-fill">{% if client.age %} +{{ client.age }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill">{% if client.sexo %} {{ client.sexo }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill">{% if client.phone %} {{ client.phone }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill">{% if client.email %} {{ client.email|truncatechars:13 }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill">{% if client.date %} {{ client.date|date:"d/m/Y" }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill d-flex ">
+                                          <!-- <a href="{% url 'client:client-delete' client.id %}" class="">
+                                                <button class="btn btn-dark bg-transparent border-0 text-black btn-sm rounded-5 ps-3 pe-3">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                                      </svg> Eliminar
+                                                </button>
+                                          </a> -->
+                                          <a href="{% url 'client:client-update' client.id %}">
+                                                <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-5">Editar</button>
+                                          </a>
+                                    </span>
+                              </div>
+                              {% endfor %}
                         {% else %}
-                              <tr>
-                                    <td colspan="11" 
-                                    class="text-black-50"
-                                    style="text-align: center; font-weight: bold;">No hay clientes actualmente</td>
-                              </tr>
-                  {% endif %}
-                  </tbody>
-            </table>
+                              <div class="table-row">
+                                    <span class="table-cell text-black-50" style="text-align: center; font-weight: bold;" colspan="8">No hay clientes actualmente</span>
+                              </div>
+                        {% endif %}
+                  </div>
+            </div>
            </div>
 
       </section>

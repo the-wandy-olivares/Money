@@ -5,6 +5,7 @@
             /* height: 3rem; */
       }
       .nav-movil .btn {
+            border: none;
             /* background-color: rgba(49, 99, 142, 0.709); */
             display: flex; justify-content: center;
             flex-wrap: wrap;
@@ -23,7 +24,8 @@
 </style>
 <section class=" nav-movil position-fixed bottom-0 start-0 z-2  d-flex blur-20 w-100 justify-content-center ">
       <!-- <a href="{% url "dashboard" %}"  > -->
-      <button class="btn ">
+      <button class="btn "
+            onclick="window.location.href = '{% url 'dashboard' %}'">
             <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                   <span >
                         Dashboard
@@ -31,7 +33,8 @@
             </button>
       <!-- </a> -->
 
-      <button class="btn position-relative"> 
+      <button class="btn position-relative"
+      onclick="window.location.href = '{% url 'client:client' %}'"> 
             <img class="img-cliente" src="{% static "icons/user.svg" %}" width='24' alt="">
             <!-- <a href="{% url 'client:client' %}"> -->
                   <span>

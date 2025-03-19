@@ -12,12 +12,12 @@
                     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                     datasets: [{
                               label: 'Grafico de nuevos clientes en cada mes',
-                              data: [40, 20, 14, 15, 15, 18, 20],
+                              data: [0, ],
                               borderColor: '{{request.user.more.company.configuration.color_enfasis}}',
-                              borderWidth: 2,
+                              borderWidth: 1,
                               backgroundColor: '{{request.user.more.company.configuration.color_enfasis}}', // Background color changed to red
                               fill: true,
-                              tension: 0.4 // This creates the wave effect
+                              tension: 0.3 // This creates the wave effect
                     }]
             },
             options: {
