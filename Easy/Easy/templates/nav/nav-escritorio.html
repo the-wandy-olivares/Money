@@ -35,16 +35,16 @@
       }
       .btn-nav button img
       {
-            margin-right: 0.6rem;
-            width: 30px !important;
-            padding: 0.3rem;
+            margin-right: 0.9rem;
+            width: 35px !important;
+            padding: 0.2rem;
             border-radius: 50%;
             /* background-color: #f9f9f9 !important ;
             border: 1px solid #eeeeee; */
       }  
       .btn-nav button span
       {
-            margin-top: 0.3rem;
+            margin-top: 0.5rem;
             font-size: 14px !important; font-weight: 400;
             color: #000000;
       }
@@ -147,11 +147,20 @@
                   </a>
                   </button>
 
-            <button>
+            <button class="btn-caja">
                   <img src="{% static "icons/document.svg" %}" width='24' alt="">
                   <a href="{% url 'caja:caja' %}">
                         <span>
                               Caja
+                        </span>
+                  </a>
+            </button>
+
+            <button class="btn-caja">
+                  <img src="{% static "icons/estadisticas.png" %}" width='24' alt="">
+                  <a href="{% url 'caja:caja' %}">
+                        <span>
+                              Inversion
                         </span>
                   </a>
             </button>

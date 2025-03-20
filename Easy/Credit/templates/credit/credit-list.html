@@ -69,6 +69,15 @@
               justify-content: center;
       }
       </style>
+      <div class="mb-5">
+                <h6 class="m-0 p-0">
+                        Listados de creditos
+                </h6>
+                <p class="p-0 m-0">
+                        Aqui puedes ver todos los creditos que has creado, puedes filtrarlos por mes, año, atrasos y pendientes.
+                </p>
+      </div>
+        {% include "credit/cp/filter.html" %}
       <section class="section-list">
             <a href="{% url "credit:credit-create" %}">
                   <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 

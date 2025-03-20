@@ -39,22 +39,21 @@
               border-bottom: 1px solid var(--border-color);
       }
 
-      .th {
-              text-transform: uppercase;
-              font-size: 12px;
-             
-      }
+
       .th
       {
             width: 8rem;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
             background-color: rgb(255, 255, 255) !important;
             margin: 0.2rem;
       }
 
       .td {
-            background-color: rgb(237, 237, 237) !important;
+            background-color: rgb(255, 255, 255) !important;
             margin: 0.2rem; border-radius: 0.5rem;
-            width: 8rem;
+            width: 8rem; height: 2rem;
             display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
       }
       .td a {
@@ -73,16 +72,23 @@
       </style>
 
       <section>
-            <div class="d-flex">
-                  <span class="mt-4 me-2">   ({{clients|length}})</span>
+            <h6 class="m-0 bg-white rounded-5 p-2 ps-3 pe-3 " style="width: max-content;">
+                  ({{clients|length}})  Clientes registrados
+            </h6>
+            <p class="m-0 ms-2 text-black-50">
+                  Aquí puedes ver la lista de clientes registrados en el sistema, puedes editar o eliminar los clientes.
+
+            </p>
+            <div class="d-flex  w-100 start-0 top-0 z-2 position-absolute d-lg-flex justify-content-end">
+                  <!-- <span class="mt-4 me-2">   </span> -->
                   <input type="text"
-                  class="form-control ps-3" 
+                  class="form-control ps-3 me-3"  
                   placeholder="Buscar cliente"
                   style="width: 100%; margin-top: 1rem; margin-bottom: 0.2rem;
-                  border-radius: 0.8rem; padding: 0.6rem; font-size: 14px; max-width:20rem;">
+                  border-radius: 2rem; padding: 0.6rem; font-size: 14px; max-width:16rem;">
             </div>
       </section>
-      <section class="section-list position-relative">
+      <section class="section-list position-relative mt-5">
             <a href="{% url "client:client-create" %}">
                   <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
@@ -93,8 +99,8 @@
 
            <div class="bg-transparent p-2 rounded-4  rounded-bottom-2 ">
             <div class="table-responsive mt-1">
-                  <div class="tr d-flex">
-                        <span class="th flex-fill">Nombre y Apellidos</span>
+                  <div class="tr d-flex bg-white mb-1">
+                        <span class="th flex-fill" style="width: 10rem;">Nombre y Apellidos</span>
                         <span class="th flex-fill">DNI</span>
                         <span class="th flex-fill">Edad</span>
                         <span class="th flex-fill">Sexo</span>
@@ -107,7 +113,7 @@
                         {% if clients %}
                               {% for client in clients %}
                               <div class="tr d-flex">
-                                    <span class="td flex-fill">{% if client.name %} {{ client.name }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill" style="width: 10rem;"> {% if client.name %} {{ client.name }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</span>
                                     <span class="td flex-fill">
                                           {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}
                                     </span>
@@ -118,14 +124,12 @@
                                     <span class="td flex-fill">{% if client.date %} {{ client.date|date:"d/m/Y" }} {% else %} ... {% endif %}</span>
                                     <span class="td flex-fill d-flex ">
                                           <!-- <a href="{% url 'client:client-delete' client.id %}" class="">
-                                                <button class="btn btn-dark bg-transparent border-0 text-black btn-sm rounded-5 ps-3 pe-3">
-                                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
-                                                      </svg> Eliminar
+                                                <button class="btn btn-dark bg-transparent border-0 text-black btn-sm rounded-5 ">
+                                                 l
                                                 </button>
                                           </a> -->
-                                          <a href="{% url 'client:client-update' client.id %}">
-                                                <button class="btn btn-primary ps-3 pe-3 btn-sm rounded-5">Editar</button>
+                                          <a href="{% url 'client:client-update' client.id %}" class="justify-content-center">
+                                                <button class="btn text-black ps-3 pe-3 btn-sm rounded-5">Editar</button>
                                           </a>
                                     </span>
                               </div>
