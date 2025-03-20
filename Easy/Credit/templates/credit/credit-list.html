@@ -42,21 +42,24 @@
               text-transform: uppercase;
               font-size: 12px;
             width: 8rem;
-            background-color: rgb(255, 255, 255) !important;
+
+            color: #d1cfcf !important;
+
             margin: 0.2rem;
       }
 
       .td {
-            background-color: rgb(255, 255, 255) !important;
-            color: #343434 !important;
+            background-color: #202022 !important;
+            color: #d1cfcf !important;
             margin: 0.2rem; border-radius: 0.5rem;
             width: 8rem;
-            height: 3rem;
+            height: 2rem;
             display: flex; flex-wrap: wrap; 
             align-content: center; justify-content: center;
       }
-      .td a {
+      .td a, .btn {
               text-decoration: none;
+              color: #d1cfcf;
       }
 
       .td a:hover {
@@ -70,46 +73,46 @@
       }
       </style>
       <div class="mb-5">
-                <h6 class="m-0 p-0">
+                <h6 class="m-0 p-0 text-white">
                         Listados de creditos
                 </h6>
-                <p class="p-0 m-0">
+                <p class="p-0 m-0 text-white-50">
                         Aqui puedes ver todos los creditos que has creado, puedes filtrarlos por mes, año, atrasos y pendientes.
                 </p>
       </div>
         {% include "credit/cp/filter.html" %}
       <section class="section-list">
             <a href="{% url "credit:credit-create" %}">
-                  <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
+                  <button class="position-absolute top-0 mt-2 end-0  bg-white bg-opacity-10 border-0 p-0 rounded-circle " style="width: 30px; height: 30px;  margin-right: 0.6rem;"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width=20" height=20" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-white-50" viewBox="0 0 16 16">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
                         </svg>
                   </button>
             </a>
             <div class=" p-2 rounded-5 ">
-                    <div class="table mt-1 table-striped table-hover">
-                              <div class="thead">
-                                      <div class="tr d-flex bg-white">
-                                                <span class="th flex-fill">Cliente</span>
-                                                <span class="th flex-fill">Capital</span>
-                                                <span class="th flex-fill">Cuotas</span>
-                                                <span class="th flex-fill">Intereses</span>
-                                                <span class="th flex-fill">Frecuencia</span>
-                                                <span class="th flex-fill">Fecha de Inicio</span>
-                                                <span class="th flex-fill">Método de Pago</span>
-                                                <span class="th flex-fill">Acciones</span>
+                    <div class="table  mt-1 " >
+                              <div class="thead mb-4">
+                                      <div class="tr d-flex mb-2">
+                                                <span class="th bg-transparent flex-fill">Cliente</span>
+                                                <span class="th bg-transparent flex-fill">Capital</span>
+                                                <span class="th bg-transparent flex-fill">Cuotas</span>
+                                                <span class="th bg-transparent flex-fill">Intereses</span>
+                                                <span class="th bg-transparent flex-fill">Frecuencia</span>
+                                                <span class="th bg-transparent flex-fill">Fecha de Inicio</span>
+                                                <span class="th bg-transparent flex-fill">Método de Pago</span>
+                                                <span class="th bg-transparent flex-fill">Acciones</span>
                                       </div>
                               </div>
-                              <div class="tbody">
+                              <div class="tbody ">
                                       {% if credits %}
                                                 {% for credit in credits %}
                                                 <div class="tr d-flex">
                                                         <span class="td flex-fill" style="width: 10rem;">
-                                                                  <a href="{% url "credit:credit-detail" credit.id %}" style="cursor: pointer;" class="text-black align-content-center">
-                                                                          <img src="{{request.user.more.img.url}}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 40px; height: 40px; border: 4px solid white; " alt="">
+                                                                  <a href="{% url "credit:credit-detail" credit.id %}" style="cursor: pointer;" class=" align-content-center">
+                                                                        <img src="{{request.user.more.img.url}}"    class="  object-fit-cover bg-transparent rounded-circle " style="border: 1px; width: 20px; height: 20px; border: 4px solid rgba(255, 255, 255, 0.224); " alt="">
                                                                        <span class="d-flex flex-wrap align-content-center ms-2">
-                                                                        {{ credit.client.name|default:"..."|slice:":5" }}     
-                                                                        {{ credit.client.last_name|default:"..."|slice:":5" }}
+                                                                                {{ credit.client.name|default:"..."|slice:":5" }}     
+                                                                                {{ credit.client.last_name|default:"..."|slice:":5" }}
                                                                        </span>
                                                                   </a>
                                                         </span>

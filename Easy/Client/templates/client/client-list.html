@@ -46,14 +46,14 @@
             text-transform: uppercase;
             font-size: 12px;
             font-weight: bold;
-            background-color: rgb(255, 255, 255) !important;
             margin: 0.2rem;
       }
 
       .td {
-            background-color: rgb(255, 255, 255) !important;
+            background-color: #222222 !important;
             margin: 0.2rem; border-radius: 0.5rem;
             width: 8rem; height: 2rem;
+            color: #d1cfcf;
             display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
       }
       .td a {
@@ -72,26 +72,28 @@
       </style>
 
       <section>
-            <h6 class="m-0 bg-white rounded-5 p-2 ps-3 pe-3 " style="width: max-content;">
+            <h6 class="m-0  text-white rounded-5 p-2 ps-3 pe-3 " style="width: max-content; background-color: #191919;">
                   ({{clients|length}})  Clientes registrados
             </h6>
-            <p class="m-0 ms-2 text-black-50">
+            <p class="m-0 ms-2 text-white-50">
                   Aquí puedes ver la lista de clientes registrados en el sistema, puedes editar o eliminar los clientes.
 
             </p>
             <div class="d-flex  w-100 start-0 top-0 z-2 position-absolute d-lg-flex justify-content-end">
                   <!-- <span class="mt-4 me-2">   </span> -->
-                  <input type="text"
+                  <!-- <input type="text"
                   class="form-control ps-3 me-3"  
                   placeholder="Buscar cliente"
                   style="width: 100%; margin-top: 1rem; margin-bottom: 0.2rem;
-                  border-radius: 2rem; padding: 0.6rem; font-size: 14px; max-width:16rem;">
+                  border-radius: 2rem; padding: 0.6rem; font-size: 14px; max-width:16rem;"> -->
             </div>
       </section>
       <section class="section-list position-relative mt-5">
             <a href="{% url "client:client-create" %}">
-                  <button class="position-absolute top-0 mt-2 end-0  border-0 p-0 rounded-circle " style="width: 40px; height: 40px; background-color: var(--bg-2); margin-right: 0.6rem;"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-primary" viewBox="0 0 16 16">
+                  <button class="position-absolute top-0 mt-2 end-0 bg-white bg-opacity-10 border-0 p-0 rounded-circle " 
+                        style="width: 30px; height: 30px;  margin-right: 0.6rem;"> 
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                         width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-white-50" viewBox="0 0 16 16">
                               <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
                         </svg>
                   </button>
@@ -99,7 +101,7 @@
 
            <div class="bg-transparent p-2 rounded-4  rounded-bottom-2 ">
             <div class="table-responsive mt-1">
-                  <div class="tr d-flex bg-white mb-1">
+                  <div class="tr d-flex text-white mb-1">
                         <span class="th flex-fill" style="width: 10rem;">Nombre y Apellidos</span>
                         <span class="th flex-fill">DNI</span>
                         <span class="th flex-fill">Edad</span>
@@ -129,14 +131,14 @@
                                                 </button>
                                           </a> -->
                                           <a href="{% url 'client:client-update' client.id %}" class="justify-content-center">
-                                                <button class="btn text-black ps-3 pe-3 btn-sm rounded-5">Editar</button>
+                                                <button class="btn text-white ps-3 pe-3 btn-sm rounded-5">Editar</button>
                                           </a>
                                     </span>
                               </div>
                               {% endfor %}
                         {% else %}
                               <div class="table-row">
-                                    <span class="table-cell text-black-50" style="text-align: center; font-weight: bold;" colspan="8">No hay clientes actualmente</span>
+                                    <span class="table-cell text-white-50" style="text-align: center; font-weight: bold;" colspan="8">No hay clientes actualmente</span>
                               </div>
                         {% endif %}
                   </div>
