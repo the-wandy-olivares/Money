@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load humanize %}
+      <style>
+            .btn-nav .btn-inversion img
+            {
+                  box-shadow: #85abf1 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+      </style>
+      <section class="text-white vh-100 pb-4  d-flex align-content-start flex-wrap">
+            {% include "inversion/cp/options-inversion.html" %}
+            {% include "inversion/cp/card.html" %}
+            {% include "inversion/cp/table.html" %}
+            {% include "inversion/cp/grafic-wave.html" %}
+      </section>
+
+{% endblock  %}

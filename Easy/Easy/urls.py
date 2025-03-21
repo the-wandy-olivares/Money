@@ -17,7 +17,7 @@ urlpatterns = [
         path('mensajes/', include('Mensajeria.urls')), # Mensajes
                 path('perfil/', include('Perfil.urls')), # Perfil
                         path('login', include('Login.urls')), # Login
-        
+                path('inversion/', include('Inversion.urls')), # Inversion
         path('admin/', admin.site.urls), # Aministracion
 ]
 

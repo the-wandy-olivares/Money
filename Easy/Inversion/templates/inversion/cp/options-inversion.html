@@ -1,0 +1,43 @@
+<style>
+      .options-client button, .button {
+            background-color: #191919;
+            margin: 0.3rem; 
+            border-radius: 0.9rem;
+            color: #d1cfcf !important;
+            font-weight: bold;
+            font-size: 14px;
+            width: 10rem; height: 2rem;
+            border: 0px;
+      }
+</style>
+<div class="options-client justify-content-center d-flex   w-100 m-2 bottom-0">
+      <select name="" id="" class=" button form-select ">
+            <option value="">
+                  Todos
+            </option>
+            <option value="">
+                  Retornos
+            </option>
+            <option value="">
+                  Inversion
+            </option>
+      </select>
+      <button onclick="window.location.href='{% url "client:client-create" %}'">
+            <i class="bi bi-plus-circle-fill"></i> Nueva inversion
+      </button>
+      <button>
+            <i class="bi bi-list-columns-reverse"></i>  Listado
+      </button>
+      <button>
+            <i class="bi bi-piggy-bank-fill"></i> Acomulado
+      </button>
+      <button>
+            <i class="bi bi-currency-exchange"></i> Divisas
+      </button>
+      <button>
+            <i class="bi bi-filetype-pdf"></i> Reportes
+      </button>
+      <button>
+            <i class="bi bi-people-fill"></i> Inversionistas 
+      </button>
+</div>
