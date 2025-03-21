@@ -2,7 +2,7 @@
 <style>
       .thead {
             font-weight: bold;
-            background-color: #ffffff;
+            color: white;
             padding: 8px;
             margin-bottom: 3px;
             
@@ -26,7 +26,8 @@
 
       .td
       {
-            background-color: rgb(255, 255, 255) ;
+            background-color: #191919 ;
+            color: #d1cfcf;
             margin: 0.1rem;
       }
 
@@ -41,7 +42,7 @@
       }
 
       .text-primary {
-            color: #007bff !important;
+            color: #5cabff !important;
       }
 
       .total-selected {
@@ -84,7 +85,7 @@
                         </div>
                         <div class="td"> 
                               {% if cuota.monto_mas_mora != 0 %}
-                                    <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent border-0' data-id="{{ cuota.id }}" data-monto="{{ cuota.monto_mas_mora }}" onclick="toggleSelection(this)">
+                                    <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent border-0' data-id="{{ cuota.id }}" data-monto="{{ cuota.monto_mas_mora }}" onclick="toggleSelection(this)" style="color: #d1cfcf;">
                                           <svg id="ckeck{{cuota.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-none bi bi-check2-circle" viewBox="0 0 16 16">
                                                 <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
                                                 <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
@@ -95,13 +96,11 @@
                                           <span id="select{{cuota.id}}">Seleccionar</span>
                                     </button>
                               {% else %}
-                              <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent  border-0' >
-                                    <svg id="ckeck{{cuota.id}}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" bi bi-check2-circle m-0" viewBox="0 0 16 16">
-                                          <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
-                                          <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-                                    </svg>
-
-                                    <span id="select{{cuota.id}}"> Completado </span>
+                              <button id="btn-ch{{ cuota.id }}" class='btn-ch bg-transparent  border-0'
+                                     style="color: #5cabff; font-weight: bold !important;">
+                                    <i id="ckeck{{cuota.id}}" class="bi bi-check-circle-fill"></i>
+                                    <span id="select{{cuota.id}}" 
+                                    > Completado </span>
                               </button>
 
                               {% endif %}

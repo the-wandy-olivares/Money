@@ -1,0 +1,57 @@
+{% load humanize %}
+<style>
+      td {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 14px;
+      }
+      @media (max-width: 600px) {
+            .description, .tipo {
+                  display: none;
+            }
+       }
+</style>
+<table class="w-100 text-white">
+      <thead>
+            <tr>
+                  <th style='width: 2%; font-size: 10px;'>#</th>
+                  <th style='width: 15%;'>Fecha </th>
+                  <th class="description" style='width:50%;'>Descripción de movimiento</th>
+                  <th style='width: 10%;'>Ingreso</th>
+                  <th style='width: 10%;'>Gasto </th>
+                  <th class="tipo" style='width: 10%;'>Tipo </th>
+            </tr>
+      </thead>
+      <tbody id="movimientos-table">
+            {% if movimientos  %}
+                  {% for movimiento in movimientos %}
+                  <tr class="movimiento-row" data-tipo="{{ movimiento.tipo }}">
+                        <td style="font-size: 10px;">  {{ forloop.counter }}</td>
+                        <td>{{ movimiento.date|date:"d/m/Y" }}</td>
+                        <td class="description">{{ movimiento.description }}</td>
+                        <td>
+                              {% if movimiento.type == "ingreso" %}
+                                    <span class="text-success">
+                                          ${{ movimiento.mount|intcomma }}.00
+                                    </span>
+                              {% endif %}
+                        </td>
+                        <td>
+                              {% if movimiento.type == "gasto" %}
+                              <span class="text-danger">
+                                    ${{ movimiento.mount|intcomma }}.00
+                              </span>
+                              {% endif %}
+                        </td>
+                        <td class='text-capitalize tipo'>{{ movimiento.type }}</td>
+                  </tr>
+                  {% endfor %}
+            {% else %}
+                  <tr>
+                        <td colspan="7" class='  text-center  p-2'>
+                              <i class="bi bi-exclamation-circle-fill"></i> 
+                              No hay resultados
+                        </td>
+                  </tr>
+            {% endif %}
+      </tbody>
+</table>

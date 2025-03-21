@@ -50,7 +50,7 @@
       }
 
       .td {
-            background-color: #222222 !important;
+            background-color: #191919 !important;
             margin: 0.2rem; border-radius: 0.5rem;
             width: 8rem; height: 2rem;
             color: #d1cfcf;
@@ -89,16 +89,7 @@
             </div>
       </section>
       <section class="section-list position-relative mt-5">
-            <a href="{% url "client:client-create" %}">
-                  <button class="position-absolute top-0 mt-2 end-0 bg-white bg-opacity-10 border-0 p-0 rounded-circle " 
-                        style="width: 30px; height: 30px;  margin-right: 0.6rem;"> 
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                         width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill m-0 p-0 text-white-50" viewBox="0 0 16 16">
-                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-                        </svg>
-                  </button>
-            </a>
-
+            {% include "client/cp/options-client.html" %}
            <div class="bg-transparent p-2 rounded-4  rounded-bottom-2 ">
             <div class="table-responsive mt-1">
                   <div class="tr d-flex text-white mb-1">
@@ -108,14 +99,17 @@
                         <span class="th flex-fill">Sexo</span>
                         <span class="th flex-fill">Teléfono</span>
                         <span class="th flex-fill">Correo</span>
-                        <span class="th flex-fill">Fecha</span>
+                        <span class="th flex-fill">Ingresado</span>
                         <span class="th flex-fill">Acciones</span>
                   </div>
                   <div class="table-body">
                         {% if clients %}
                               {% for client in clients %}
                               <div class="tr d-flex">
-                                    <span class="td flex-fill" style="width: 10rem;"> {% if client.name %} {{ client.name }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name }} {% else %} ... {% endif %}</span>
+                                    <span class="td flex-fill" style="width: 10rem;"> 
+                                            {% if client.name %} {{ client.name|truncatechars:6 }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name|truncatechars:6 }} {% else %} ... {% endif %}
+
+                                    </span>
                                     <span class="td flex-fill">
                                           {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}
                                     </span>

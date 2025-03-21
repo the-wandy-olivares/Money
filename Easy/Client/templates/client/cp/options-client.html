@@ -1,0 +1,46 @@
+<style>
+      .options-client button, .button {
+            background-color: #191919;
+            margin: 0.3rem; 
+            border-radius: 0.9rem;
+            color: #d1cfcf !important;
+            font-weight: bold;
+            font-size: 14px;
+            width: 10rem; height: 2rem;
+            border: 0px;
+      }
+</style>
+<div class="options-client justify-content-start d-flex   w-100 m-2 bottom-0">
+      <select name="" id="" class=" button form-select ">
+            <option value="">
+                  Agregados recientes
+            </option>
+            <option value="">
+                  Agregados ultimos
+            </option>
+            <option value="">
+                  Mejores calificados
+            </option>
+            <option value="">
+                  Con mal credito
+            </option>
+      </select>
+      <button onclick="window.location.href='{% url "client:client-create" %}'">
+            <i class="bi bi-person-plus-fill" ></i> Agregar
+      </button>
+      <button>
+            <i class="bi bi-person-lines-fill"></i> Listado
+      </button>
+      <button>
+            <i class="bi bi-people-fill"></i> Grupos
+      </button>
+      <button>
+            <i class="bi bi-cloud-arrow-up-fill"></i> Importar
+      </button>
+      <button>
+            <i class="bi bi-filetype-pdf"></i> Reportes
+      </button>
+      <button>
+            <i class="bi bi-geo-alt-fill"></i> Maps 
+      </button>
+</div>

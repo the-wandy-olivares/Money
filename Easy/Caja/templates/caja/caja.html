@@ -1,15 +1,212 @@
 {% extends "base/base.html" %}
 {% block content %}
-      {% load static %}
+      {% load humanize %}
       <style>
-            .btn-nav .btn-caja img
+            .btn-caja svg {
+                  color: #ffc107 !important;
+                  border-radius: 0 !important;
+                  background-color: transparent !important;
+            }
+            .nav .caja {
+                  color: #ffc107;
+                  font-weight: bolder;
+                  transform: scale(1.1);
+            }
+            .nav .caja svg {
+                  color: #ffc107 !important;
+            }
+            .nav .caja span {
+                  color: #ffc107;
+            }
+            .btn-atras
             {
-                  /* background-color: #eeeeee !important; */
-                  box-shadow: #d1cfcf 0px 0px 10px 0px;
-                  border: 1px solid #eeeeee;
+                  display: none;
+            }
+            .balance-total .cierre-anterior  {
+                  display: flex; justify-content: center;
+                  text-align: center;
+            }
+
+            .detail-resulst{
+                  width: 100%;
+                  max-width: 30rem;
+                  position: absolute; bottom: 0; right: 0;
+                  margin-bottom: 0.8rem; margin-right: 0.7rem;
+                  display: flex; 
+            }
+            #search-move {
+                  color: #ffffff !important;
+                  outline: none !important;
+            }
+            #search-move::placeholder {
+                  color: rgba(247, 247, 247, 0.741) !important; font-weight: bold;
+            }
+
+            /* Adaptando estylos  a movile */
+            @media (max-width: 600px) {
+                  .balance-total .cierre-anterior span {
+                        width: 100%;
+                  }
+                  .detail-resulst {
+                        width: 100%;
+                        position: static; 
+                        display: block;
+                  }
+                  .b-search {
+                        margin-top: 0.8rem;
+                  }
+            }
+            .table-result{
+                  background-color: #212121ce;
+                  color: #ffffff;
             }
       </style>
-      <section>
-            Maps
-      </section>
-{% endblock %}
+      <div class="container-search-move position-fixed d-none top-0 start-0 blur-50 bg-black bg-opacity-10 text-white d-flex justify-content-center align-content-center flex-wrap z-3 vh-100 w-100 ">
+            
+            <div class=" bg-white bg-opacity-10 shadow w-100 rounded-5 p-2 position-relative overflow-auto" 
+                  style="max-width: 70rem; ">
+                     <!--Delete-->
+                  <button class="bg-transparent border-0 position-absolute top-0 start-0 ms-2 mt-2" onclick="OpenSearchMove()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle-fill text-white" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                        </svg>
+                  </button>
+                  <input type="text" id="search-move"
+                  style=" width: 100%;"
+                  class="w-100 m-0 p-3 rounded-5  border-0 mb-3 text-center bg-white bg-opacity-10  me-2 "
+                  placeholder="Buscar moviemiento "       >
+                        <strong class="  text-white-50 ms-2" style="font-size: 16px;">
+                               Moviemientos de caja
+                        </strong>
+                        <p class="text-white-50 p-0 m-0 ms-2 w-100" style="font-size: 14px;">
+                              Verde ingresos y rojo los gastos
+                        </p>
+                  <div class="search-results overflow-auto overflow-x-hidden " style="height: 55vh;">
+                  </div>
+            </div>
+      </div>
+      <div data-aos="fade-in" class="container-box w-100 m-2 text-white overflow-auto d-flex flex-wrap align-content-start  justify-content-center  rounded-5" 
+            style="transition: 1s;">
+
+            <div class="w-100 h-100 overflow-auto mt-3">
+                        <div class="d-flex justify-content-start mb-3 " >
+                              <div onclick="OpenSearchMove()" style="width: 2.5rem; height: 2.5rem;"
+                             class="d-flex b-search bg-warning align-content-center flex-wrap justify-content-center align-content-center rounded-5">
+                                    <i class="bi bi-bing" style="color: #101010;"></i>
+                              </div>
+                              <div  class="cierre-anterior p-2 balance-total  text-white-50  text-center rounded-4 ps-4 pe-4 me-1 ms-1"
+                                    style=" background-color: #191919;">
+                                    <strong style="font-size: 14px;">ULTIMO CIERRE</strong>
+                                    <span> ${{total_last_session|intcomma}}.00 </span>
+                              </div>
+                              <div class="p-2 balance-total  text-white-50  text-center rounded-4 ps-4 pe-4 " 
+                                    style=" background-color: #191919;">
+                                    <strong style="font-size: 14px;">
+                                          BALANCE
+                                    </strong>
+                                    <span> ${{total_movimientos|intcomma}}.00 </span>
+                              </div>
+                        </div>
+                        <div class="overflow-visible container-table " style="height: 80vh;">
+                              {% include "caja/cp/filter.html" %}
+                             <div style="height: 59vh;" class="overflow-auto ">
+                                    {% include "caja/cp/table.html" %}
+                             </div>
+                             <div class="detail-resulst ">
+                                    <table class="w-100">
+                                          <thead>
+                                                <tr>
+                                                      <th scope="col" class="text-center"> Ingresos</th>
+                                                      <th scope="col" class="text-center">Gastos</th>
+                                                      <th scope="col" class="text-center">Balance</th>
+                                                </tr>
+                                          </thead>
+                                          <tbody>
+                                                <tr>
+                                                      <td class="text-center">${{ ingresos|intcomma }}.00</td>
+                                                      <td class="text-center">${{ egresos|intcomma }}.00</td>
+                                                      <td class="text-center">${{ balance_caja|intcomma }}.00</td>
+                                                      <td>
+                                                            <a class='btn-cerrar'> 
+                                                                  <button style=" font-weight: bold; background-color: #191919;"  
+                                                                  class=' btn rounded-3 text-white m'> Cerrar session  </button>
+                                                            </a>
+                                                      </td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                             </div>
+                        </div>
+                  </div>
+
+      </div>
+      <!--Jquery-->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+            function filterMovimientos(tipo) {
+                  const rows = document.querySelectorAll('.movimiento-row');
+                  rows.forEach(row => {
+                        if (tipo === 'todos' || row.getAttribute('data-tipo') === tipo) {
+                              row.style.display = '';
+                        } else {
+                              row.style.display = 'none';
+                        }
+                  });
+            }
+
+            function OpenSearchMove() {
+                  document.querySelector('.container-search-move').classList.toggle('d-none');
+                  if ( !document.querySelector('.container-search-move').classList.contains('d-none')) {
+                        document.querySelector('#search-move').focus();
+                  }
+            }
+
+            document.querySelector('#search-move').addEventListener('input', function() {
+                  SearchMove(this.value);
+            });
+
+      function SearchMove(content) {
+
+            $.ajax({
+                  url: 'ajax/search-move/',
+                  data: {
+                  search: content,},
+                  success: function(response) {
+                        const resultsContainer = document.querySelector('.search-results');
+                        resultsContainer.innerHTML = '';
+                        if (response.length > 0) {
+                              response.forEach(result => {
+                              const table = document.createElement('table');
+                              let div_table = document.createElement('div');
+                              div_table.classList.add('w-100', 'mt-1', 'table-result', 'rounded-5', 'p-1', 'ps-3', 'pe-3', 'overflow-auto' );
+                              table.innerHTML = `
+                                    <thead>
+                                          <tr>
+                                          <th style='width: 10rem;' >Fecha</th>
+                                          <th style='width: 30rem;' >Descripción</th>
+                                          <th style='width: 16rem;' >Tipo </th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td>${new Date(result.date).toLocaleDateString('en-GB')}</td>
+                                    <td>${result.description}</td>
+                                    <td>
+                                          <span class="text-capitalize  text-${result.type === 'ingreso' ? 'success' : 'danger'}">
+                                               $${result.mount > 0 ? result.mount.toLocaleString() : '' }  
+                                    </td>
+                                    </tr>
+                                    </tbody> `;
+                                    div_table.appendChild(table);
+                                    resultsContainer.appendChild(div_table);
+                                 });
+                              }     
+                              if (response.length == 0) {
+                                    resultsContainer.innerHTML = ` <p class="text-center text-white-50">No hay resultados</p>`;
+                        }
+                  }
+            });
+      }
+
+      </script>
+{% endblock  %}
