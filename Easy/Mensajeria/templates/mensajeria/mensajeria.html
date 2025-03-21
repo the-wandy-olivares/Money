@@ -8,8 +8,49 @@
                   box-shadow: #d1cfcf 0px 0px 10px 0px;
                   border: 1px solid #eeeeee;
             }
+            .div-redes {
+                  display: flex; justify-content: center;
+                  color: #d1cfcf;
+                  width: 100%;
+            }
+            .div-redes div {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  margin: 0 10px;
+            }
       </style>
-      <section>
-            Es
+      <section class="d-flex align-content-center justify-content-center flex-wrap w-100 vh-100">
+            <div class=" p-5 rounded-5"
+                  style="background-color: #191919; ">
+                  <div class="w-100 text-center text-white">
+                        <h3>
+                              Mensajeria de la empresa
+                        </h3>
+                        <p class="text-white-50">
+                              Puedes dialogar con tus clientes desde un solo lugar, sin necesidad de tener varias aplicaciones abiertas. <strong>
+                                    ¡Muy pronto!
+                              </strong>
+                        </p>
+                  </div>
+                  <div class="div-redes mt-4">
+                          <div>
+                                    <i class="bi bi-instagram" style="font-size: 2rem;"></i>
+                                    <span>Instagram</span>
+                          </div>
+                          <div>
+                                    <i class="bi bi-facebook" style="font-size: 2rem;"></i>
+                                    <span>Facebook</span>
+                          </div>
+                          <div>
+                                    <i class="bi bi-whatsapp" style="font-size: 2rem;"></i>
+                                    <span>WhatsApp</span>
+                          </div>
+                          <div>
+                                    <i class="bi bi-telegram" style="font-size: 2rem;"></i>
+                                    <span>Telegram</span>
+                          </div>
+                  </div>
+            </div>
       </section>
 {% endblock %}
