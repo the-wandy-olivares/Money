@@ -1,0 +1,20 @@
+<style>
+      #map {
+            height: 100vh;
+            width: 100%;
+            background: no-repeat center center;
+            background-size: cover;
+      }
+</style>
+
+<div id="map"></div>
+
+<script>
+      const apiKey = "AIzaSyCCb-sCeLM2BeaoFfUYJgpFka8kDWtwYcM"; // Reemplaza con tu clave de API
+      const mapLocation = { lat: 19.206, lng: -70.506 }; // Coordenadas de San Francisco de Macorís, República Dominicana
+      const zoom = 8;
+
+      const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${mapLocation.lat},${mapLocation.lng}&zoom=${zoom}&size=640x640&key=${apiKey}`;
+
+      document.getElementById("map").style.backgroundImage = `url('${mapUrl}')`;
+</script>

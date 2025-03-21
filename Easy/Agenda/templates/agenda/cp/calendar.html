@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Calendar</title>
+      <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+      <style>
+            body {
+                  background-color: #121212;
+                  color: #ffffff;
+                  font-family: Arial, sans-serif;
+                  margin: 0;
+                  padding: 0;
+            }
+            #calendar-container {
+                  max-width: 900px;
+                  margin: 50px auto;
+                  padding: 20px;
+                  background-color: #1e1e1e;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+      </style>
+</head>
+<body>
+      <div id="calendar-container">
+            <div id="calendar"></div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+      <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                  var calendarEl = document.getElementById('calendar');
+                  var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: [
+                              { title: 'Event', start: '2023-10-04' },
+                              { title: 'Meeting', start: '2023-10-12' }
+                        ],
+                        themeSystem: 'standard'
+                  });
+                  calendar.render();
+            });
+      </script>
+</body>
+</html>
