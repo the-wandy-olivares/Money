@@ -2,16 +2,16 @@
 {% block content %}
       {% load static %}
       <style>
-                   .btn-nav .btn-clientes img
-            {
-                  /* background-color: #eeeeee !important; */
-                  box-shadow: #d1cfcf 0px 0px 10px 0px;
-                  border: 1px solid #eeeeee;
-            }
+            .btn-nav .btn-clientes img   {
+            /* background-color: #eeeeee !important; */
+            box-shadow: #d1cfcf 0px 0px 10px 0px;
+            border: 1px solid #eeeeee;
+      }
 
-            .section-list {
-                  font-size: 14px;
-            }
+      .section-list {
+            font-size: 14px;
+      }
+
       .table {
               display: table;
               width: 100%;
@@ -39,7 +39,6 @@
               border-bottom: 1px solid var(--border-color);
       }
 
-
       .th
       {
             width: 8rem;
@@ -56,6 +55,7 @@
             color: #d1cfcf;
             display: flex; flex-wrap: wrap; align-content: center; justify-content: center;
       }
+
       .td a {
               text-decoration: none;
       }
@@ -69,6 +69,32 @@
               align-items: center;
               justify-content: center;
       }
+
+      .img-dni-view {
+            position: fixed;
+            width: 100vw !important; height: 100vh;
+            top: 0; left: 0;
+            z-index: 100;justify-content: center !important;
+            background-color: transparent !important;
+      }
+
+      .img-dni {
+            transition: 0.4s;
+            cursor: pointer;
+      }
+
+      .ampliar-img{
+            transition: 0.5s;
+            width: 400px !important;
+            height: max-content !important;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            border-radius: 1rem !important;
+      }
+
+      .img-dni:hover {
+            transform: scale(1.1);
+      }
       </style>
 
       <section>
@@ -77,7 +103,6 @@
             </h6>
             <p class="m-0 ms-2 text-white-50">
                   Aquí puedes ver la lista de clientes registrados en el sistema, puedes editar o eliminar los clientes.
-
             </p>
             <div class="d-flex  w-100 start-0 top-0 z-2 position-absolute d-lg-flex justify-content-end">
                   <!-- <span class="mt-4 me-2">   </span> -->
@@ -106,9 +131,14 @@
                         {% if clients %}
                               {% for client in clients %}
                               <div class="tr d-flex">
-                                    <span class="td flex-fill" style="width: 10rem;"> 
+                                    <span onclick="ViewClient(this.getAttribute('data_id'))"
+                                     data_id="{{client.id}}" id="client-view{{client.id}}"  class="td flex-fill justify-content-start blur-10" style="width: 10rem; cursor: pointer;"> 
+                                          <img  {% if client.img %}
+                                          src="{{client.img.url}}"
+                                          {% endif %}   id="img-dni{{client.id}}"   class=" img-dni  object-fit-cover ms-2 bg-transparent rounded-circle " style="border: 1px; width: 20px; height: 20px; border: 4px solid rgba(255, 255, 255, 0.224); " alt="">
+                                          <span id="name{{client.id}}" class="d-flex flex-wrap align-content-center ms-2">
                                             {% if client.name %} {{ client.name|truncatechars:6 }} {% else %} ... {% endif %} {% if client.last_name %} {{ client.last_name|truncatechars:6 }} {% else %} ... {% endif %}
-
+                                          </span>
                                     </span>
                                     <span class="td flex-fill">
                                           {% if client.dni %} {{ client.dni }} {% else %} ... {% endif %}
@@ -140,4 +170,26 @@
            </div>
 
       </section>
+
+      <script>
+            function ViewClient(id) {
+                  let img = document.getElementById('img-dni'+id)
+                  let name = document.getElementById('name'+id)
+                  let client = document.getElementById('client-view'+id)
+                  client.classList.toggle('img-dni-view')
+                  img.classList.toggle('ampliar-img')
+
+
+
+                  if (name.classList.contains('d-none')) {
+                                    setTimeout(() => {
+                                          name.classList.remove('d-none');
+                                    }, 500); 
+                  }
+                         else {
+                              name.classList.add('d-none');
+                        }
+      
+            }
+      </script>
 {% endblock %}

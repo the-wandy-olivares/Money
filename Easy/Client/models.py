@@ -18,7 +18,7 @@ class Client(models.Model):
             sexo = models.CharField( choices= CHOICES.SEXO,  max_length=1, verbose_name='Sexo', blank=True, null=True)
             phone = models.CharField(max_length=20, default='', verbose_name='Teléfono', blank=True, null=True)
             email = models.EmailField(verbose_name='Correo electrónico', default='', blank=True, null=True)
-
+            img = models.ImageField(upload_to='clients/', verbose_name='Imagen', blank=True, null=True)
       # Dirección
             municipios = models.CharField(max_length=100, default='', verbose_name='Municipios', blank=True, null=True)
             province = models.CharField( choices=CHOICES.PROVINCIAS,default='',  max_length=100, verbose_name='Estado', blank=True, null=True)
