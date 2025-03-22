@@ -57,6 +57,18 @@
 
             const calculator = document.querySelector('.div-calculator');
 
+            // Load cached position and visibility state if available
+            const cachedState = JSON.parse(localStorage.getItem('calculatorState'));
+            if (cachedState) {
+                  calculator.style.left = cachedState.left;
+                  calculator.style.top = cachedState.top;
+                  if (cachedState.isHidden) {
+                        calculator.classList.add('d-none');
+                  } else {
+                        calculator.classList.remove('d-none');
+                  }
+            }
+
             calculator.addEventListener('mousedown', function(e) {
                   isDragging = true;
                   startX = e.clientX;
@@ -70,8 +82,17 @@
                   if (isDragging) {
                         const dx = e.clientX - startX;
                         const dy = e.clientY - startY;
-                        calculator.style.left = initialX + dx + 'px';
-                        calculator.style.top = initialY + dy + 'px';
+                        const newLeft = initialX + dx + 'px';
+                        const newTop = initialY + dy + 'px';
+                        calculator.style.left = newLeft;
+                        calculator.style.top = newTop;
+
+                        // Cache the new position
+                        localStorage.setItem('calculatorState', JSON.stringify({
+                              left: newLeft,
+                              top: newTop,
+                              isHidden: calculator.classList.contains('d-none')
+                        }));
                   }
             });
 
@@ -86,5 +107,15 @@
                         calculator.style.cursor = 'grab';
                   }
             });
+
+            // Cache visibility state when toggling
+            window.OpenCalculator = function() {
+                  calculator.classList.toggle('d-none');
+                  localStorage.setItem('calculatorState', JSON.stringify({
+                        left: calculator.style.left,
+                        top: calculator.style.top,
+                        isHidden: calculator.classList.contains('d-none')
+                  }));
+            };
       });
 </script>
