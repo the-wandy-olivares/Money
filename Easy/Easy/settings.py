@@ -21,6 +21,7 @@ INSTALLED_APPS = [
         'App.apps.AppConfig', # App principal
         'Login.apps.LoginConfig', # App de login
         'Inversion.apps.InversionConfig', # App de inversion
+        'Asistente.apps.AsistenteConfig', # App de asistente
 
     # Django apps
         'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',

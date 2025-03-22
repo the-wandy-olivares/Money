@@ -18,6 +18,7 @@ urlpatterns = [
                 path('perfil/', include('Perfil.urls')), # Perfil
                         path('login', include('Login.urls')), # Login
                 path('inversion/', include('Inversion.urls')), # Inversion
+        path('asistente/', include('Asistente.urls')), # Asistente
         path('admin/', admin.site.urls), # Aministracion
 ]
 

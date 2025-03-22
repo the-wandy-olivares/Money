@@ -169,6 +169,15 @@
                   <!-- </a> -->
             </button>
 
+            <button class="btn-asistente" onclick="window.location.href = '{% url 'asistente:asistente' %}'">
+                  <img src="{% static "icons/star.png" %}" width='24' alt="">
+                  <!-- <a href="{% url 'caja:caja' %}"> -->
+                        <span>
+                              Asistente
+                        </span>
+                  <!-- </a> -->
+            </button>
+
             <button class="btn-calculator">
                   <img class='img-calculator' onclick="OpenCalculator()" src="{% static "icons/calculator.png" %}" width='24' alt="">
                   <a href="{% url 'calculator:calculator' %}">
