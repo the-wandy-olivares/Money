@@ -1,8 +1,11 @@
 from django.db import models
 from Client.models import Client  
+from Company.models import Company
 from .mixing import Opciones
 
 class Credit(models.Model):
+      # Compañia asociada al credito
+            company = models.ForeignKey(Company, related_name='Compañia', on_delete=models.CASCADE, verbose_name='Compañia asociada al credito', blank=True, null=True, default=None)
       # Cliente asociado al credito
             client = models.ForeignKey(Client, related_name='Cliente', on_delete=models.CASCADE,  verbose_name='Credito de un cliente')
       
@@ -20,6 +23,7 @@ class Credit(models.Model):
       # Estado
             payment = models.BooleanField(default=False) # Estado de pago
             last_pay = models.DateField(auto_now=True) # Ultimo pago
+            is_active = models.BooleanField(default=True) # Estado del credito
 
             def __str__(self):
                   return f'{self.client} - {self.capital} - {self.cuotas} - {self.intereses} - {self.frecuencia} - {self.metodo} - {self.start_date}'

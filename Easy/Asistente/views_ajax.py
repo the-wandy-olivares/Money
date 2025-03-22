@@ -5,64 +5,46 @@ from datetime import datetime
 from . import models
 from django.db.models import Q
 from Caja.models import  Movements
+from Company.models import Company
+from Client.models import Client
+from Credit.models import Credit, Cuotas
 
 
+def CleanQuestion(question, request):
 
-def CleanQuestion(question):
-      if 'vent'  in question.lower():
-            sale = Sale.objects.all().order_by('-id')[:50]
-            sales_data = []
-            for s in sale:
-                  sales_data.append({
-                        'name_plan': s.name_plan if s.name_plan else 'N/A',
-                        'payment': s.payment if 'Si' else 'No',
-                        'name_client': s.name_client if s.name_client else 'N/A',
-                        'email_client': s.email_client if s.email_client else 'N/A',
-                        'phone_client': s.phone_client if s.phone_client else 'N/A',
-                        'dia_de_la_cita': s.date_choice,
-                        'venta_registrada': s.date,
-                        'monto_faltante': f"{s.debit_mount:,}",
-                        'monto_pagado': f"{s.mount:,}",
+      if any(word in question.lower() for word in ['client', 'cedula', 'numero']):
+            clientes = Client.objects.filter(company=request.user.more.company).order_by('-id')[:50]
+            client_data = []
+            for cliente in clientes:
+                  client_data.append({
+                        'name': cliente.name if cliente.name else 'N/A',
+                        'last_name': cliente.last_name,
+                        'cedula': cliente.dni ,
+                        'numero': cliente.phone,
+                        'correo': cliente.email,
                   })
-            return f'{sales_data}'
+            return f'{client_data}'
       
-      elif 'cita'  in question.lower():
-            citas = Sale.objects.filter(is_reserve=True, finalize=False).order_by('-id')[:50]
-            citas_data = []
-            for s in citas:
-                  citas_data.append({
-                        'name_plan': s.name_plan if s.name_plan else 'N/A',
-                        'payment': s.payment if 'Si' else 'No',
-                        'name_client': s.name_client if s.name_client else 'N/A',
-                        'email_client': s.email_client if s.email_client else 'N/A',
-                        'phone_client': s.phone_client if s.phone_client else 'N/A',
-                        'fecha_de_la_cita': s.date_choice,
-                        'hora_de_la_cita': s.time,
-                        'monto_faltante': f"{s.debit_mount:,}",
-                        'monto_pagado': f"{s.mount:,}",
+      elif any(word in question.lower() for word in ['prestam', 'credit', 'cuota']):
+            creditos = Credit.objects.filter(is_active=True,
+            company=request.user.more.company).order_by('-id')[:50]
+            creditos_data = []
+            for s in creditos:
+                  creditos_data.append({
+                              'nombre_de_cliente': s.client.name if s.client.name else 'N/A',
+                              'apellido_de_cliente': s.client.last_name if s.client.last_name else 'N/A',
+                              'cedula_de_cliente': s.client.dni if s.client.dni else 'N/A',
+                              'payment': s.payment if 'Si' else 'No',
+                              'capital_prestado': s.capital,
+                              'cantidad_de_cuotas': s.cuotas,
+                              'intereses': s.intereses,
+                              'frecuencia_de_pago': s.frecuencia,
+                              'dia_de_pago': s.day_pay,
+                              'tipo_de_prestamo_o_metodo': s.metodo,
+                              'cuotas_pagadas': Cuotas.objects.filter(credit=s, payment=True).count(),
+                              'cuotas_sin_pagar': Cuotas.objects.filter(credit=s, payment=False).count()
                   })
-            return citas_data if citas_data else 'No hay citas pendientes'
-      
-      elif 'plan' in question.lower() :
-            plan_data = []
-            plan = Plan.objects.all().order_by('-id')[:30]
-            for p in plan:
-                  plan_data.append({
-                        'servicio_asociado': p.service.name if p.service and p.service.name else 'N/A',
-                        'name_plan': p.name if p.name else 'N/A',
-                        'price_plan': f"{p.price:,}",
-                        'caracteristicas': [c.name for c in p.caracteristicas.all()],
-                  })
-            return plan_data if plan_data else 'No encuentro ese plan en mi lista'
-      
-      elif 'serv' in question.lower() :
-            service_data = []
-            service = Service.objects.all().order_by('-id')[:25]
-            for s in service:
-                  service_data.append({
-                        'name': s.name if s.name else 'N/A',
-                  })
-            return service_data if service_data else 'No encuentro ese servicio en mi lista'
+            return creditos_data if creditos_data else 'No hay prestamos en mi lista'
 
       else:
             return 'Solo puedo responder preguntas sobre clientes, creditos, agendas, caja, inversiones, calculadora, ubicaciones, empresas'
@@ -82,7 +64,7 @@ def QuestionGemini(request):
                     Objetivo: Proporcionar información específica y actualizada sobre clientes, creditos, agendas, inversiones y otros aspectos relacionados con la gestión de la financiera.
                     Fecha actual: {datetime.now().strftime('%d/%m/%Y')}
                     Pregunta del usuario: {your_question}
-                    Información adicional: {CleanQuestion(your_question)}
+                    Información adicional: {CleanQuestion(your_question, request)}
                     """,)
             
             if your_question:
