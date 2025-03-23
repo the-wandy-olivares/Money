@@ -73,24 +73,24 @@
                       </svg> Editar 
             </button>  -->
             <div class="profile position-relative">
-                        <div class="cover-photo ">
+                        <div class="cover-photo " style="cursor: pointer;">
                               <img src="{{request.user.more.company.img_portada.url}}" alt="Cover Photo" 
                               class="img-portada">
                         </div>
                         <div class="profile-photo">
-                              <img src="{{request.user.more.company.logo.url}}" alt="Profile Photo"
+                              <img src="{{request.user.more.company.logo.url}}" alt="Profile Photo" style="cursor: pointer;"
                               class="img-logo bg-white bg-opacity-50 blur-50">
                         </div>
                   <div class="profile-info">
-                        <h5 class="p-0 m-0">  
+                        <h5 class="p-0 m-0 text-white">  
                               {{request.user.more.company.name}}      
                         </h5>
-                        <p class="text-black-50 p-0 m-0" style="font-size: 12px;">
+                        <p class="text-white-50 p-0 m-0" style="font-size: 12px;">
                               {{request.user.more.company.description}}    
                         </p>
                   </div>
                   <!-- Opciones -->
-                  <section class="section-opcions d-flex flex-wrap justify-content-start">
+                  <section class="section-opcions d-flex mt-3 overflow-auto justify-content-start">
                         <div class="w-100 text-start p-2 mt-5 ">
                               <strong class="text-black-50">
                                     ...

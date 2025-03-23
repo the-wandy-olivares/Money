@@ -3,6 +3,8 @@ from django.shortcuts import render
 from Client import models
 from Credit import models
 from django.shortcuts import redirect
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 
 
 class Dashboard(TemplateView):
@@ -19,3 +21,8 @@ class Dashboard(TemplateView):
             return redirect('login:login')
         context = self.get_context_data(**kwargs)
         return render(request, self.template_name, context)
+    
+
+def Logout(request):
+        logout(request)
+        return HttpResponseRedirect('/')

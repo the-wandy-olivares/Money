@@ -1,7 +1,10 @@
 <style>
       .options-config {
-            padding: 1rem;
-            width: 23rem; height: 13rem;
+            padding: 2rem;
+            min-width: 35rem; height: 16rem;
+            background-color: #191919;
+            color: rgba(240, 255, 255, 0.771);
+            border-radius: 2.5rem;
       }
       .options-config span {
             display: block;
@@ -20,6 +23,7 @@
       }
       .options-config h6 {
             text-align: start;
+            font-weight: bold; font-size: 20px;
             margin-top: 0.5rem;
       }
 
@@ -44,8 +48,10 @@
             background-color: rgb(125, 100, 236);
       }
       .options-config span input, #id_description {
-            max-height: 2rem !important;
-            background-color: rgb(249, 249, 249);
+            max-height: 2.9rem !important;
+            min-height: 2.9rem !important;
+            background-color: #202020 !important;
+            color: azure !important;
             border-radius: 1rem;
             border: 0px;
             font-size: 14px;
@@ -55,10 +61,10 @@
       }
 
 </style>
-<div class="bg-white options-config  m-2" 
-      style="  border-radius: 1.5rem;">
+<div class=" options-config  m-2" 
+      style="  ">
       <h6>
-            Apariencia
+            Apariencia del sistema
       </h6>
       <span>      
             Aspecto   
@@ -67,7 +73,7 @@
             <div class="form-check ms-2">
                   <input class="form-check-input" type="radio" checked name="flexRadioDefault" id="flexRadioDefault1">
                   <label class="form-check-label" for="flexRadioDefault1">
-                    Claro
+                        Media noche
                   </label>
                 </div>
                 <div class="form-check ms-2">
@@ -89,16 +95,22 @@
             </div>
       </div>
 </div>
-<div class="bg-white options-config  m-2" 
-      style="  border-radius: 1.5rem;">
+<div class=" options-config  m-2" 
+      style="  ">
       <h6>
-            Prestamos
+            Creditos
       </h6>
+      <div class="w-100 text-start">
+            <input type="checkbox" name="" id="modificar-interes" >
+            <label for="modificar-interes"> Solo el administrador puede modificar </label>
+      </div>
       <span class="d-flex">
+            
             <span style="margin-top: 1px;">Porcentaje de interes </span>
-            <select name="" id="" disabled="false" class="form-select p-0  ms-2 bg-transparent border-1 ps-2 " style="
+            <select name="" id="form-select-interes"  class="form-select text-white border-0 p-0  ms-2 bg-transparent border-1 ps-2 " style="
                   min-width: 5rem;
                   max-width: max-content !important;">
+                  <option value="{{object.interes}}">{{object.interes}}%</option>
                     <option value="1">1%</option>
                     <option value="2">2%</option>
                     <option value="3">3%</option>
@@ -142,8 +154,8 @@
             </select>
       </span>
 </div>
-<div class="bg-white options-config  m-2" 
-      style="  border-radius: 1.5rem;">
+<div class=" options-config  m-2" 
+      style="  ">
       <h6>
             Datos de la empresa
       </h6>
@@ -160,26 +172,38 @@
                   {{ form.rnc }}
                   {{ form.phone }}
             </span>
-            <span class="d-flex">
+            <span class="d-flex d-none">
+                  {{form.interes}}
             </span>
             <span class="d-flex">
                   {{ form.description }}
             </span>
       </form>
 </div>
-<div class="mt-4 w-100  btn-update d-none d-flex flex-wrap justify-content-center position-sticky bottom-0 mb-3 end-0" >
-      <h6 class="w-100">
+<div class="mt-4 w-100  text-white btn-update d-none d-flex flex-wrap justify-content-center position-fixed bottom-0 mb-0 pb-5 pt-5 end-0 blur-20 p-2" >
+      <h6 class="w-100 text-white">
             Hubieron cambios en la configuración
       </h6>
-      <p class="w-100">
-            Para guardar los cambios, actualiza la configuración. De lo contrario, se perderán.
+      <p class="w-100 text-white-50">
+            Estos cambios se aplicaran a la configuración global de la empresa, los empleados y clientes veran estos cambios.
       </p>
 
-      <button class="btn text-black btn-cancelar-actualizacion">
+      <button class="btn text-danger btn-cancelar-actualizacion">
             Cancelar
       </button>
-      <button class="btn bg-primary    btn-update btn-actualizar  text-white  ms-3 rounded-5"
+      <button class="btn bg-white bg-opacity-10    btn-update btn-actualizar  text-white  ms-3 rounded-5"
             style="font-size: 14px;">
-            Actualizar
+            Aplicar cambios
       </button>
 </div>
+
+<script>
+      const selectInteres = document.querySelector('#form-select-interes');
+      const idInteres = document.querySelector('#id_interes');
+
+      selectInteres.addEventListener('change', function() {
+            idInteres.value = selectInteres.value;
+            const btnUpdate = document.querySelector(".btn-update")
+            btnUpdate.classList.remove('d-none')
+      });
+</script>
