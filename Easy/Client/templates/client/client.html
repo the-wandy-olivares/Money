@@ -48,7 +48,7 @@
                   /* margin-left: 1rem; */
             }
       </style>
-      <section class="">
+      <section class="w-100 vh-100">
             <div class="divs d-flex w-100 justify-content-end">
                   <a href="{% url 'client:client-create' %}" >
                         <div class="div">
@@ -92,7 +92,7 @@
                   </a>
             </div>
 
-            <div class="position-absolute bottom-0 w-100 mb-3 ">
+            <div class="position-sticky mb-5 bottom-0 w-100  d-flex align-content-end flex-wrap " style="height: 90vh;">
                   {% include "client/cp/grafico-wave.html" %}
             </div>
             
