@@ -1,0 +1,82 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load humanize %}
+      
+      <style>
+            .btn-nav .btn-inversion img
+            {
+                  box-shadow: #85abf1 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+            .section-create {
+                  display: flex; flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  height: 100vh;
+
+                  color: #d1cfcf ;
+            }
+            .section-create p {
+                  font-size: 12px;
+                  text-align: justify;
+            }
+            .section-create label {
+                  display: none !important;
+            }
+            .section-create input, .form-select, form-control, #id_description {
+                  width: 24rem;
+                  margin: 0.1rem; padding: 0.8rem;
+                  border-radius: 1rem;
+                  border: 1px solid rgb(0, 0, 0);
+                  background-color: #191919 !important;
+                  outline: none !important;
+                  color: #d1cfcf !important;
+            }
+            #id_description {
+                  height: 10rem;
+            }
+            .section-create input::placeholder {
+                  color: #d1cfcfce !important;
+            }
+            .section-create  .section-create {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100vh;
+            }
+            .div-create .d-flex {
+                  width: 52rem;
+                  padding: 1.5rem; 
+                  /* background-color: rgb(255, 255, 255); */
+                  
+            }
+            .div-create h6 {
+                  margin-top: 0.5rem; 
+            }
+      </style>
+      <section class="text-white section-create vh-100 pb-4  d-flex align-content-start flex-wrap">
+            <div class="w-100">
+                  <h6>
+                        Nueva inversion
+                  </h6>
+                  <p>
+                        Ingrese los datos de la nueva inversion, recuerde que estos datos son importantes para el control de la inversion.
+                  </p>
+            </div>
+            <form action="" method="post"  class="w-100">
+                  {% csrf_token %}
+                  <div class="d-flex flex-wrap  w-100">
+                        {{ form.mount_inversion }}
+                        {{ form.name }}
+                  </div>
+                  {{ form.description }}
+                  <div class="w-100 d-flex justify-content-end">
+                        <button class="btn bg-white bg-opacity-10 text-white mt-1"> 
+                              Guardar
+                        </button>
+                  </div>
+            </form>
+      </section>
+
+{% endblock  %}

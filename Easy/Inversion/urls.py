@@ -6,6 +6,7 @@ from . import views
 app_name = "inversion"
 urlpatterns = [
       path('', views.Inversion.as_view(), name='inversion'),
-
+            path('create/', views.InversionCreate.as_view(),
+                  name='inversion-create'),
 
 ]

@@ -16,35 +16,32 @@
                   <tr>
                         <th style='width: 2%; font-size: 10px;'>#</th>
                         <th style='width: 15%;'>Fecha </th>
-                        <th style='width: 15%;'>Cantidad</th>
-                        <th style='width: 20%;'> Se espera </th>
-                        <th class="description" style='width:50%;'>Detalles de inversion</th>
+                        <th style='width: 15%;'>Nombre</th>
+                        <th class="description" style='width:20%;'>Detalles de inversion</th>
+                        <th style='width: 20%;'> Invertido </th>
                         <th style='width: 10%;'>Retorno</th>
-                        <th class="tipo" style='width: 10%;'>.. </th>
+                        <th class="tipo" style='width: 10%;'>Disponible</th>
                   </tr>
             </thead>
             <tbody id="movimientos-table">
-                  {% if movimientos  %}
-                        {% for movimiento in movimientos %}
-                        <tr class="movimiento-row" data-tipo="{{ movimiento.tipo }}">
+                  {% if inversions  %}
+                        {% for movimiento in inversions %}
+                        <tr class="movimiento-row" data-tipo="{{ movimiento.id }}">
                               <td style="font-size: 10px;">  {{ forloop.counter }}</td>
                               <td>{{ movimiento.date|date:"d/m/Y" }}</td>
+                              <td> {{ movimiento.name }}</td>
                               <td class="description">{{ movimiento.description }}</td>
                               <td>
-                                    {% if movimiento.type == "ingreso" %}
-                                          <span class="text-success">
-                                                ${{ movimiento.mount|intcomma }}.00
-                                          </span>
-                                    {% endif %}
+                                    <span class="text-success">
+                                          ${{ movimiento.mount_inversion|intcomma }}.00
+                                    </span>
                               </td>
                               <td>
-                                    {% if movimiento.type == "gasto" %}
                                     <span class="text-danger">
-                                          ${{ movimiento.mount|intcomma }}.00
+                                          ${{ movimiento.mount_retorno|intcomma }}.00
                                     </span>
-                                    {% endif %}
                               </td>
-                              <td class='text-capitalize tipo'>{{ movimiento.type }}</td>
+                              <td class='text-capitalize tipo'>${{ movimiento.mount_disponible|intcomma }}.00</td>
                         </tr>
                         {% endfor %}
                   {% else %}

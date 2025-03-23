@@ -8,6 +8,8 @@ from .mixing import  Calculadora_Intereses, Calculadora_Moras
 from django.utils import timezone
 import json
 
+# Importar inversion
+from Inversion.models import Inversion
 
 class Credit(TemplateView):
     template_name = 'credit/credit.html'
@@ -15,20 +17,31 @@ class Credit(TemplateView):
 
 
 class CreditCreate(CreateView):
-    model = models.Credit
-    form_class = CreditForm
-    template_name = 'credit/credit-create.html'
+      model = models.Credit
+      form_class = CreditForm
+      template_name = 'credit/credit-create.html'
 
-    def form_valid(self, form):
-      form.instance.start_date =  timezone.now()
-      credit = form.save(commit=False)
-      Calculadora_Intereses(form.instance.capital, form.instance.
-      cuotas, form.instance.intereses, credit)
-      return super().form_valid(form)
+      def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            inversions = Inversion.objects.filter(is_active=True).last()
+            context['inversion_disponible'] =  inversions.mount_disponible 
+            return context
+      
 
-    def get_success_url(self):
-        return reverse_lazy('credit:credit-list')
-    
+      def form_valid(self, form):
+            form.instance.start_date =  timezone.now()
+            capital = form.instance.capital.replace(',', '')
+            inversions = Inversion.objects.filter(is_active=True).last()
+            inversions.mount_disponible -= int(capital)
+            inversions.save()
+            credit = form.save(commit=False)
+            Calculadora_Intereses(form.instance.capital, form.instance.
+            cuotas, form.instance.intereses, credit)
+            return super().form_valid(form)
+
+      def get_success_url(self):
+            return reverse_lazy('credit:credit-list')
+      
 
 
 class CreditUpdate(UpdateView):

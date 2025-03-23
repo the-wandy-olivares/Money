@@ -205,6 +205,23 @@
                   }
                  document.querySelector('.precio-cuota').textContent = cuotas.value + ' cuotas a : $'  + cuota.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
+
+
+      const inversion_disponibles = {{inversion_disponible}};
+
+      capital.addEventListener('input', function(e) {
+              let value = e.target.value;
+              value = value.replace(/,/g, '');
+              if (!isNaN(value) && value !== '') {
+                        value = parseInt(value);
+                        if (value > inversion_disponibles) {
+                                value = inversion_disponibles;
+                        }
+                        e.target.value = value.toLocaleString();
+              }
+      });
+
+
       });
 </script>
 {% endblock %}

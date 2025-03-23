@@ -1,3 +1,4 @@
+{% load humanize %}
 <style>
       .section-card div {
             width: 20rem; height: 6rem;
@@ -28,7 +29,7 @@
                    El total invertido
             </h6>
             <p>
-                  $ 1,000,000
+                  ${{total_inversion|intcomma}}.00
             </p>
       </div>
       <div>
@@ -36,15 +37,15 @@
                   Retorno recuperado
             </h6>
             <p>
-                  $ 500,000
+                  ${{retorno_inversion|intcomma}}.00
             </p>
       </div>
       <div>
             <h6>
-                  Porcentaje en perdida
+                  Inversion utilizada
             </h6>
             <p>
-                  4% Mensual  
+                  0
             </p>
       </div>
       <div>
