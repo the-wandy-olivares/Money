@@ -49,6 +49,11 @@
                         </svg>
             </button>
       {% include "calculator/cp/calculadora-intereses.html" %}
+      
+
+      <i class="bi bi-grid-3x3-gap position-absolute bottom-0 btn-move end-0 me-3 mb-2" style="font-size: 20px; color: rgba(255, 255, 255, 0.54) !important; 
+      cursor: grabbing;"></i>
+
 </div>
 <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -56,6 +61,7 @@
             let startX, startY, initialX, initialY;
 
             const calculator = document.querySelector('.div-calculator');
+            const moveButton = document.querySelector('.btn-move'); // Selector del botón de mover
 
             // Load cached position and visibility state if available
             const cachedState = JSON.parse(localStorage.getItem('calculatorState'));
@@ -69,13 +75,13 @@
                   }
             }
 
-            calculator.addEventListener('mousedown', function(e) {
+            moveButton.addEventListener('mousedown', function(e) { // Escucha el evento mousedown en el botón
                   isDragging = true;
                   startX = e.clientX;
                   startY = e.clientY;
                   initialX = calculator.offsetLeft;
                   initialY = calculator.offsetTop;
-                  calculator.style.cursor = 'grabbing';
+
             });
 
             document.addEventListener('mousemove', function(e) {
@@ -101,11 +107,19 @@
                   calculator.style.cursor = 'grab';
             });
 
-            document.addEventListener('keydown', function(e) {
-                  if (e.key === 'Escape' && isDragging) {
-                        isDragging = false;
-                        calculator.style.cursor = 'grab';
-                  }
+            // document.addEventListener('keydown', function(e) {
+            //       if (e.key === 'Escape' && isDragging) {
+            //             isDragging = false;
+            //             calculator.style.cursor = 'grab';
+            //       }
+            // });
+            moveButton.addEventListener('mouseup', function() { // Escucha el evento mouseup en el botón
+                  isDragging = false;
+                  calculator.style.cursor = 'grab';
+            });
+            moveButton.addEventListener('mouseleave', function() { // Escucha el evento mouseleave en el botón
+                  isDragging = false;
+                  calculator.style.cursor = 'grab';
             });
 
             // Cache visibility state when toggling
