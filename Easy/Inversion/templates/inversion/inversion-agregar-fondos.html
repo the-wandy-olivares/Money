@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load humanize %}
+      <style>
+            .btn-nav .btn-inversion img
+            {
+                  box-shadow: #85abf1 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+
+
+            .section-create {
+                  display: flex; flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 14px;
+                  height: 100vh;
+
+                  color: #d1cfcf ;
+            }
+            .section-create p {
+                  font-size: 12px;
+                  text-align: justify;
+            }
+            .section-create label {
+                  display: none !important;
+            }
+            .section-create input, .form-select, form-control, #id_description {
+                  width: 24rem;
+                  margin: 0.1rem; padding: 0.8rem;
+                  border-radius: 1rem;
+                  border: 1px solid rgb(0, 0, 0);
+                  background-color: #191919 !important;
+                  outline: none !important;
+                  color: #d1cfcf !important;
+            }
+            #id_description {
+                  height: 10rem;
+            }
+            .section-create input::placeholder {
+                  color: #d1cfcfce !important;
+            }
+            .section-create  .section-create {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100vh;
+            }
+            .div-create .d-flex {
+                  width: 52rem;
+                  padding: 1.5rem; 
+                  /* background-color: rgb(255, 255, 255); */
+                  
+            }
+            .div-create h6 {
+                  margin-top: 0.5rem; 
+            }
+      </style>
+      </style>
+      <section class=" section-create text-white vh-100 pb-4  d-flex align-content-start flex-wrap">
+            <form action="" method="post">
+                  {% csrf_token %}
+                  <input type="text" id="id_amount" name="mount" placeholder="Monto" class="form-control">
+                  <button>
+                        Agregar Fondos
+                  </button>
+            </form>
+      </section>
+      <script>
+            const inputField = document.getElementById('id_amount');
+            inputField.addEventListener('input', function(event) {
+                  let value = event.target.value.replace(/[^0-9]/g, '');
+
+                  value = value.replace(/\D/g, "")
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+                  event.target.value = value;
+            });
+      </script>
+{% endblock  %}
