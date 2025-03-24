@@ -18,8 +18,9 @@
                         <th style='width: 15%;'>Fecha </th>
                         <th style='width: 15%;'>Nombre</th>
                         <th class="description" style='width:20%;'>Detalles de inversion</th>
-                        <th style='width: 20%;'> Invertido </th>
+                        <th style='width: 10%;'> Invertido </th>
                         <th style='width: 10%;'>Retorno</th>
+                        <th class="tipo" style='width: 10%;'>Prestado</th>
                         <th class="tipo" style='width: 10%;'>Disponible</th>
                   </tr>
             </thead>
@@ -39,6 +40,11 @@
                               <td>
                                     <span class="text-danger">
                                           ${{ movimiento.mount_retorno|intcomma }}.00
+                                    </span>
+                              </td>
+                              <td>
+                                    <span class="">
+                                          ${{ movimiento.mount_prestado|intcomma }}.00
                                     </span>
                               </td>
                               <td class='text-capitalize tipo'>${{ movimiento.mount_disponible|intcomma }}.00</td>

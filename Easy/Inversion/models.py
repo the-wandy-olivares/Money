@@ -14,6 +14,8 @@ class Inversion(models.Model):
 
       # Inversion disponible
       mount_disponible = models.IntegerField(default=0, blank=True, null=True)
+      # Monto prestado
+      mount_prestado = models.IntegerField(default=0, blank=True, null=True)
 
       date = models.DateField(auto_now_add=True)
       created = models.DateTimeField(auto_now_add=True)

@@ -33,6 +33,7 @@ class CreditCreate(CreateView):
             capital = form.instance.capital.replace(',', '')
             inversions = Inversion.objects.filter(is_active=True).last()
             inversions.mount_disponible -= int(capital)
+            inversions.mount_prestado = inversions.mount_inversion - inversions.mount_disponible # Siempre acrualizamos el monto prestado
             inversions.save()
             credit = form.save(commit=False)
             Calculadora_Intereses(form.instance.capital, form.instance.
