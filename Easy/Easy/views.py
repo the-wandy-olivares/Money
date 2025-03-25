@@ -6,12 +6,15 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 
+from Inversion.models import Inversion
 
 class Dashboard(TemplateView):
     template_name = "dashboard/dashboard.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        inversions = Inversion.objects.filter(is_active=True).order_by('-pk').first()
+        context['inversions'] = inversions
         context['cont_clients'] = models.Client.objects.all().count()
         context['count_credits'] = models.Credit.objects.all().count()
         return context

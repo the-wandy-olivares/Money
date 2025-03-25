@@ -191,7 +191,7 @@
                     <h6 class="card-title " style="
                         font-weight: bold;">Total invertido</h6>
                     <p class="card-text ">
-                         ${{total_inversion|intcomma}}0.00  
+                         ${{inversions.mount_inversion|intcomma}}0.00  
                         </p>
                 </div>
             </div>
@@ -222,7 +222,9 @@
             <div class="card text-white ganancias mb-3 p-3 rounded-5 ">
                 <div class="card-body">
                     <h6 class="card-title" style="font-weight: bold;" >  Ganancias</h6>
-                    <p class="card-text "> $450,043.03 </p>
+                    <p class="card-text "> 
+                        ${{inversions.mount_retorno|intcomma}}.00 
+                    </p>
                 </div>
             </div>
         </div>

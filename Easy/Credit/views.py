@@ -79,7 +79,6 @@ class CreditDetail(DetailView):
       def post(self, request, *args, **kwargs):
             self.object = self.get_object()
             lista_cuotas = request.POST.get('lista_cuotas')
-
             cleaned_pay = request.POST.get('payment').replace(',', '')
             payment = int(cleaned_pay)
 
