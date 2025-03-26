@@ -1,17 +1,21 @@
 <div class="position-relative  z-2"> 
       <div class="d-flex justify-content-center  overflow-hidden align-content-center flex-wrap" style="background-color: #83121200 ;
-       height: 6.8rem; 
+       height: 7.8rem; 
       border-radius: 1.7rem;" >
               {% include "cp/portada.html" %}
-              <span class="  d-flex flex-wrap  align-content-center position-absolute  justify-content-center top-0  z-2 card border-0 p-1 bg-transparent rounded-1" 
-              style=" margin-top: 4rem; background-color: transparent !important;">
+              <span class="  d-flex flex-wrap  align-content-center position-absolute  justify-content-center top-0 z-2 card border-0 p-1 bg-transparent rounded-1" 
+              style=" margin-top: 1rem; background-color: transparent !important;">
               <div class="w-100 d-flex justify-content-center  mb-2">
-                    <img src="{{request.user.more.company.logo.url}}"    class="  object-fit-cover rounded-circle " style="border: 1px; width: 60px; height: 60px; border: 4px solid white; " alt="">
+                  <div class="blur-50 rounded-circle d-flex justify-content-center flex-wrap align-content-center p-2" 
+                        style="height: 5rem; width: 5rem;  
+                        margin-top: 40px; ">
+                              <img src="{{request.user.more.company.logo.url}}"    class="  object-fit-cover rounded-circle w-100 h-100" >
+                  </div>
               </div>
               <h6 style="font-size: 14px; margin-top: 7rem; font-weight: normal;" class="text-white text-center w-100 p-0 m-0 blur-5">
                     {{request.user.more.company.name}} 
               </h6>
-              <p class="text-white-50 p-0 m-0" style="font-size: 12px;">
+              <p class="text-white-50 p-0 m-0 text-center" style="font-size: 12px;">
                     {{request.user.more.company.description}}    
               </p>
             </span>
