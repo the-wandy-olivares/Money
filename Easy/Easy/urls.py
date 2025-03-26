@@ -20,7 +20,8 @@ urlpatterns = [
                                 path('inversion/', include('Inversion.urls')), # Inversion
                                          path('asistente/', include('Asistente.urls')), # Asistente
                                 path('admin/', admin.site.urls), # Aministracion
-                                path('logout/', Logout, name='logout'), # Logout
+                        path('logout/', Logout, name='logout'), # Logout
+                path('published/', include('Published.urls')), # Publicaciones
 
 ]
 

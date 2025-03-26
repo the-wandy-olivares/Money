@@ -1,0 +1,21 @@
+<style>
+      .nav a {
+            padding: 0.5rem 2rem;  margin: 0.2rem;
+            background-color: rgba(255, 255, 255, 0.46);
+            width: max-content;
+            text-align: center;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            border-radius: 2rem;
+            font-weight: bold;
+            z-index: 100;
+      }
+</style>
+<nav style="display: flex; justify-content: flex-end; padding: 10px;"
+      class="position-fixed nav d-flex  bottom-0 w-100 blur-50 z-2 ">
+      <div class="w-100 d-flex justify-content-center p-1">
+            <a class="" href="#planes" >Planes</a>
+            <a class="" href="{% url 'login:login' %}" >Ingresar</a>
+            <a class="" href="#soporte" >Galeria</a>
+      </div>
+  </nav>

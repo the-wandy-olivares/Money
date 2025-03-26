@@ -8,7 +8,7 @@
                   padding: 20px;
                   color: azure;
                   border-radius: 30px;
-                  background-color: #191919;
+                  /* background-color: #191919; */
             }
 
             .profile-header {
@@ -46,17 +46,17 @@
       </style>
       <section class="justify-content-center align-content-start d-flex flex-wrap vh-100">
 
-            <div class="instagram-profile position-relative d-flex  w-100 flex-wrap mt-1" style="">
+            <div class="instagram-profile position-relative d-flex vh-100 align-content-center flex-wrap w-100 flex-wrap mt-1" style="">
                   <div class="profile-header mt-3 d-flex justify-content-center flex-wrap  w-100" >
                         <img src="{{request.user.more.img.url}}" alt="Profile Picture" 
-                              style="width: 120px; height: 120px; border-radius: 50%; ">
+                              style="width: 150px; height: 150px; border-radius: 50%; ">
                         <div class="text-center w-100 mt-2">
                               <h2 class="username"> {{request.user.first_name}} {{request.user.last_name}} </h2>
                               <p class="bio text-capitalize">
                                     {{request.user.more.role}}
                               </p>
                         </div>
-                        <div class="mt-3">
+                        <div class="mt-3 position-fixed bottom-0 end-0 mb-4 me-4">
                               <a href="{% url 'logout' %}"
                               class="text-white-50 p-2 rounded-4  ps-3 pe-3"  
                               style="background-color: #202020;">

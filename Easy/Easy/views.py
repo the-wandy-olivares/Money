@@ -21,7 +21,7 @@ class Dashboard(TemplateView):
     
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login:login')
+            return redirect('published:published')
         context = self.get_context_data(**kwargs)
         return render(request, self.template_name, context)
     
