@@ -1,10 +1,10 @@
-# 🏦 Easy Loan Management System  
+#  Easy Loan Management System  
 
 **Easy Loan Management System** es un software de gestión de préstamos basado en **Django** diseñado para automatizar y simplificar la administración de clientes, créditos, pagos y más. El sistema incluye funciones avanzadas como un asistente de IA, integración con mapas, gestión de agendas y herramientas de análisis financiero.  
 
 ---
 
-## 🚀 **Características Principales**
+##  **Características Principales**
 ### 🔹 **Gestión de Clientes**
 - Registro y administración de clientes.  
 - Almacenamiento de datos personales (nombre, cédula, dirección, teléfono, etc.).  
@@ -35,7 +35,7 @@
 
 ---
 
-## 🏗️ **Tecnologías Utilizadas**
+##  **Tecnologías Utilizadas**
 | Tecnología | Descripción |
 |------------|-------------|
 | **Django** | Framework backend en Python para manejar la lógica del negocio. |
