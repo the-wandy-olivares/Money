@@ -22,6 +22,7 @@ urlpatterns = [
                                 path('admin/', admin.site.urls), # Aministracion
                         path('logout/', Logout, name='logout'), # Logout
                 path('published/', include('Published.urls')), # Publicaciones
+        path('membreship/', include('Membreship.urls')), # Membresias, planes y mas
 
 ]
 
