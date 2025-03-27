@@ -64,12 +64,16 @@
                         </span>
                   </div>
                  <div class="d-flex overflow-auto w-100   overflow-scroll "
-                 style="transition: 2s;" 
-                 >
+                 style="transition: 2s;" >
                   {% include "published/cp/ads.html" %}
                   {% include "published/cp/planes.html" %}
                  </div>
-           </div>
+            </div>
+            <div class="vh-100 w-100 bg-white"
+            style="    
+                  background: radial-gradient(125% 115% at 50% 10%, #ffe6be8e 40%, #fff 100%);">
+                   {% include "published/cp/modulos.html" %}
+            </div>
       </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
@@ -78,6 +82,13 @@
             background-color: #101010 !important;
             color: white !important;
       }
+
+      .background {
+            background: white;
+            background:
+            radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(255, 230, 190) 100%);
+      }
+
   </style>
   <script>
       document.addEventListener('scroll', () => {
