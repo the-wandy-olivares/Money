@@ -1,71 +1,348 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 <style>
-      .planes .card {
-            margin: 0.4rem;
+      .plans .card-plan {
+            min-width: 22rem; height: 36.5rem;
+            border: 1px rgb(203, 203, 203) solid;
+            margin: 0.4rem; padding: 2rem;
             border-radius: 2rem;
-            overflow: hidden;
-            /* width: 100% !important; */
-            min-width: 340px !important;
-            background-color: rgba(255, 255, 255, 0.49) !important;
+            background-color: rgba(255, 255, 255, 0.892);
+
+            ;
       }
-      .planes .card .btn-primary {
-            border-radius: 2rem;
-             width: 100%;
-            background-color: black;
-            color: wheat;
+      .plans .card-plan button {
+            box-shadow: 0px 1px 20px 4px #dddddd;
+            transition: 1s;
+            font-weight: bold;
+            width: 10rem;
       }
-      .planes .card .card-title {
-            font-size: 25px;
+      .plans .card-plan button:hover {
+            box-shadow: 0px 1px 20px 4px #dddddd;
+            transform: scale(1.1);
+      }
+      .plans .card-plan h6 {
+            font-size: 35px;
             font-weight: bold;
       }
-      .planes .card .card-text {
-            font-size: 14px;
+      .plans .card-plan .detail {
+            font-size: 12px;
+            color: grey;
+            margin-top: 0.9rem;
       }
+      .plans .card-plan .div-check  {
+            color: #000000 ;
+            font-size: 16px; font-weight: 400;
+            display: flex; flex-wrap: wrap; align-content: start;
+            height: 27rem;
+            overflow: scroll;
+      }
+
+      .plans .card-plan .div-check span {
+            width: 100%;
+            /* background-color: #f4f4f4; */
+            /* margin: 0.1rem 0.2rem; */
+             padding: 0.1rem;
+            border-radius: 2rem;
+      }
+      .plans .card-plan .div-check .tach span {
+            text-decoration: line-through;
+            color: rgb(170, 170, 170); 
+            font-weight: 100;
+
+      }
+      .plans .card-plan .div-check .tach span .bi {
+            display: none !important;
+
+      }
+
 </style>
-<section class="planes d-flex overflow-auto">
-      <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" >
-            <div class="card-body">
-              <h5 class="card-title"> $0.00 </h5>
-              <strong style="font-size: 12px;">
-                  Totalmente gratis</strong> 
-              <p class="card-text">
-                  Excelente para para personas que necesiten realizar un calculo de intereses y aministrar clientes.
-            </p>
+
+<section class="plans d-flex overflow-auto p-3 pt-5 pb-5">
+
+      <div class="card-plan">
+            <strong style="  background: linear-gradient(90deg, #1D3557, #457B9D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+                  Plan de entrada 
+            </strong>
+            <h6 style="  background: linear-gradient(90deg, #1D3557, #457B9D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+                  Gratis
+                  <span style="font-size: 12px;" class="text-black-50">/mes</span>
+            </h6>
+            <span class="detail"> 
+                  Emprende ahora mismo!
+            </span>
+            <div class="div-check ">
+                  <span>
+                       <i class="bi bi-check"></i> 
+                        Calculos y clientes
+                  </span>
+
+                  <div class="tach d-flex flex-wrap">
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Asesoría financiera básica
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Herramientas de presupuesto
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              1 cuenta de inversión
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Reportes en PDF y Excel
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Contratos digitales
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Mensajeros (minimo de DO$100) 
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Creación de eventos 
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Ubicación de clientes en un mapa
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Notificaciones avanzadas y alertas 
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Buro de credito 
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Dominio propio 
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Asistencia personalizada
+                        </span>
+                        <span>
+                             <i class="bi bi-check"></i> 
+                              Avances de creditos de hasta $5,000 dolares
+                        </span>
+                  </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" >
-            <div class="card-body">
-              <h5 class="card-title"> $40.23</h5>
-              <strong style="font-size: 12px;">
-                  Pruebalo por 3 dias totalmente gratis</strong> 
-              <p class="card-text">
-                  Capacidades tales como administrar entradas de dinero, creditos, geolocaliza a tus clientes, notificaciones autonomas y mas.
-            </p>
+            <div class="d-flex w-100 justify-content-center">
+                  <button class="border-0  text-white p-2 rounded-5"
+                  style="background: linear-gradient(90deg, #1D3557, #457B9D);
+                 ">
+                        Gratis
+                  </button>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" >
-            <div class="card-body">
-              <h5 class="card-title"> $120.42 </h5>
-              <strong style="font-size: 12px;">
-                  Pruebalo por 3 dias totalmente gratis</strong> 
-                  <p class="card-text">
-                        Recomendado, todas las funciones disponibles, integracion total con  inteligencia artificial
-                  </p>
+      </div>
+
+      <div class="card-plan">
+            <strong style="background: linear-gradient(90deg, #4F4F4F, #2C2C2C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+                  Plan Básico
+            </strong>
+            <h6 style="background: linear-gradient(90deg, #4F4F4F, #2C2C2C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+                  $44.00<span style="font-size: 12px;" class="text-black-50">/mes</span>
+            </h6>
+            <span class="detail"> 
+                  Ideal para unitarios
+            </span>
+            <div class="div-check ">
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Calculos y clientes
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Asesoría financiera básica
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Herramientas de presupuesto
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        1 cuenta de inversión
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Reportes en PDF y Excel
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Contratos digitales
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Mensajeros (minimo de DO$100) 
+                  </span>
+                  <div class="tach d-flex flex-wrap">
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Creación de eventos 
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Ubicación de clientes en un mapa
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Notificaciones avanzadas y alertas 
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Buro de credito 
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Dominio propio 
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Asistencia personalizada
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Avances de creditos de hasta $5,000 dolares
+                        </span>
+                  </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" >
-            <div class="card-body">
-              <h5 class="card-title"> $309.00 </h5>
-              <strong style="font-size: 12px;">
-                  Emprendedores, pequeñas y mediana empresas</strong> 
-                  <p class="card-text">
-                       Copias de seguridad, asistencia personales, gestion de finanzas, garantias de creditos desde $1,000.00 hasta $6,000.00 dolares a plazos comodos 
-                  </p>
+            <div class="d-flex w-100 justify-content-center">
+                  <button class="border-0  text-white p-2 rounded-5"
+                  style="background: linear-gradient(90deg, #4F4F4F, #2C2C2C);
+                 ">
+                        Gratis por 3 dias
+                  </button>
             </div>
-          </div>
+      </div>
+
+
+      <div class="card-plan">
+            <i class="bi bi-stars" style="color: #fc00ff;"></i>
+            <strong style="background: linear-gradient(90deg, #fc00ff, #00dbde);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+            Plan premium
+            </strong>
+            <h6  style="background: linear-gradient(90deg, #fc00ff, #00dbde);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;">
+                  $120.00<span style="font-size: 12px;" class="text-black-50">/mes</span>
+            </h6>
+            <span class="detail"> 
+                  Recomendable para +20 clientes
+            </span>
+            <div class="div-check ">
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Calculos y clientes
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Asesoría financiera básica
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Herramientas de presupuesto
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        1 cuenta de inversión
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Reportes en PDF y Excel
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Contratos digitales
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Mensajeros (minimo de DO$100) 
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Creación de eventos 
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Ubicación de clientes en un mapa
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Notificaciones avanzadas y alertas 
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Buro de credito 
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Dominio propio 
+                  </span>
+
+                  <div class="tach d-flex flex-wrap">
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Asistencia personalizada
+                        </span>
+                        <span>
+                              <i class="bi bi-check"></i> 
+                              Avances de creditos de hasta $5,000 dolares
+                        </span>
+                  </div>
+            </div>
+            <div class="d-flex w-100 justify-content-center">
+                  <button class="border-0  text-white p-2 rounded-5"
+                  style="background: linear-gradient(90deg, #fc00ff, #00dbde);
+                 ">
+                        Gratis por 3 dias
+                  </button>
+            </div>
+      </div>
+
+
+      <div class="card-plan">
+            <strong>
+                  Empresarial
+            </strong>
+            <h6>
+                  $320.00<span style="font-size: 12px;" class="text-black-50">/mes</span>
+            </h6>
+            <span class="detail"> 
+                  Para empresas
+            </span>
+            <div class="div-check ">
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Asistencia personalizada
+                  </span>
+                  <span>
+                        <i class="bi bi-check"></i> 
+                        Avances de creditos de hasta $5,000 dolares
+                  </span>
+            </div>
+            <div class="d-flex w-100 justify-content-center">
+                  <button class="border-0  bg-black text-white p-2 rounded-5"
+                  style="
+                 ">
+                        Por contrato
+                  </button>
+            </div>
+      </div>
+
+
 </section>
 <style>
       .background {

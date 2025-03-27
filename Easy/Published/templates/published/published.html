@@ -52,7 +52,7 @@
                   {% include "published/cp/welcome.html" %}
            </div>
            <div class="vh-100 d-flex flex-wrap align-content-start pt-5 justify-content-center background w-100">
-                  <div class="w-100 text-center mb-5">
+                  <div  data-aos="fade-up" style="transition: 1s;" class="w-100 text-center mb-5">
                         <h2 style="font-weight: bold;" class="mb-2">
                               Planes para todo tipo de necesidades
                         </h2>
@@ -60,7 +60,9 @@
                               Financieras, prestamistas y asociados
                         </span>
                   </div>
-                 <div class="d-flex overflow-auto w-100">
+                 <div class="d-flex overflow-auto w-100"
+                 style="transition: 2s;" 
+                 data-aos="fade-left">
                   {% include "published/cp/ads.html" %}
                   {% include "published/cp/planes.html" %}
                  </div>
