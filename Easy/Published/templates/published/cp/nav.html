@@ -1,23 +1,47 @@
 <style>
       .nav a {
-            padding: 0.5rem 2rem;  margin: 0.2rem;
+            padding: 0.8rem 2rem;  margin: 0.1rem;
+
+            /* background-color: #787878; */
             background-color: rgba(255, 255, 255, 0.46);
             width: max-content;
             text-align: center;
             text-decoration: none;
-            color: rgb(0, 0, 0);
-            border-radius: 2rem;
+            color: rgb(72, 72, 72);
+            border-radius: 2rem; 
             font-weight: bold;
             z-index: 100;
       }
+      .nav {
+            opacity: 0;
+            transform: translateY(-140px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+
+.nav.show {
+      opacity: 1;
+      transform: translateY(0);
+}
+      .btn-select {
+            background-color: #000000da !important;
+            color: white !important;
+      }
 </style>
-<nav style="display: flex; justify-content: flex-end; padding: 10px;"
+<nav  style="display: flex; justify-content: flex-end; padding: 10px;"
       class="position-fixed nav d-flex  bottom-0 w-100 z-2 ">
       <div class="w-100 d-flex justify-content-center  ">
-           <span class=" p-3 rounded-5 blur-50">
+           <span class=" p-3 ps-1 pe-1 rounded-5 blur-50 bg-black bg-opacity-10">
             <a class="btn-d btn-plans"   href="#planes" >Planes y servicios</a>
             <a class="" href="{% url 'login:login' %}" >Ingresar</a>
 
            </span>
       </div>
   </nav>
+  <script>
+      document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.querySelector('.nav');
+            setTimeout(() => {
+                  nav.classList.add('show');
+            }, 1000); // Retraso opcional para que la animación sea más natural
+      });
+</script>
