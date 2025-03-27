@@ -43,24 +43,27 @@
             .btn-sip {
                   display: none !important;
             }
+            .ads {
+                  display: none !important; 
+            }
       }
   </style>
   <body>
-      <section   class="d-flex justify-content-center flex-wrap  vh-100  " style="background-color: #ffffff;">
+      <section   class="d-flex justify-content-center flex-wrap  overflow-hidden  " style="background-color: #ffffff;">
             {% include "published/cp/nav.html" %}
             <div data-aos="fade-up" class="w-100  vh-100 d-flex align-content-center justify-content-center flex-wrap  " style="transition: 2s;">
                   {% include "published/cp/welcome.html" %}
            </div>
-           <div class="vh-100 d-flex flex-wrap align-content-start pt-5 justify-content-center background w-100">
-                  <div  data-aos="fade-up" style="transition: 1s;" class="w-100 text-center mb-5">
-                        <h2 style="font-weight: bold;" class="mb-2">
+           <div class="vh-100 d-flex flex-wrap align-content-start pt-5 justify-content-center background w-100 ">
+                  <div  data-aos="fade-up" style="transition: 1s;" class="w-100 text-center ">
+                        <h2 style="font-weight: bold; line-height: 24px;" class="mb-2">
                               Planes para todo tipo de necesidades
                         </h2>
                         <span class="text-black-50 p">
                               Financieras, prestamistas y asociados
                         </span>
                   </div>
-                 <div class="d-flex overflow-auto w-100"
+                 <div class="d-flex overflow-auto w-100   overflow-scroll "
                  style="transition: 2s;" 
                  data-aos="fade-left">
                   {% include "published/cp/ads.html" %}
