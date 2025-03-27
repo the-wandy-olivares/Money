@@ -31,9 +31,8 @@
       class="position-fixed nav d-flex  bottom-0 w-100 z-2 ">
       <div class="w-100 d-flex justify-content-center  ">
            <span class=" p-3 ps-1 pe-1 rounded-5 blur-50 bg-black bg-opacity-10">
-            <a class="btn-d btn-plans"   href="#planes" >Planes y servicios</a>
-            <a class="" href="{% url 'login:login' %}" >Ingresar</a>
-
+                  <a class="btn-d btn-plans"   href="#planes" >Planes y servicios</a>
+                  <a class="" href="{% url 'login:login' %}" >Ingresar</a>
            </span>
       </div>
   </nav>
@@ -42,6 +41,6 @@
             const nav = document.querySelector('.nav');
             setTimeout(() => {
                   nav.classList.add('show');
-            }, 1000); // Retraso opcional para que la animación sea más natural
+            }, 600); // Retraso opcional para que la animación sea más natural
       });
 </script>
