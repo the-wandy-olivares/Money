@@ -3,6 +3,9 @@
       <head>
             <meta charset="utf-8">
             <meta name="theme-color" content="#101010">
+            {% if request.user.is_authenticated and request.user.more.company.logo %}
+                  <link rel="icon" href="{{ request.user.more.company.logo.url }}" type="image/x-icon" >
+            {% endif %}
             <!-- <meta name="theme-color" content="{{request.user.more.company.configuration.color_enfasis}}"> -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Make Money</title>

@@ -49,7 +49,7 @@
       {
             margin-top: 0.3rem;
             font-size: 14px !important; font-weight: bold;
-            color: #f9f9f9b6;
+            color: #f9f9f9da;
 
       }
 
@@ -67,6 +67,9 @@
             border-radius: 2rem !important;
 
       }
+      .btn-disabled {
+            color: #878787b6 !important;
+      }
 
 </style>
 
@@ -76,111 +79,90 @@
            {% include "cp/perfil-empresa.html" %}
       </div>
 
-      <div class='btn-nav p-2  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in"             
+      <div class='btn-nav nav-control p-2  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in"             
             style="transition: 0s; height: 100vh;" >
           
-            <button class="btn-dashboard mt-5">
+            <button class=" btns Gratis Emprendedor Ejecutivo btn-dashboard mt-5 "
+                  onclick="window.location.href = '{% url 'dashboard' %}'" >
                   <img src="{% static "icons/grafico.png" %}" width='24' alt="">
-                  <a href="{% url "dashboard" %}"  >
                         <span >
                               Dashboard  
                         </span>
-                  </a>
             </button>
-
-            <button class="btn-clientes position-relative"> 
+            <button onclick="window.location.href = '{% url 'client:client' %}'" 
+                  class=" btns btn-clientes Gratis Emprendedor Ejecutivo position-relative "> 
                   <img class="img-cliente" src="{% static "icons/user.svg" %}" width='24' alt="">
-                  <a href="{% url 'client:client' %}">
                         <span>
                               Clientes  
                         </span>
-                  </a>
                   {% include "client/cp/more-options.html" %}  <!-- More options for client -->
             </button>
-
-            <button class="btn-creditos">
+            <button onclick="window.location.href = '{% url 'mensajeria:mensajeria' %}'" 
+            class="btns btn-mensajeria  Ejecutivo">
+            <img src="{% static "icons/msj.png" %}" width='24' alt="">
+                  <span>
+                        Mensajeria
+                  </span>
+            </button>
+            <button onclick="window.location.href = '{% url 'credit:credit' %}'" 
+                  class=" btns btn-creditos  Emprendedor Ejecutivo">
                   <img class="img-creditos" src="{% static "icons/list.svg" %}" width='24' alt="">
-                  <a href="{% url 'credit:credit' %}">
+                  <a >
                         <span>
                               Creditos
                         </span>
                   </a>
                   {% include "credit/cp/more-options.html" %}  <!-- More options for credit -->
             </button>
-
-            <button class="btn-maps">
-                  <img src="{% static "icons/map.svg" %}" width='24' alt="">
-                  <a href="{% url 'maps:maps' %}">
-                        <span>
-                              Mapas 
-                        </span>
-                  </a>
-            </button>
-
-            <button class="btn-calendario">
-                  <img src="{% static "icons/calendar.svg" %}" width='24' alt="">
-                  <a href="{% url 'agenda:agenda' %}">
-                        <span>
-                                    Agenda
-                              </span>
-                        </a>
-            </button>
-
-            <button class="btn-mensajeria">
-                  <img src="{% static "icons/msj.png" %}" width='24' alt="">
-                  <a href="{% url 'mensajeria:mensajeria' %}">
-                        <span>
-                              Mensajeria
-                        </span>
-                  </a>
-                  </button>
-
-            <button class="btn-caja">
-                  <img src="{% static "icons/document.svg" %}" width='24' alt="">
-                  <a href="{% url 'caja:caja' %}">
-                        <span>
-                              Caja
-                        </span>
-                  </a>
-            </button>
-
-            <button class="btn-inversion" onclick="window.location.href = '{% url 'inversion:inversion' %}'">
-                  <img src="{% static "icons/estadisticas.png" %}" width='24' alt="">
-                  <!-- <a href="{% url 'caja:caja' %}"> -->
-                        <span>
-                              Inversion
-                        </span>
-                  <!-- </a> -->
-            </button>
-
-            <button class="btn-asistente" onclick="window.location.href = '{% url 'asistente:asistente' %}'">
-                  <img src="{% static "icons/star.png" %}" width='24' alt="">
-                  <!-- <a href="{% url 'caja:caja' %}"> -->
-                        <span>
-                              Asistente
-                        </span>
-                  <!-- </a> -->
-            </button>
-
-            <button class="btn-calculator">
+            <button class="btns btn-calculator Gratis Emprendedor Ejecutivo "
+            onclick="window.location.href = '{% url 'calculator:calculator' %}'">
                   <img class='img-calculator' onclick="OpenCalculator()" src="{% static "icons/calculator.png" %}" width='24' alt="">
-                  <a href="{% url 'calculator:calculator' %}">
                         <span>
                               Calculadora
                         </span>
-                  </a>
             </button>
- 
-
-            <a href="{% url 'company:company-update' request.user.more.company.id %}">
-                  <button class="btn-empresa">
+            <button class="btns btn-asistente Ejecutivo"  
+            onclick="window.location.href = '{% url 'asistente:asistente' %}'">
+            <img src="{% static "icons/star.png" %}" width='24' alt="">
+                  <span>
+                        Asistente 
+                  </span>
+            </button>
+            <button onclick="window.location.href = '{% url 'maps:maps' %}'"
+                  class="btns btn-maps Ejecutivo">
+                  <img src="{% static "icons/map.svg" %}" width='24' alt="">
+                        <span>
+                              Mapas 
+                        </span>
+            </button>
+            <button onclick="window.location.href = '{% url 'agenda:agenda' %}'" 
+                  class="btns btn-calendario Ejecutivo">
+                  <img src="{% static "icons/calendar.svg" %}" width='24' alt="">
+                        <span>
+                              Agenda
+                        </span>
+            </button>
+            <button  onclick="window.location.href = '{% url 'caja:caja' %}'" 
+                   class="btns btn-caja Emprendedor Ejecutivo">
+                  <img src="{% static "icons/document.svg" %}" width='24' alt="">
+                        <span>
+                              Caja
+                        </span>
+            </button>
+            <button class="btns btn-inversion Ejecutivo "
+                  onclick="window.location.href = '{% url 'inversion:inversion' %}'">
+                  <img src="{% static "icons/estadisticas.png" %}" width='24' alt="">
+                        <span>
+                              Inversion
+                        </span>
+            </button>
+            <button onclick="window.location.href = '{% url 'company:company-update' request.user.more.company.id %}'"
+                   class="btns btn-empresa  Gratis Emprendedor Ejecutivo">
                         <img src="{% static "icons/config.svg" %}" width='24' alt="">
                         <span>
                               Configuracion
                         </span>
-                  </button> 
-            </a>
-
+            </button> 
       </div>
 
       {% include "cp/options-nav.html" %}
@@ -215,5 +197,38 @@
       }
 
 
-      
+
+      document.addEventListener('DOMContentLoaded', () => {
+    // Obtener todos los botones dentro de .nav-control
+    const buttons = document.querySelectorAll('.nav-control .btns');
+    const span_buttons = document.querySelectorAll('.nav-control .btns span');
+
+    // Desactivar todos los botones inicialmente
+    buttons.forEach(button => button.disabled = true);
+    span_buttons.forEach(span => span.classList.add('btn-disabled'));
+    
+    // Clase a buscar
+    let prm = '{{request.user.membership.plan.name}}';
+      // Aquí puedes cambiar el valor de prm según lo necesites
+
+    buttons.forEach(button => {
+            // Obtener todas las clases del botón
+            const buttonClasses = [...button.classList];
+            
+            // Filtrar las clases que coincidan parcialmente con 'prm'
+            const matchedClasses = buttonClasses.filter(cls => cls.includes(prm));
+            
+            // Si al menos hay una clase coincidente, activar el botón
+            if (matchedClasses.length > 0) {
+                  button.disabled = false; // Activar el botón    
+                  // Acceder al span dentro del botón
+                  const span = button.querySelector('span');
+                  
+                  // Aquí puedes aplicar cambios al span, por ejemplo:
+                  span.classList.remove('btn-disabled');  // Quitar la clase 'btn-disabled' del span
+
+
+            }
+      });
+});
 </script>
