@@ -198,7 +198,7 @@
 
 
 
-      document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Obtener todos los botones dentro de .nav-control
     const buttons = document.querySelectorAll('.nav-control .btns');
     const span_buttons = document.querySelectorAll('.nav-control .btns span');
@@ -207,26 +207,20 @@
     buttons.forEach(button => button.disabled = true);
     span_buttons.forEach(span => span.classList.add('btn-disabled'));
     
-    // Clase a buscar
-    let prm = '{{request.user.membership.plan.name}}';
-      // Aquí puedes cambiar el valor de prm según lo necesites
-
-    buttons.forEach(button => {
+      let Membresia = '{{request.user.membership.plan.name}}';
+      // Aquí puedes cambiar el valor de Membresia según lo necesites
+      buttons.forEach(button => {
             // Obtener todas las clases del botón
             const buttonClasses = [...button.classList];
-            
-            // Filtrar las clases que coincidan parcialmente con 'prm'
-            const matchedClasses = buttonClasses.filter(cls => cls.includes(prm));
-            
+            // Filtrar las clases que coincidan parcialmente con 'Membresia'
+            const matchedClasses = buttonClasses.filter(cls => cls.includes(Membresia));
             // Si al menos hay una clase coincidente, activar el botón
             if (matchedClasses.length > 0) {
                   button.disabled = false; // Activar el botón    
                   // Acceder al span dentro del botón
                   const span = button.querySelector('span');
-                  
                   // Aquí puedes aplicar cambios al span, por ejemplo:
                   span.classList.remove('btn-disabled');  // Quitar la clase 'btn-disabled' del span
-
 
             }
       });
