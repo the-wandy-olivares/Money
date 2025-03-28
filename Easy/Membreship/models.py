@@ -31,7 +31,8 @@ class Carateristica(models.Model):
       is_active = models.BooleanField(default=True)
 
 
-
+      def __str__(self):
+            return f'{self.plan.name} - {self.name} { self.is_active}'
 
 class Membership(models.Model):
       # Relación con el usuario

@@ -60,7 +60,8 @@
                               <a href="{% url 'membreship:membreship' %}"
                               class="text-white-50 p-2 rounded-4 ps-3 pe-3"  
                               style="background-color: #202020;">
-                                    Membresia
+                              Membresia
+                              ( {{request.user.membership.plan.name}} )
                               </a>
                         </div>
                         <div class="mt-3 position-fixed bottom-0 end-0 mb-4 me-4">
