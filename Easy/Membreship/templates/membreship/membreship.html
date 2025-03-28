@@ -20,20 +20,20 @@
             }
       </style>
 
-      <section class="position-absolute top-0 start-0 z-2 section-membreship text-white h-100 pb-4  d-flex align-content-start flex-wrap  rounded-5">
-            <button class="position-absolute top-0 start-0 ms-3 mt-2 bg-transparent border-0" onclick="window.location.href = '{% url 'perfil:perfil' %}' ">
+      <section class=" start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex align-content-start flex-wrap  rounded-5 ">
+            <button class="position-absolute text-black-50 top-0 start-0 ms-3 mt-2 bg-transparent border-0" onclick="window.location.href = '{% url 'perfil:perfil' %}' ">
                   <i class="bi bi-arrow-left-circle-fill"
                   style="font-size: 30px; color: rgb(88, 88, 88);"></i>
             </button>
-            <div class="d-flex justify-content-center w-100 text-start ads-membreship">
+            <div class="d-flex justify-content-center w-100 text-start ads-membreship overflow-hidden">
                   {% include "published/cp/ads.html" %}
             </div>
-            <div class="d-flex overflow-auto w-100  overflow-scroll jus "
+            <div class="d-flex  w-100 "
                   style="transition: 2s;"  >
-                  <section  style="transition: 2s;" class="plans d-flex justify-content-center w-100 overflow-auto p-3 pt-5 pb-5 ">
                               {% include "membreship/cp/plans.html" %}
-                  </section>
             </div>
       </section>
+      <script>
 
+      </script>
 {% endblock  %}

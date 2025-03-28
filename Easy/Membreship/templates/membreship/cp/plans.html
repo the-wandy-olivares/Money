@@ -3,7 +3,7 @@
 <style>
 
       .plans .card-plan {
-            width: 22rem; 
+            min-width: 22rem; 
             width: 22rem; height: 36.5rem;
             border: 1px rgb(203, 203, 203) solid;
             margin: 0.4rem; padding: 2rem;
@@ -13,15 +13,12 @@
             ;
       }
       .plans .card-plan button {
-
-            transition: 1s;
+            transition: 0.5s;
             font-weight: bold;
             width: 10rem;
-            
       }
       .plans .card-plan button:hover {
-
-            transform: scale(1.1);
+            transform: scale(1.2);
       }
 
       .plans .card-plan h6 {
@@ -83,17 +80,20 @@
             background: linear-gradient(90deg, #fc00ff, #00dbde);
       }
 
+      .better-plan {
+            transform: scale(1.06);
+            margin: 0rem 1rem !important;
+
+      }
 </style>
 
+<section  style="transition: 2s;" class="plans d-flex w-100 overflow-auto p-3 pt-5 pb-5 justify-content-center " >
 
-      {% if plans %}
-        
+{% if plans %}
       {% for plan in plans %}
-        
-
-      <div class="card-plan">
+      <div class="card-plan  {% if  plan.name ==  'Emprendedor'   %} better-plan {% endif %}">
             <strong class="text-{{ forloop.counter }}">
-                  {{plan.name}}
+                  {{plan.name}}    
             </strong>
             <h6 class="text-{{ forloop.counter }}">
                   ${{plan.price|intcomma}}.00
@@ -114,7 +114,6 @@
                                     </span>
                               {% endif %}
                        {% endfor %}
-              
                         <div class="tach d-flex flex-wrap">
                               {% for caracteritica in plan.carateristicas.all %}
                                     {% if caracteritica.is_active == False %}
@@ -130,14 +129,22 @@
                         </span>
                   {% endif %}
             </div>
-            <div class="d-flex w-100 justify-content-center">
+            <div class="d-flex w-100 justify-content-center flex-wrap">
                   <button class="border-0  text-white p-2 rounded-5 btn-{{ forloop.counter }} ">
-                        Escoger
-                  </button>
+                        {% if  plan.name ==  request.user.membership.plan.name   %}
+                             Actual
+                        {% else %}
+                              Escoger
+                        {% endif %}
+                  </button> <br>
+                  <span style="font-size: 10px;"
+                         class="w-100 text-black-50 text-center">
+                        Libre de impuesto
+                  </span>
             </div>
       </div>
       {% endfor %}
+{% endif %}
 
-      {% endif %}
 
-
+</section>
