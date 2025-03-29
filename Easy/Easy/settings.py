@@ -25,6 +25,8 @@ INSTALLED_APPS = [
         'Published.apps.PublishedConfig', # App de publicaciones, marqueting  planes y de mas.
         'Membreship.apps.MembreshipConfig',
 
+        'paypal.standard.ipn', # Paypal
+
     # Django apps
         'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
         'django.contrib.sessions', 'django.contrib.messages',  'django.contrib.staticfiles',
@@ -103,3 +105,9 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+PAYPAL_TEST = True
+#PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL = 'sb-wamqy39355606@business.example.com'

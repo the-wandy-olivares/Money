@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+{% block content %}
+      {% load humanize %}
+     
+      <style>
+            .btn-nav .btn-membreship img
+            {
+                  box-shadow: #85abf1 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+            .section-membreship {
+                  /* background-color: white; */
+                  background:    radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(250, 202, 255) 100%);
+            }
+            .section-membreship h5, h3 {
+                  color: rgb(24, 24, 24) !important;
+            }
+            .section-membreship .tt {
+                  color: rgba(59, 59, 59, 0.666) !important;
+            }
+      </style>
+
+      <section class=" start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex align-content-center justify-content-center flex-wrap  rounded-5 ">
+            <button class="position-absolute text-black-50 top-0 start-0 ms-3 mt-2 bg-transparent border-0" onclick="window.location.href = '{% url 'membreship:membreship' %}' ">
+                  <i class="bi bi-arrow-left-circle-fill"
+                  style="font-size: 30px; color: rgb(88, 88, 88);"></i>
+            </button>
+            Compra Servicio Premium
+            <div class="w-100 d-flex flex-wrap  justify-content-center">
+                        <form 
+                        action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+                        method="post" method="post">
+                        {% csrf_token %}
+                        {{ form.render }}
+                        <!-- <div class="w-100 justify-content-center d-flex">
+                             action="https://www.paypal.com/cgi-bin/webscr"
+                        <button 
+                        class="bg-black text-white border-0 p-2 pe-4 ps-4 rounded-5 text-center " style="max-width: max-content;">
+                        Pagar con paypal
+                        </button> -->
+                       </div>
+                        </form>
+            </div>
+      </section>
+{% endblock  %}

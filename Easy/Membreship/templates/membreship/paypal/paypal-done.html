@@ -1,0 +1,42 @@
+
+{% extends "base/base.html" %}
+{% block content %}
+      {% load humanize %}
+     
+      <style>
+            .btn-nav .btn-membreship img
+            {
+                  box-shadow: #85abf1 0px 0px 10px 0px;
+                  border: 1px solid #eeeeee;
+            }
+            .section-membreship {
+                  /* background-color: white; */
+                  background:    radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(250, 202, 255) 100%);
+            }
+            .section-membreship h5, h3 {
+                  color: rgb(24, 24, 24) !important;
+            }
+            .section-membreship .tt {
+                  color: rgba(59, 59, 59, 0.666) !important;
+            }
+      </style>
+
+      <section class=" start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex justify-content-center text-center      flex-wrap align-content-center  rounded-5 ">
+            <h6 class="text-black w-100 text-center">
+                  Felicidades!
+            </h6>
+            <p class="text-black-50 text-center w-100">
+                  Vamos ir a probar nuestras nuevas funciones!
+
+            </p>
+            <div class="text-center  w-100 justify-content-center ">
+                  <button onclick="window.location.href = '{% url 'membreship:membreship' %}' "
+                  class="bg-black-50 text-white border-0 p-2 pe-4 ps-4 rounded-5 text-center " style="max-width: max-content;">
+                  Volver a intentarlo
+            </button>
+            </div>
+      </section>
+      <script>
+
+      </script>
+{% endblock  %}

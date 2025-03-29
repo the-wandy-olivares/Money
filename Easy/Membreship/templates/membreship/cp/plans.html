@@ -130,7 +130,8 @@
                   {% endif %}
             </div>
             <div class="d-flex w-100 justify-content-center flex-wrap">
-                  <button class="border-0  text-white p-2 rounded-5 btn-{{ forloop.counter }} ">
+                  <button  class="border-0  text-white p-2 rounded-5 btn-{{ forloop.counter }} " 
+                  onclick="window.location.href = '{% url 'membreship:pay-paypal' plan.id %}'">
                         {% if  plan.name ==  request.user.membership.plan.name   %}
                              Actual
                         {% else %}
@@ -145,6 +146,5 @@
       </div>
       {% endfor %}
 {% endif %}
-
 
 </section>
