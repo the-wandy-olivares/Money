@@ -34,7 +34,6 @@ class Membreship(TemplateView):
                   ]
             # self.AdminiCaracteristicas(servicios, 'Recomendado', False, True)
             return context
-      
       # def AdminiCaracteristicas(self, servicios=list, name_plan='', delete_carateristic=False, is_active_carateristica=True):
       #       #  Crear caracteristicas
       #       plan_select = Plans.objects.get(is_active=True, name=name_plan)
