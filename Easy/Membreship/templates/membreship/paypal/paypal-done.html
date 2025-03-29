@@ -21,18 +21,17 @@
             }
       </style>
 
-      <section class=" start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex justify-content-center text-center      flex-wrap align-content-center  rounded-5 ">
+      <section class="position-absolute top-0 w-100 start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex justify-content-center text-center      flex-wrap align-content-center  rounded-5 ">
             <h6 class="text-black w-100 text-center">
                   Felicidades!
             </h6>
             <p class="text-black-50 text-center w-100">
                   Vamos ir a probar nuestras nuevas funciones!
-
             </p>
             <div class="text-center  w-100 justify-content-center ">
-                  <button onclick="window.location.href = '{% url 'membreship:membreship' %}' "
-                  class="bg-black-50 text-white border-0 p-2 pe-4 ps-4 rounded-5 text-center " style="max-width: max-content;">
-                  Volver a intentarlo
+                  <button onclick="window.location.href = '{% url 'dashboard' %}' "
+                  class="bg-transparent text-black border-0 p-2 pe-4 ps-4 rounded-5 text-center " style="max-width: max-content;">
+                  Ir a la plataforma
             </button>
             </div>
       </section>

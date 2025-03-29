@@ -5,6 +5,7 @@ from django.conf import settings
 from django.urls import reverse
 from .models import Plans, Carateristica
 import uuid #Para pruebas 
+from paypal.standard.ipn.models import PayPalIPN
 
 class Membreship(TemplateView):
       template_name = "membreship/membreship.html"
@@ -62,7 +63,7 @@ class PaymentPaypal(TemplateView):
             paypal_dict = {
                   'business': settings.PAYPAL_RECEIVER_EMAIL,
                   'amount':  f"{plan.price:,.2f}",  # Monto en USD o moneda 
-                  'item_name': 'Servicio Premium',
+                  'item_name': plan.name,
                   'invoice': f"INV-{uuid.uuid4().hex[:12].upper()}",
                   'currency_code': 'USD',
                   'notify_url': self.request.build_absolute_uri('/paypal/'),
@@ -75,22 +76,10 @@ class PaymentPaypal(TemplateView):
             return context
       
       def post(self, request, *args, **kwargs):
-            paypal_dict = {
-                  'business': settings.PAYPAL_RECEIVER_EMAIL,
-                  'amount': '10.00',  # Monto en USD o moneda configurada
-                  'item_name': 'Servicio Premium',
-                  'invoice': 'INV-12345323',
-                  'currency_code': 'USD',
-                  'notify_url': request.build_absolute_uri('/paypal/'),
-                  'return_url': request.build_absolute_uri(reverse('membreship:payment-done')),
-                  'cancel_return': request.build_absolute_uri(reverse('membreship:payment-canceled')),
-            } 
-
-            form = PayPalPaymentsForm(initial=paypal_dict)
+            form = PayPalPaymentsForm()
             if form.is_valid():
                   return render(request, 'membreship/paypal/payment-paypal.html', {'form': form})
             else:
-                  print(form)
                   return render(request, 'membreship/paypal/payment-error.html', {'error': 'Error en el formulario de PayPal'})
       
 
