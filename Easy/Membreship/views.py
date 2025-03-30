@@ -66,6 +66,7 @@ class PaymentPaypal(TemplateView):
                   'amount':  f"{plan.price:,.2f}",  # Monto en USD o moneda 
                   'item_name': plan.name,
                   'currency_code': 'USD',
+                  'invoice': f"INV-{uuid.uuid4().hex[:12].upper()}-{self.request.user.id}",
                   'notify_url': self.request.build_absolute_uri('/paypal/'),
                   'return_url': self.request.build_absolute_uri(reverse('membreship:payment-done')),
                   'cancel_return': self.request.build_absolute_uri(reverse('membreship:payment-canceled')),

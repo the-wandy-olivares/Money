@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
                   url: '/membreship/ajax/create-pay/',
                   data: {
                   name_plan: document.querySelector('#id_item_name').value,
-                  price_plan: document.querySelector('#id_amount').value
+                  price_plan: document.querySelector('#id_amount').value,
+                  invoice: document.querySelector('#id_invoice').value
                   },
                   success: function(response) { 
                   console.log("Pago creado:", response);

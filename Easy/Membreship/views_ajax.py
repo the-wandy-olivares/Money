@@ -9,6 +9,6 @@ def CreatePay(request):
             membership = request.user.membership,
             name_plan =  request.GET.get('name_plan') if request.GET.get('name_plan')  else '..' ,
             price_plan = int(float(request.GET.get('price_plan', 0))),
-            invoice = f'INV-{uuid.uuid4().hex[:12].upper()}'
+            invoice = request.GET.get('invoice')
       )
       return JsonResponse(list(data), safe=False)
