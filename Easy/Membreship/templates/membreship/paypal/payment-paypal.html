@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function() {
                   data: {
                   name_plan: document.querySelector('#id_item_name').value,
                   price_plan: document.querySelector('#id_amount').value,
-                  invoice: document.querySelector('#id_invoice').value
+                  invoice: document.querySelector('#id_invoice').value,
+                  id_plan: '{{id_plan}}',
+                  id_user: '{{id_user}}',
                   },
                   success: function(response) { 
                   console.log("Pago creado:", response);

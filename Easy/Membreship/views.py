@@ -74,6 +74,8 @@ class PaymentPaypal(TemplateView):
 
             form = PayPalPaymentsForm(initial=paypal_dict)
             context['form'] = form
+            context['id_plan'] = plan.id
+            context['id_user'] = self.request.user.id
             return context
       
       def post(self, request, *args, **kwargs):

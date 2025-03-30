@@ -77,6 +77,8 @@ class Payment(models.Model):
       )
       name_plan = models.CharField(max_length=50)
       price_plan = models.IntegerField(default=0)
+      id_plan = models.IntegerField(default=0)
+      id_user = models.IntegerField(default=0)
 
       start_date = models.DateField(default=timezone.now)
       duration_days = models.IntegerField(default=30)  # Duración predeterminada en días
