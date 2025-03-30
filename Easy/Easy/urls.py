@@ -5,8 +5,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import Dashboard, Logout
 from paypal.standard.ipn import urls as paypal_urls
+from paypal.standard.ipn import views as paypal_views
+
+
+
 
 urlpatterns = [
+    
         path('', Dashboard.as_view(), name='dashboard'),
                 path('company/', include('Company.urls')),  #Empresas
                         path('client/', include('Client.urls')),  #Clientes
@@ -25,6 +30,7 @@ urlpatterns = [
                 path('published/', include('Published.urls')), # Publicaciones
         path('membreship/', include('Membreship.urls')), # Membresias, planes y mas
                 path('paypal/', include(paypal_urls)),
+                        path('paypal-ipn/', paypal_views.ipn, name='paypal-ipn'),
 
 ]
 

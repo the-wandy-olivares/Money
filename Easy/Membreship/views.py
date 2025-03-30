@@ -3,9 +3,11 @@ from django.views.generic import TemplateView, CreateView, UpdateView, RedirectV
 from paypal.standard.forms import PayPalPaymentsForm
 from django.conf import settings
 from django.urls import reverse
-from .models import Plans, Carateristica
+from .models import Plans, Carateristica, Payment
 import uuid #Para pruebas 
 from paypal.standard.ipn.models import PayPalIPN
+from paypal.standard.ipn.signals import valid_ipn_received
+from django.dispatch import receiver
 
 class Membreship(TemplateView):
       template_name = "membreship/membreship.html"
@@ -63,7 +65,6 @@ class PaymentPaypal(TemplateView):
                   'business': settings.PAYPAL_RECEIVER_EMAIL,
                   'amount':  f"{plan.price:,.2f}",  # Monto en USD o moneda 
                   'item_name': plan.name,
-                  'invoice': f"INV-{uuid.uuid4().hex[:12].upper()}",
                   'currency_code': 'USD',
                   'notify_url': self.request.build_absolute_uri('/paypal/'),
                   'return_url': self.request.build_absolute_uri(reverse('membreship:payment-done')),

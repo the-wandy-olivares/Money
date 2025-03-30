@@ -18,6 +18,13 @@
             .section-membreship .tt {
                   color: rgba(59, 59, 59, 0.666) !important;
             }
+            .btn-paypal {
+                  background-color: black;
+                  width: 11rem; height: 2.9rem;
+                  color: wheat;
+                  border-radius: 2rem;
+                  border: 0px;
+            }
       </style>
 
       <section class=" position-absolute w-100 top-0 start-0 z-2 section-membreship position-relative text-white h-100 pb-4  d-flex align-content-center justify-content-center flex-wrap  rounded-5 ">
@@ -27,19 +34,44 @@
             </button>
             Compra Servicio Premium
             <div class="w-100 d-flex flex-wrap  justify-content-center">
-                        <form 
-                        action="https://www.sandbox.paypal.com/cgi-bin/webscr"
-                        method="post" method="post">
-                        {% csrf_token %}
-                        {{ form.render }}
-                        <!-- <div class="w-100 justify-content-center d-flex">
-                             action="https://www.paypal.com/cgi-bin/webscr"
-                        <button 
-                        class="bg-black text-white border-0 p-2 pe-4 ps-4 rounded-5 text-center " style="max-width: max-content;">
-                        Pagar con paypal
-                        </button> -->
-                       </div>
+                  <form  id="form-pay"
+                  method="post"
+                  action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+                              {% csrf_token %}
+                              {{ form.render }}
                         </form>
+                  </div>
             </div>
       </section>
+      <!--Jquery-->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+document.addEventListener("DOMContentLoaded", function() {
+      let form_pay = document.querySelector("#form-pay");
+      let button = document.createElement('button');
+      button.onclick = function() { A(); }; // Asigna correctamente la función A
+      button.classList.add('btn-paypal');
+      button.innerHTML = 'Pagar con <i class="bi bi-paypal"></i>';
+      form_pay.appendChild(button);
+
+      let imgInput = form_pay.querySelector("input[type='image']");
+      if (imgInput) {
+            imgInput.classList.add("d-none");
+      }
+
+      function A() {
+            $.ajax({
+                  url: '/membreship/ajax/create-pay/',
+                  data: {
+                  name_plan: document.querySelector('#id_item_name').value,
+                  price_plan: document.querySelector('#id_amount').value
+                  },
+                  success: function(response) { 
+                  console.log("Pago creado:", response);
+                  }
+            });
+      }
+});
+      </script>
+
 {% endblock  %}
