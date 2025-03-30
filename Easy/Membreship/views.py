@@ -8,12 +8,15 @@ import uuid #Para pruebas
 from paypal.standard.ipn.models import PayPalIPN
 from paypal.standard.ipn.signals import valid_ipn_received
 from django.dispatch import receiver
+from django.shortcuts import render, redirect
+
 
 class Membreship(TemplateView):
       template_name = "membreship/membreship.html"
 
 
       def get_context_data(self, **kwargs):
+
             context = super().get_context_data(**kwargs)
             context['plans'] =  Plans.objects.filter(is_active=True)
             servicios = [
@@ -36,6 +39,12 @@ class Membreship(TemplateView):
                   ]
             # self.AdminiCaracteristicas(servicios, 'Recomendado', False, True)
             return context
+      
+      def get(self, request, *args, **kwargs):
+          if not request.user.is_authenticated:
+              return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
+          return super().dispatch(request, *args, **kwargs)
+
       # def AdminiCaracteristicas(self, servicios=list, name_plan='', delete_carateristic=False, is_active_carateristica=True):
       #       #  Crear caracteristicas
       #       plan_select = Plans.objects.get(is_active=True, name=name_plan)
@@ -57,7 +66,11 @@ class Membreship(TemplateView):
 
 class PaymentPaypal(TemplateView):
       template_name = "membreship/paypal/payment-paypal.html"
-
+      def get(self, request, *args, **kwargs):
+          if not request.user.is_authenticated:
+              return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
+          return super().dispatch(request, *args, **kwargs)
+      
       def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
             plan = Plans.objects.get(id=self.kwargs.get('pk'))
