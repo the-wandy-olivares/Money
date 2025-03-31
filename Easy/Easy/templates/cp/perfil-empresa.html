@@ -9,8 +9,11 @@
                   <div class="blur-50 rounded-circle d-flex justify-content-center flex-wrap align-content-center p-2" 
                         style="height: 5rem; width: 5rem;  
                         margin-top: 40px; ">
+                              {% if request.user.more.company.logo %}
+                                
                               <img src="{{request.user.more.company.logo.url}}"    class="  object-fit-cover rounded-circle w-100 h-100" >
-                  </div>
+                              {% endif %}
+                        </div>
               </div>
               <h6 style="font-size: 14px; margin-top: 7rem; font-weight: normal;" class="text-white text-center w-100 p-0 m-0 blur-5">
                     {{request.user.more.company.name}} 

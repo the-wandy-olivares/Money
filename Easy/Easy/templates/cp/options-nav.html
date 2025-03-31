@@ -4,8 +4,11 @@
       style='height: 4rem; width: 13.5rem; cursor: pointer;' >
             
             <div class=" d-flex justify-content-center align-content-center flex-wrap">
+                  {% if request.user.more.img %}
+                    
                   <img src="{{request.user.more.img.url}}"    class="  object-fit-cover rounded-circle " 
                   style="border: 1px; width: 40px; height: 40px; border: 4px solid rgb(0, 0, 0);  margin-bottom: 0.2rem;" alt="">
+                  {% endif %}
             </div>
             <div class='d-flex flex-wrap align-content-center justify-content-center ps-2  w-100'>
                   <h6 style="font-size: 14px;  font-weight: bold;" class="text-white text-start-0 w-100 p-0 m-0">

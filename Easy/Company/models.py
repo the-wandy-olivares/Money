@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Company(models.Model):
+            user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='company')
       # Datos de la empresa
             name = models.CharField(max_length=100, default='Nombre de la empresa')
             description = models.TextField(blank=True, null=True, default='Préstamos rápidos y seguros')

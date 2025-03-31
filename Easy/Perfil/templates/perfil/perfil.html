@@ -48,8 +48,11 @@
 
             <div class="instagram-profile position-relative d-flex vh-100 align-content-center flex-wrap w-100 flex-wrap mt-1" style="">
                   <div class="profile-header mt-3 d-flex justify-content-center flex-wrap  w-100" >
+                        {% if request.user.more.img %}
+                          
                         <img src="{{request.user.more.img.url}}" alt="Profile Picture" 
-                              style="width: 150px; height: 150px; border-radius: 50%; ">
+                        style="width: 150px; height: 150px; border-radius: 50%; ">
+                        {% endif %}
                         <div class="text-center w-100 mt-2">
                               <h2 class="username"> {{request.user.first_name}} {{request.user.last_name}} </h2>
                               <p class="bio text-capitalize">

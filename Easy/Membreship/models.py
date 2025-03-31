@@ -54,15 +54,6 @@ class Membership(models.Model):
       # Estado de la membresía
       is_active = models.BooleanField(default=True)
 
-      def save(self, *args, **kwargs):
-            # Si no hay una fecha de expiración, calcula una automáticamente
-            if not self.expiration_date:
-                  self.expiration_date = self.start_date + timedelta(days=self.duration_days)
-            # Desactiva la membresía si ya expiró
-            if self.expiration_date and self.expiration_date < timezone.now().date():
-                  self.is_active = False
-            super().save(*args, **kwargs)
-
       def __str__(self):
             return f'{self.user.username if self.user else "Sin usuario"} - {self.plan.name if self.plan else "Sin plan"} - {"Activa" if self.is_active else "Inactiva"}'
       

@@ -1,6 +1,9 @@
 
 <div class="cover-photo">
+    {% if request.user.more.company.img_portada %}
+      
     <img src="{{request.user.more.company.img_portada.url}}" alt="Cover Photo">
+    {% endif %}
 </div>
 <style>
   .cover-photo img {

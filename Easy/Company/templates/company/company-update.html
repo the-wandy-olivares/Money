@@ -61,17 +61,23 @@
       <section class="section-company-update">
             <div class="profile position-relative">
                         <div class="cover-photo " style="cursor: pointer;">
+                              {% if request.user.more.company.img_portada %}
+                                
                               <img src="{{request.user.more.company.img_portada.url}}"
                               alt="Cover Photo" 
                               class="img-portada">
+                              {% endif %}
                         </div>
                         <div class="profile-photo  justify-content-center d-flex ps-2 ">
                               <div class="blur-50 p-2 rounded-circle d-flex
                                justify-content-center align-content-center flex-wrap" 
                                     style="height: 10rem; width: 10rem; margin-top: -130px; ">
+                                    {% if request.user.more.company.logo %}
+                                      
                                     <img src="{{request.user.more.company.logo.url}}" 
                                     alt="Profile Photo" style="cursor: pointer;"
                                     class="img-logo bg-white bg-opacity-50 blur-50">
+                                    {% endif %}
                               </div>
                         </div>
                   <div class="profile-info d-flex justify-content-center flex-wrap ">
