@@ -16,7 +16,6 @@ class Membreship(TemplateView):
 
 
       def get_context_data(self, **kwargs):
-
             context = super().get_context_data(**kwargs)
             context['plans'] =  Plans.objects.filter(is_active=True)
             servicios = [
@@ -41,9 +40,9 @@ class Membreship(TemplateView):
             return context
       
       def get(self, request, *args, **kwargs):
-          if not request.user.is_authenticated:
-              return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
-          return super().dispatch(request, *args, **kwargs)
+            if not request.user.is_authenticated:
+                  return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
+            return super().get(request, *args, **kwargs)
 
       # def AdminiCaracteristicas(self, servicios=list, name_plan='', delete_carateristic=False, is_active_carateristica=True):
       #       #  Crear caracteristicas
@@ -67,9 +66,9 @@ class Membreship(TemplateView):
 class PaymentPaypal(TemplateView):
       template_name = "membreship/paypal/payment-paypal.html"
       def get(self, request, *args, **kwargs):
-          if not request.user.is_authenticated:
-              return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
-          return super().dispatch(request, *args, **kwargs)
+            if not request.user.is_authenticated:
+                  return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
+            return super().get(request, *args, **kwargs)
       
       def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
