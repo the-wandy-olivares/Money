@@ -118,6 +118,7 @@ class CreditList(TemplateView):
       def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
             context['credits'] = models.Credit.objects.all()
+            context['date'] = timezone.now
             return context
       
 

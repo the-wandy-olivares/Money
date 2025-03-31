@@ -2,6 +2,7 @@ from django.db import models
 from Client.models import Client  
 from Company.models import Company
 from .mixing import Opciones
+from django.utils import timezone
 
 class Credit(models.Model):
       # Compañia asociada al credito
@@ -22,7 +23,7 @@ class Credit(models.Model):
 
       # Estado
             payment = models.BooleanField(default=False) # Estado de pago
-            last_pay = models.DateField(auto_now=True) # Ultimo pago
+            last_pay = models.DateField(default=timezone.now)   # Ultimo pago
             is_active = models.BooleanField(default=True) # Estado del credito
 
             def __str__(self):

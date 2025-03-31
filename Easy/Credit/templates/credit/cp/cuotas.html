@@ -50,6 +50,11 @@
             margin-top: 10px;
             text-align: right;
       }
+
+      .mora {
+            color: rgb(255, 195, 195);
+            background-color: rgb(28, 3, 3);
+      }
 </style>
 
 
@@ -110,7 +115,9 @@
                         <div class="td">
                               ${{ cuota.abono|intcomma }}.00
                         </div>
-                        <div class="td"> 
+                        <div class="td {% if cuota.mora != 0 %}
+                          mora
+                        {% endif %}" > 
                               ${{ cuota.mora|intcomma }}.00
                         </div>
                         <div class="td">{{ cuota.start_date|date:"d/ m/ Y" }}</div>

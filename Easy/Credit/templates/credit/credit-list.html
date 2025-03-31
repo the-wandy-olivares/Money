@@ -71,6 +71,10 @@
               align-items: center;
               justify-content: center;
       }
+      .last_pay {
+        color: rgb(255, 195, 195);
+        background-color: rgb(28, 3, 3);
+      }
       </style>
       <div class="mb-5">
                 <h6 class="m-0 p-0 text-white">
@@ -97,7 +101,7 @@
                                                 <span class="th bg-transparent flex-fill">Capital</span>
                                                 <span class="th bg-transparent flex-fill">Cuotas</span>
                                                 <span class="th bg-transparent flex-fill">Intereses</span>
-                                                <span class="th bg-transparent flex-fill">Frecuencia</span>
+                                                <span class="th bg-transparent flex-fill">Estado</span>
                                                 <span class="th bg-transparent flex-fill">Fecha de Inicio</span>
                                                 <span class="th bg-transparent flex-fill">Método de Pago</span>
                                                 <span class="th bg-transparent flex-fill">Acciones</span>
@@ -119,7 +123,15 @@
                                                         <span class="td flex-fill">${{ credit.capital }}</span>
                                                         <span class="td flex-fill">{{ credit.cuotas }}</span>
                                                         <span class="td flex-fill">{{ credit.intereses }}%</span>
-                                                        <span class="td flex-fill text-capitalize">{{ credit.frecuencia }}</span>
+                                                        <span class="td flex-fill text-capitalize {% if credit.last_pay <= date  %}
+                                                          last_pay
+                                                        {% endif %} " > 
+                                                        {% if credit.last_pay <= date  %}
+                                                                En atraso
+                                                                {% else %}
+                                                                Al dia
+                                                        {% endif %}
+                                                        </span>
                                                         <span class="td flex-fill">{{ credit.start_date|date:"d/m/Y" }}</span>
                                                         <span class="td flex-fill text-capitalize">{{ credit.metodo }}</span>
                                                         <span class="td flex-fill d-flex">
