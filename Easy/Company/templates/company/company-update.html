@@ -2,8 +2,7 @@
 {% block content %}
       {% load static %}
       <style>
-            .btn-nav .btn-empresa img
-            {
+            .btn-nav .btn-empresa img {
                   box-shadow: #d1cfcf 0px 0px 10px 0px;
                   border: 1px solid #eeeeee;
             }
@@ -38,21 +37,19 @@
             }
             .section-company-update .div-create #id_description {
                   height: 10rem; max-width: 58rem;
-                  border-radius:1rem;
-                  margin: 0.1rem; 
+                  margin: 0.1rem;   border-radius:1rem;
             }
             .section-company-update .profile {
                   text-align: center;
             }
             .section-company-update .cover-photo img {
-                  width: 100%; height: 29rem;
-                  object-fit: cover;  object-position: top;
-                  border-radius: 2rem;  
+                  width: 100%; height: 25rem;
+                  object-fit: cover; object-position: center;
+                  border-radius: 1.6rem;  
             }
             .section-company-update .profile-photo img {
                   width: 140px; height: 140px;
-                  object-fit: cover;
-                  border-radius: 50%;
+                  object-fit: cover; border-radius: 50%;
             }
             .section-company-update .profile-info {
                   margin-top: 10px;
@@ -60,26 +57,23 @@
       </style>
       <section class="section-company-update">
             <div class="profile position-relative">
-                        <div class="cover-photo " style="cursor: pointer;">
-                              {% if request.user.more.company.img_portada %}
-                                
-                              <img src="{{request.user.more.company.img_portada.url}}"
-                              alt="Cover Photo" 
-                              class="img-portada">
+                  <div class="cover-photo " style="cursor: pointer;">
+                        {% if request.user.more.company.img_portada %}
+                              <img src="{{request.user.more.company.img_portada.url}}" 
+                                    class="img-portada">
+                        {% endif %}
+                  </div>
+                  <div class="profile-photo  justify-content-center d-flex ps-2 ">
+                        <div class="blur-100 p-2 rounded-circle d-flex
+                               justify-content-center align-content-center flex-wrap" 
+                              style="height: 10rem; width: 10rem; margin-top: -130px; ">
+                              {% if request.user.more.company.logo %}    
+                                    <img src="{{request.user.more.company.logo.url}}" 
+                                          style="cursor: pointer;"
+                                          class="img-logo ">
                               {% endif %}
                         </div>
-                        <div class="profile-photo  justify-content-center d-flex ps-2 ">
-                              <div class="blur-50 p-2 rounded-circle d-flex
-                               justify-content-center align-content-center flex-wrap" 
-                                    style="height: 10rem; width: 10rem; margin-top: -130px; ">
-                                    {% if request.user.more.company.logo %}
-                                      
-                                    <img src="{{request.user.more.company.logo.url}}" 
-                                    alt="Profile Photo" style="cursor: pointer;"
-                                    class="img-logo bg-white bg-opacity-50 blur-50">
-                                    {% endif %}
-                              </div>
-                        </div>
+                  </div>
                   <div class="profile-info d-flex justify-content-center flex-wrap ">
                         <h5 class="p-0 m-0 ps-1 text-white w-100 ">  
                               {{request.user.more.company.name}}      
@@ -88,13 +82,12 @@
                               {{request.user.more.company.description}}    
                         </p>
                   </div>
-                  <!-- Opciones -->
-                  <div class="w-100 text-start p-2   mt-5 ">
+                  <div class="w-100 text-start p-2   " style="margin-top: 5rem;">
                         <strong class="text-white-50 " style="font-size: 14px;">
                               Configuraciones, preferencias y mas
                         </strong>
                   </div>
-                  <section class="section-opcions d-flex mt-0 overflow-auto justify-content-start">
+                  <section class="section-opcions d-flex mt-0 justify-content-center overflow-auto justify-content-start">
                         {% include "company/cp/opcions.html" %}
                   </section>
             </div>
@@ -102,27 +95,7 @@
       <script>
             document.getElementById('id_description').setAttribute('maxlength', '30');
             window.onload = function() {
-                  // Disbled_Enabled();
-            }
-            // document.querySelector('.btn-disabled').addEventListener('click', function() {
-            //       // Disbled_Enabled();
-
-            // });
-
-            // function Disbled_Enabled() {
-            //       const inputs = document.querySelectorAll('input, .form-select, .form-control');
-            //       inputs.forEach(input => {
-            //             input.disabled = !input.disabled;
-            //       });
-
-            //       const btnActualizar = document.querySelector('.btn-actualizar');
-            //       btnActualizar.classList.toggle('d-none');
-
-            // }
-
-            window.onload = function() {
                   if(document.getElementById('id_logo')){
-
                         document.getElementById('id_logo').addEventListener('change', function(event) {
                               console.log('cambio');
                               const reader = new FileReader();
@@ -132,8 +105,6 @@
                               reader.readAsDataURL(event.target.files[0]);
                         });
                   }
-
-                  // Disbled_Enabled();
                   document.querySelector('.img-logo').addEventListener('click', function() {
                         document.getElementById('id_logo').click();
                         document.getElementById('id_logo').addEventListener('change', function(event) {
@@ -143,10 +114,7 @@
                                 }
                                 reader.readAsDataURL(event.target.files[0]);
                         });
-
                   });
-
-
                   document.querySelector('.img-portada').addEventListener('click', function() {
                         document.getElementById('id_img_portada').click();
                         document.getElementById('id_img_portada').addEventListener('change', function(event) {
@@ -156,18 +124,14 @@
                               }
                               reader.readAsDataURL(event.target.files[0]);
                         });
-
                   });
-
-                    document.getElementById('id_rnc').addEventListener('input', function(event) {
-                              let value = event.target.value.replace(/\D/g, '');
-                              if (value.length > 9) {
-                                      value = value.slice(0, 9);
-                              }
-                              event.target.value = value.replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
-                    });
-
-
+                  document.getElementById('id_rnc').addEventListener('input', function(event) {
+                        let value = event.target.value.replace(/\D/g, '');
+                        if (value.length > 9) {
+                              value = value.slice(0, 9);
+                        }
+                        event.target.value = value.replace(/(\d{3})(\d{3})(\d{3})/, '$1-$2-$3');
+                  });
                   document.querySelectorAll('input, .form-select, .form-control').forEach(input => {
                         input.addEventListener('input', function() {
                               document.querySelector('.btn-update').classList.remove('d-none');
@@ -176,11 +140,9 @@
                   document.querySelector('.btn-update').addEventListener('click', function() {
                         document.querySelector('.btn-update').classList.add('d-none');
                   });
-
                   document.querySelector('.btn-actualizar').addEventListener('click', function() {
                         document.querySelector('.form-change').submit();
                   });
-
             }
       </script>
 {% endblock %}

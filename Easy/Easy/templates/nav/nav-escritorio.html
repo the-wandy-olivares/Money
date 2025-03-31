@@ -83,7 +83,7 @@
       <div class='btn-nav nav-control p-2  pb-2   d-flex flex-wrap align-content-center' data-aos="fade-in"             
             style="transition: 0s; height: 100vh;" >
           
-            <button class=" btns Gratis Emprendedor Ejecutivo btn-dashboard mt-5 "
+            <button class=" btns Basico Emprendedor Ejecutivo btn-dashboard mt-5 "
                   onclick="window.location.href = '{% url 'dashboard' %}'" >
                   <img src="{% static "icons/grafico.png" %}" width='24' alt="">
                         <span >
@@ -91,7 +91,7 @@
                         </span>
             </button>
             <button onclick="window.location.href = '{% url 'client:client' %}'" 
-                  class=" btns btn-clientes Gratis Emprendedor Ejecutivo position-relative "> 
+                  class=" btns btn-clientes Basico Emprendedor Ejecutivo position-relative "> 
                   <img class="img-cliente" src="{% static "icons/user.svg" %}" width='24' alt="">
                         <span>
                               Clientes  
@@ -115,7 +115,7 @@
                   </a>
                   {% include "credit/cp/more-options.html" %}  <!-- More options for credit -->
             </button>
-            <button class="btns btn-calculator Gratis Emprendedor Ejecutivo "
+            <button class="btns btn-calculator Basico Emprendedor Ejecutivo "
             onclick="window.location.href = '{% url 'calculator:calculator' %}'">
                   <img class='img-calculator' onclick="OpenCalculator()" src="{% static "icons/calculator.png" %}" width='24' alt="">
                         <span>
@@ -158,7 +158,7 @@
                         </span>
             </button>
             <button onclick="window.location.href = '{% url 'company:company-update' request.user.more.company.id %}'"
-                   class="btns btn-empresa  Gratis Emprendedor Ejecutivo">
+                   class="btns btn-empresa  Basico Emprendedor Ejecutivo">
                         <img src="{% static "icons/config.svg" %}" width='24' alt="">
                         <span>
                               Configuracion

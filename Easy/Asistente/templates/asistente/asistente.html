@@ -76,22 +76,22 @@
       </style>
       <section data-aos="fade-up"  
            style="transition: 2s;"
-            class="w-100 d-flex flex-wrap   justify-content-center align-content-center pb-5 vh-100 ">
-            <div style="max-width: 97%; max-height: 85vh; background-color: #191919;" 
-                  class="w-100 position-relative p-4 rounded-5 text-white overflow-auto">
+            class="w-100 d-flex flex-wrap   justify-content-center align-content-center  h-100 ">
+            <div style="max-width: 99%; max-height: 95vh; background-color: #191919;" 
+                  class="w-100 position-relative p-2 rounded-5 text-white overflow-auto">
                   <!--Pregunta del usuario-->
-                  <div class="w-100 d-flex flex-wrap justify-content-start position-sticky top-0 blur-10 align-content-center  bg-opacity-10">
+                  <div class="w-100 d-flex flex-wrap p-4 justify-content-start position-sticky top-0 blur-10 align-content-center  bg-opacity-10">
                         <span class=" rounded-circle  me-1">
                               <img src="{{request.user.more.company.logo.url}}" id="img-profiles" class="rounded-circle object-fit-cover" width="50" height="50" alt="">
                         </span>
                         <h3
                               style="background-color: #202020;"
                               class="your-response mt-0 ms-2 p-2 ps-3 pe-3 rounded-5 d-flex flex-wrap justify-content-start align-content-center">
-                              ...
+                              Finance 
                         </h3>
                   </div>
                   <!--Respuestas del asistente-->
-                  <div class="asistent-response  align-content-start mt-3 d-flex flex-wrap justify-content-start"
+                  <div class="asistent-response  align-content-start p-4  d-flex flex-wrap justify-content-start"
                         style="height: 80rem;"> 
                          ¿En que puedo ayudarte?
                   </div>
@@ -171,11 +171,13 @@
                         question: question,},
                         success: function (data) {
                               let div = document.createElement('div')
-                              document.querySelector('.your-response').innerHTML = data.your_question;
+                              // document.querySelector('.your-response').innerHTML = data.your_question;
                               document.querySelector('.asistent-response').innerHTML = FormaTextIA(data.asistent_response)
                               FocusAsistentInput();
+                              asistente.placeholder =  data.your_question
                               document.querySelector('.div2').classList.toggle('d-none')
                               document.querySelector('.div1').classList.toggle('d-none')
+                              asistente.focus()
                         },
                   }); 
             }
