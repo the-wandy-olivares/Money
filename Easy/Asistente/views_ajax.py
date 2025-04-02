@@ -2,7 +2,7 @@ from  google import genai
 
 from django.http import JsonResponse
 from datetime import datetime
-from . import models
+from .models import Configuration
 from django.db.models import Q
 from Caja.models import  Movements
 from Company.models import Company
@@ -61,40 +61,52 @@ def CleanQuestion(question, request):
       
       
 
-# def QuestionGemini(request):
-#       your_question  = request.GET.get('question')
-#       data = {'data': False}
-#       if your_question:
-#             client = genai.Client(api_key="AIzaSyAlRiEbU6bhninS9aZvaO5MfB8jWyzfjw0")
-#             asisten_response = client.models.generate_content(
-#             model="gemini-2.0-flash",
-#             contents = f"""
-#                     Sistema: Easy
-#                     Contexto: Easy es un asistente virtual para la gestión de un software financiero, proporcionando respuestas detalladas.
-#                     Objetivo: Proporcionar información específica y actualizada sobre clientes y otros aspectos relacionados con la gestión de la financiera.
-#                     Fecha actual: {datetime.now().strftime('%d/%m/%Y')}
-#                     Pregunta del usuario: {your_question}
-#                     Información adicional: {CleanQuestion(your_question, request)}
-#                     """,)
+def Gemini(request):
+      your_question  = request.GET.get('question')
+      data = {'data': False}
+      if your_question:
+            client = genai.Client(api_key="AIzaSyAlRiEbU6bhninS9aZvaO5MfB8jWyzfjw0")
+            asisten_response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents = f"""
+                    Sistema: Easy
+                    Contexto: Gemini es un asistente virtual para la gestión de un software financiero, proporcionando respuestas detalladas.
+                    Objetivo: Proporcionar información específica y actualizada sobre clientes y otros aspectos relacionados con la gestión de la financiera.
+                    Fecha actual: {datetime.now().strftime('%d/%m/%Y')}
+                    Pregunta del usuario: {your_question}
+                    Información adicional: {CleanQuestion(your_question, request)}
+                    """,)
             
-#             if your_question:
-#                   data = {
-#                         'your_question': your_question,
-#                         'asistent_response': asisten_response.text if asisten_response.text else 'No se encontró respuesta'
-#                   }
-#       return JsonResponse(data)
+            if your_question:
+                  data = {
+                        'your_question': your_question,
+                        'asistent_response': asisten_response.text if asisten_response.text else 'No se encontró respuesta'
+                  }
+      return JsonResponse(data)
 
 
-def QuestionGemini(request):
+
+
+
+def Asistente(request):
+      ia = Configuration.objects.get(id=1)
+      if ia.is_local == True:
+            return  Gemma(request) 
+      else:
+            return  Gemini(request) 
+      
+
+
+
+
+
+def Gemma(request):
       your_question  = request.GET.get('question')
       data = {'data': False}
       contents = f"""
-            Sistema: Easy  
-            Contexto: "Easy" es un asistente virtual diseñado para proporcionar respuestas detalladas sobre la gestión de clientes, sus datos y actividades relacionadas con la empresa.  
-            Objetivo: El asistente tiene como objetivo ofrecer información precisa y relevante basada en las consultas realizadas por el usuario, utilizando los datos disponibles en el sistema.  
-            Fecha y hora actual: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}  
+            Sistema: Gemma
+            Contexto: Gemma es un asistente virtual para la gestión de un software financiero, proporcionando respuestas detalladas.
             Pregunta del usuario: {your_question}  
-            Información adicional: {CleanQuestion(your_question, request)}  
       """
       if your_question:
             url = 'http://localhost:11434/api/generate'

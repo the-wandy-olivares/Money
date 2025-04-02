@@ -73,22 +73,36 @@
                   }
             }
 
+            .form-check-input {
+                  width: 20px; /* Ajusta el tamaño */
+                  height: 20px;
+                  border-radius: 50% !important; /* Lo hace redondo */
+                  border: 2px solid #45a5ff !important; /* Borde azul siempre */
+                  background-color: rgba(255, 255, 255, 0); /* Asegura un fondo blanco */
+            }
+
+            .form-check-input:checked {
+                  background-color: #000000; /* Fondo azul cuando está marcado */
+                  border-color: #45a5ff;
+            }
       </style>
       <section data-aos="fade-up"  
            style="transition: 2s;"
             class="w-100 d-flex flex-wrap   justify-content-center align-content-center  h-100 ">
-            <div style="max-width: 99%; max-height: 95vh; background-color: #191919;" 
+            <div style="max-width: 99%; max-height: 95vh; background-color: #19191900;" 
                   class="w-100 position-relative p-2 rounded-5 text-white overflow-auto">
+                 
                   <!--Pregunta del usuario-->
                   <div class="w-100 d-flex flex-wrap p-4 justify-content-start position-sticky top-0 blur-10 align-content-center  bg-opacity-10">
+                        
                         <span class=" rounded-circle  me-1">
                               <img src="{{request.user.more.company.logo.url}}" id="img-profiles" class="rounded-circle object-fit-cover" width="50" height="50" alt="">
                         </span>
-                        <h3
-                              style="background-color: #202020;"
-                              class="your-response mt-0 ms-2 p-2 ps-3 pe-3 rounded-5 d-flex flex-wrap justify-content-start align-content-center">
+                        <h6
+                              style="background-color: #191919;"
+                              class="your-response mt-2 ms-2 p-2 ps-3 pe-3 rounded-5 d-flex flex-wrap justify-content-start align-content-center">
                               Finance 
-                        </h3>
+                        </h6>
                   </div>
                   <!--Respuestas del asistente-->
                   <div class="asistent-response  align-content-start p-4  d-flex flex-wrap justify-content-start"
@@ -97,6 +111,24 @@
                   </div>
                   <div style="width: 100%; "
                   class="d-flex  position-sticky bottom-0  bottom-0 flex-wrap justify-content-center  align-content-center  bottom-0 start-0">
+                  
+                  <div class="form-check position-absolutse w-100  top-0 end-0 mt-3 z-3">
+                        <form action="" method="post"> 
+                              {% csrf_token %}
+                      
+                                     <input class="form-check-input d-none" name="active-local" type="checkbox" id="flexCheckDefault"  
+                                     onchange="this.form.submit()" >
+                             
+                              <label class="form-check-label" for="flexCheckDefault" 
+                                    style="cursor: pointer;">
+                                    {% if configuration.is_local %}
+                                          <i class="bi bi-circle" style="color: #696969;"></i>
+                                    {% else %}
+                                          <i class="bi bi-check-circle-fill" style="color: #45a5ff;"></i>
+                                    {% endif %} Usar Gemini
+                              </label>
+                          </form>
+                      </div>
                    <div class="div1 w-100">
                         {% include "asistente/cp/input.html" %}         
                    </div>
@@ -166,7 +198,7 @@
                   document.querySelector('.div1').classList.toggle('d-none')
                   document.querySelector('.div2').classList.toggle('d-none')
                   $.ajax({
-                        url: '{% url "asistente:question_gemini" %}',
+                        url: '{% url "asistente:asistente-ia" %}',
                         data: {
                         question: question,},
                         success: function (data) {
