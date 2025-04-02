@@ -45,7 +45,7 @@ class CreateUserCompany(TemplateView):
             )
             Membership.objects.create(
                   user= user,
-                  plan = Plans.objects.get(is_active=True).first(),
+                  plan = Plans.objects.get(is_active=True,name='Basico'),
 
             )
             user_ready = authenticate(request, username=username, password=password)
