@@ -37,9 +37,9 @@ class Membreship(TemplateView):
                   "Disponibilidad de mensajeros",
                   "Avances de créditos de hasta $1,000 dolares"
                   ]
-            for p in Plans.objects.filter(is_active=True):
-                  self.AdminiCaracteristicas(servicios, p.name , False, True)
-            return context
+            # for p in Plans.objects.filter(is_active=True):
+                  # self.AdminiCaracteristicas(servicios, p.name , False, True)
+            # return context
       
       def get(self, request, *args, **kwargs):
             if not request.user.is_authenticated:
