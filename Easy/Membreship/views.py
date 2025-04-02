@@ -19,45 +19,30 @@ class Membreship(TemplateView):
             context = super().get_context_data(**kwargs)
             context['plans'] =  Plans.objects.filter(is_active=True)
             servicios = [
-                  "Calculadora de intereses", 
-                  "Gestion de creditos",
-                  "Flujo de caja",
-                  "Modulo de clientes",
-                  "Notificaciones avanzadas, alertas, avisos.",
-                  "Facturas automaticas","Envio por correo de facturas redactada por (IA)"
-                  "Notificaciones",
-                  "Geolocaliaciones de clientes, proveedores y mas",
-                  "Buro de crédito", 
-                  "Integracion de mensajeria, WhatsApp, Facebook, Instagram, Telegram"
-                  "Propio dominio",
-                  "Control de inversión",
-                  "Agente inteligente (IA)",
-                  "Reportes fiscales",
-                  "Contratos digitales",
-                  "Disponibilidad de mensajeros",
-                  "Avances de créditos de hasta $1,000 dolares"
+                        "Calculadora de intereses", 
+                        "Gestion de creditos",
+                        "Flujo de caja",
+                        "Modulo de clientes",
+                        "Notificaciones avanzadas, alertas, avisos.",
+                        "Facturas automaticas","Envio por correo de facturas redactada por (IA)",
+                        "Notificaciones",
+                        "Geolocaliaciones de clientes, proveedores y mas",
+                        "Buro de crédito", 
+                        "Integracion de mensajeria, WhatsApp, Facebook, Instagram, Telegram"
+                        "Propio dominio",
+                        "Control de inversión",
+                        "Agente inteligente (IA)",
+                        "Reportes fiscales",
+                        "Contratos digitales",
+                        "Disponibilidad de mensajeros",
+                        "Avances de créditos de hasta $1,000 dolares"
                   ]
-            # for p in Plans.objects.filter(is_active=True):
-                  # self.AdminiCaracteristicas(servicios, p.name , False, True)
-            # return context
-      
+            return context
+   
       def get(self, request, *args, **kwargs):
             if not request.user.is_authenticated:
                   return redirect('login:login')  # Cambia 'login' por el nombre de tu URL
             return super().get(request, *args, **kwargs)
-
-      def AdminiCaracteristicas(self, servicios=list, name_plan='', delete_carateristic=False, is_active_carateristica=True):
-            #  Crear caracteristicas
-            plan_select = Plans.objects.get(is_active=True, name=name_plan)
-            if delete_carateristic == False:
-                  lista = servicios
-                  for element in lista:
-                        if not Carateristica.objects.filter(plan=plan_select, name=element).exists():
-                              Carateristica.objects.create( plan=plan_select, name=element, is_active= is_active_carateristica )
-                        finished = f'Se crearon correctamente: {Carateristica.objects.filter(plan=plan_select, name=element).count()}  caracteristicas del plan {plan_select.name} ' 
-                        print(finished)
-                  return finished
-            return f'Se eliminaron correctamente todas las caracteristicas'
       
 
 class PaymentPaypal(TemplateView):
