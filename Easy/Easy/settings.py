@@ -100,10 +100,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/' 
-STATIC_ROOT = '/home/olivares-finance/Money/Easy/staticfiles/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Easy', 'static'),  # Ajusta la ruta según tu estructura
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
