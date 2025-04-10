@@ -8,8 +8,6 @@ from paypal.standard.ipn import urls as paypal_urls
 from paypal.standard.ipn import views as paypal_views
 
 
-
-
 urlpatterns = [
     
         path('', Dashboard.as_view(), name='dashboard'),
