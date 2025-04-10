@@ -43,12 +43,8 @@
       .btn-nav button .bi
       {
             margin-right: 1rem;
-            /* margin-left: 0.3rem; */
             font-size: 20px !important;
             padding: 0.2rem;
-            border-radius: 50%;
-            /* background-color: #f9f9f9 !important ;
-            border: 1px solid #eeeeee; */
       }  
       .btn-nav button span
       {
@@ -72,8 +68,16 @@
             border-radius: 2rem !important;
 
       }
-      .btn-disabled {
-            color: #878787b6 !important;
+
+      :root {
+            --color-disabled: #79797987;
+      }
+
+        .btn-disabled {
+            color: var(--color-disabled) !important;
+      }
+      .btns .i-disabled {
+            color: var(--color-disabled) !important;
       }
 
 </style>
@@ -174,21 +178,21 @@
 </section>
 <script>
       // More options for client
-      document.querySelector('.img-cliente').addEventListener('click', function() {
-            const moreOptions = document.querySelector('.more-options-nav');
-            if (moreOptions) {
-                  moreOptions.classList.toggle('d-none');
-            }
-      });
+      // document.querySelector('.img-cliente').addEventListener('click', function() {
+      //       const moreOptions = document.querySelector('.more-options-nav');
+      //       if (moreOptions) {
+      //             moreOptions.classList.toggle('d-none');
+      //       }
+      // });
 
 
       // More options for credit
-      document.querySelector('.img-creditos').addEventListener('click', function() {
-            const moreOptions = document.querySelector('.credits-options');
-            if (moreOptions) {
-                  moreOptions.classList.toggle('d-none');
-            }
-      });
+      // document.querySelector('.img-creditos').addEventListener('click', function() {
+      //       const moreOptions = document.querySelector('.credits-options');
+      //       if (moreOptions) {
+      //             moreOptions.classList.toggle('d-none');
+      //       }
+      // });
 
 
 
@@ -206,15 +210,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener todos los botones dentro de .nav-control
     const buttons = document.querySelectorAll('.nav-control .btns');
-    const span_buttons = document.querySelectorAll('.nav-control .btns span');
-
+    const lis_2 = document.querySelectorAll(' .btns  .bi');
+      lis_2.forEach(li => {
+            li.classList.add('i-disabled')
+      })
     // Desactivar todos los botones inicialmente
     buttons.forEach(button => button.disabled = true);
-    span_buttons.forEach(span => span.classList.add('btn-disabled'));
+    buttons.forEach(button => button.classList.add('btn-disabled'));
     
-      let Membresia = '{{request.user.membership.plan.name}}';
-      // Aquí puedes cambiar el valor de Membresia según lo necesites
-      buttons.forEach(button => {
+    let Membresia = '{{request.user.membership.plan.name}}';
+    // Aquí puedes cambiar el valor de Membresia según lo necesites
+    buttons.forEach(button => {
             // Obtener todas las clases del botón
             const buttonClasses = [...button.classList];
             // Filtrar las clases que coincidan parcialmente con 'Membresia'
@@ -222,10 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si al menos hay una clase coincidente, activar el botón
             if (matchedClasses.length > 0) {
                   button.disabled = false; // Activar el botón    
-                  // Acceder al span dentro del botón
-                  const span = button.querySelector('span');
-                  // Aquí puedes aplicar cambios al span, por ejemplo:
-                  span.classList.remove('btn-disabled');  // Quitar la clase 'btn-disabled' del span
+                  button.classList.remove('btn-disabled');  // Quitar la clase 'btn-disabled' del span
+                  let lis = button.querySelector('.bi')
+                  lis.classList.remove('i-disabled')
+
 
             }
       });
